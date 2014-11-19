@@ -1,6 +1,5 @@
 Bomb Defusal - The Game
 ============
-#CSCI201L Final Project
 ##Team Members
 - He who would blaze a trail to victory, *Great Leader Steven Truong*
 - He who would pave the code to follow Great Leader, *Haohan Tang*
