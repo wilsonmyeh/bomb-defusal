@@ -1,4 +1,5 @@
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.net.Socket;
 
@@ -12,12 +13,13 @@ import javax.swing.JPanel;
 public class SupervisorGUI extends BaseClient{
 	private JPanel jpLobby, jpInstruction, jpTwoStageGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
 	int teamNum;
-	Socket s;
-	
-	SupervisorGUI(int teamNum){
-		this.setSize(800,500);
-		
 
+	
+	SupervisorGUI(int teamNum, Socket s){
+		this.setSize(800,500);
+		this.setLayout(new BorderLayout());
+
+		mySocket = s;
 		//initiate all panels
 		mainPanel = new JPanel();
 		jpLobby = new Lobby();
@@ -31,6 +33,8 @@ public class SupervisorGUI extends BaseClient{
 		jpCutWireGame_Sup = new CutTheWireSupervisor();
 		jpFindLocationGame_Sup = new FindTheLocationSupervisor();
 		jpLogicGame_Sup = new LogicGameSupervisor();
+		
+		chat = new Chat(this);
 		
 		//cardLayout
 		mainCardLayout = new CardLayout();		
@@ -47,7 +51,8 @@ public class SupervisorGUI extends BaseClient{
 	
 		
 
-		add(mainPanel);
+		add(mainPanel,BorderLayout.CENTER);
+		add(chat,BorderLayout.EAST);
 		//show instruction page
 		mainCardLayout.show(mainPanel,"Instruction");
 		
@@ -61,4 +66,5 @@ public class SupervisorGUI extends BaseClient{
 	public CardLayout getCardLayout(){
 		return mainCardLayout;
 	}
+
 }

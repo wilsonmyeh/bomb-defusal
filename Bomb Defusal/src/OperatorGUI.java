@@ -1,3 +1,4 @@
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.net.Socket;
 
@@ -8,14 +9,14 @@ import javax.swing.JPanel;
 public class OperatorGUI extends BaseClient{
 	private JPanel jpInstruction,jpTwoStageGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
 	int teamNum;
-	Socket s;
 	
 	
 	// no lobby panel
 	OperatorGUI(int teamNum, Socket s){
 		this.setSize(800,500);
+		this.setLayout(new BorderLayout());
 		
-		this.s = s;
+		mySocket = s;
 		//initiate all panels
 		mainPanel = new JPanel();
 		this.teamNum  = teamNum;
@@ -38,7 +39,10 @@ public class OperatorGUI extends BaseClient{
 		mainPanel.add(jpFindLocationGame_Ope,"FindLocationGame_Operator");
 		mainPanel.add(jpLogicGame_Ope,"LogicGame_Operator");
 		
-		add(mainPanel);
+		chat = new Chat(this);
+		
+		add(mainPanel,BorderLayout.CENTER);
+		add(chat,BorderLayout.EAST);
 		//show instruction page
 		mainCardLayout.show(mainPanel,"Instruction");
 		
