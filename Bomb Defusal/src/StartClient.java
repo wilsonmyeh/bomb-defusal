@@ -2,7 +2,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.Socket;
+import java.util.Scanner;
 
 public class StartClient {
 	BaseClient bc;
@@ -13,12 +15,12 @@ public class StartClient {
 	private BufferedReader br;
 	
 	//here goes the connection to the server
-	StartClient(String hostname, int port){
+	StartClient(String ip, int port){
 		//need t0 connect  to server, first to connect: team 1 supervisor, then team 2 supervisor
 		//then team 1 operator, then team 2 operator
 		//role -1:operator  1:supervisor
 		try {
-			Socket s = new Socket(hostname, port);
+			Socket s = new Socket(ip, port);
 			br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			role = Integer.parseInt(br.readLine()); 
 		} catch (IOException e) {
@@ -39,6 +41,11 @@ public class StartClient {
 	}
 	public static void main(String [] args){
 		//wait for server to assign
-		new StartClient(); 
+		Scanner scan = new Scanner(System.in); 
+		System.out.println("IP?");
+		String ip = scan.nextLine(); 
+		System.out.println("Port?");
+		int port = scan.nextInt(); 
+		new StartClient(ip,port); 
 	}
 }
