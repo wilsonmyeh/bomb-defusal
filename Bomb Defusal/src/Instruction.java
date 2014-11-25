@@ -25,11 +25,13 @@ class Instruction extends JPanel {
 		else 
 			jlWait = new JLabel("Wait for supervisor to choose a game");
 		
-		jtaInstruction = new JTextArea("You are on TEAM: " + teamNum + " and you are a " + identity + ".");
-		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 1");
-		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 2");
-		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3");
-		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 4");
+		
+		jtaInstruction = new JTextArea("You are on TEAM: " + teamNum + " and you are a " + identity + "." + "\n");
+		
+		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 1" + "\n");
+		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 2" + "\n");
+		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3" + "\n");
+		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 4" + "\n");
 		
 		add(Box.createGlue());
 		this.add(jtaInstruction);
@@ -41,10 +43,12 @@ class Instruction extends JPanel {
 			this.add(jlWait);
 		add(Box.createGlue());
 	
-		jbStart.addActionListener(new ActionListener(){
-			public void actionPerformed(ActionEvent ae){
-				StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"Lobby");
-			}
-		});
+		if(identity.equals("Supervisor")){
+			jbStart.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent ae){
+					StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"Lobby");
+				}
+			});
+		}
 	}
 }

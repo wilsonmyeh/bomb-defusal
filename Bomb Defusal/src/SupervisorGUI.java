@@ -14,6 +14,8 @@ public class SupervisorGUI extends BaseClient{
 	Socket s;
 	
 	SupervisorGUI(int teamNum, Socket s){
+		this.setSize(800,500);
+		
 		this.s = s;
 		//initiate all panels
 		mainPanel = new JPanel();
