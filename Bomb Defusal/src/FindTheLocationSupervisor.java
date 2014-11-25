@@ -1,4 +1,6 @@
+import javax.swing.JPanel;
 
-public class FindTheLocationSupervisor {
+
+public class FindTheLocationSupervisor extends JPanel{
 
 }

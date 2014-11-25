@@ -10,8 +10,9 @@ import javax.swing.JTextField;
 class Instruction extends JPanel {
 	private JTextArea jtaInstruction;
 	private JButton jbStart;
+	private String identiry, teamNum;
 	
-	Instruction(){
+	Instruction(String identity, String teamNum){
 		this.setSize(500,500);	
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		//add instruction
