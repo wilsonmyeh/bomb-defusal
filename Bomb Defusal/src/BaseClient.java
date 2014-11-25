@@ -24,8 +24,11 @@ abstract class BaseClient extends JFrame
 	{
 
 	}
-
-	void sendCommand(String command){
+	public Chat getChat()
+	{
+		return chat; 
+	}
+	public void sendCommand(String command){
 		String packet = team + command; //appends team# to beginning of packet
 	}
 }

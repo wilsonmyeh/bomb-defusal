@@ -1,3 +1,4 @@
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -28,24 +29,35 @@ public class StartClient {
 		}
 		
 		switch(role) {
-		case 0 : bc = new OperatorGUI(0,s); 
+		case 0 : bc = new OperatorGUI(1,s); 
 				 break;
-		case 1 : bc = new SupervisorGUI(0,s);
+		case 1 : bc = new SupervisorGUI(1,s);
 		         break;
-		case 2 : bc = new OperatorGUI(1,s); 
+		case 2 : bc = new OperatorGUI(2,s); 
 		         break;
-		case 3 : bc = new SupervisorGUI(1,s); 
+		case 3 : bc = new SupervisorGUI(2,s); 
 		         break;
 		default : System.out.println("Something went horribly wrong.");
+		}
+		
+		while(true)
+		{
+			try {
+				String printThisToGUI = br.readLine();
+				bc.getChat().addText(printThisToGUI);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	public static void main(String[] args){
 		//wait for server to assign
 		Scanner scan = new Scanner(System.in); 
 		System.out.println("IP?");
-		String ip = scan.nextLine(); 
+		//String ip = scan.nextLine(); 
 		System.out.println("Port?");
-		int port = scan.nextInt(); 
-		new StartClient(ip,port); 
+		//int port = scan.nextInt(); 
+		new StartClient("localhost",3469); 
 	}
 }
