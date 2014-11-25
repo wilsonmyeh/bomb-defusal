@@ -51,4 +51,11 @@ public class SupervisorGUI extends BaseClient{
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
 		setVisible(true);
 	}
+	
+	public JPanel getMainpanel(){
+		return mainPanel;
+	}
+	public CardLayout getCardLayout(){
+		return mainCardLayout;
+	}
 }
