@@ -39,7 +39,8 @@ public class OperatorGUI extends BaseClient{
 		mainPanel.add(jpFindLocationGame_Ope,"FindLocationGame_Operator");
 		mainPanel.add(jpLogicGame_Ope,"LogicGame_Operator");
 		
-		chat = new Chat(this);
+		//other teamNUm
+		chat = new Chat(this,(3-teamNum));
 		
 		add(mainPanel,BorderLayout.CENTER);
 		add(chat,BorderLayout.EAST);

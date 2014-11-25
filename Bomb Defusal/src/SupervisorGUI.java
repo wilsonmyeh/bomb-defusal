@@ -34,7 +34,8 @@ public class SupervisorGUI extends BaseClient{
 		jpFindLocationGame_Sup = new FindTheLocationSupervisor();
 		jpLogicGame_Sup = new LogicGameSupervisor();
 		
-		chat = new Chat(this);
+		//other teamNUm
+		chat = new Chat(this,(3-teamNum));
 		
 		//cardLayout
 		mainCardLayout = new CardLayout();		

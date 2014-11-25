@@ -28,13 +28,13 @@ public class StartClient {
 		}
 		
 		switch(role) {
-		case 0 : bc = new OperatorGUI(0,s); 
+		case 0 : bc = new OperatorGUI(1,s); 
 				 break;
-		case 1 : bc = new SupervisorGUI(0,s);
+		case 1 : bc = new SupervisorGUI(1,s);
 		         break;
-		case 2 : bc = new OperatorGUI(1,s); 
+		case 2 : bc = new OperatorGUI(2,s); 
 		         break;
-		case 3 : bc = new SupervisorGUI(1,s); 
+		case 3 : bc = new SupervisorGUI(2,s); 
 		         break;
 		default : System.out.println("Something went horribly wrong.");
 		}
