@@ -1,4 +1,3 @@
-
-public class BaseMiniGameClient {
-
+interface BaseMiniGameClient {
+	
 }
