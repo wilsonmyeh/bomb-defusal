@@ -27,7 +27,7 @@ class Chat extends JPanel {
 		JButton send = new JButton("Send"); 
 		send.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
- 				myClient.sendCommand(/*GAME_ID+targetList.getSelectedItem()+*/" "); //4 header indicates chat
+ 				myClient.sendCommand(); //4 header indicates chat
  				input.setText(""); 
             }
         });
