@@ -31,7 +31,7 @@ public class Lobby extends JPanel{
 				jbCutTheWire.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent ae){
 						//ClientGUI cg
-						cg.getCardLayout().(cg.getMainPanel,"CutWireGame_Supervisor");
+						StartClient.bc.getCardLayout().(cg.getMainPanel,"CutWireGame_Supervisor");
 						//send command to server to let operator enter the game
 					}
 				});
@@ -39,7 +39,7 @@ public class Lobby extends JPanel{
 				jbFindLocation.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent ae){
 						//ClientGUI cg
-						cg.getCardLayout().(cg.getMainPanel,"FindLocationGame_Supervisor");
+						StartClient.bc.getCardLayout().(cg.getMainPanel,"FindLocationGame_Supervisor");
 						//send command to server to let operator enter the game
 					}
 				});
@@ -47,7 +47,7 @@ public class Lobby extends JPanel{
 				jbLogicGame.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent ae){
 						//ClientGUI cg
-						cg.getCardLayout().(cg.getMainPanel,"LogicGame_Supervisor");
+						StartClient.bc.getCardLayout().(cg.getMainPanel,"LogicGame_Supervisor");
 						//send command to server to let operator enter the game
 					}
 				});
@@ -55,7 +55,7 @@ public class Lobby extends JPanel{
 				jbTwoStage.addActionListener(new ActionListener(){
 					public void actionPerformed(ActionEvent ae){
 						//ClientGUI cg
-						cg.getCardLayout().(cg.getMainPanel,"TwoStageGame_Supervisor");
+						StartClient.bc.getCardLayout().(cg.getMainPanel,"TwoStageGame_Supervisor");
 						//send command to server to let operator enter the game
 					}
 				});
