@@ -17,7 +17,7 @@ class Chat extends JPanel {
 	JTextField input;
 	JTextArea output;
 	JComboBox targetList; //Who you can message
-	public Chat(ClientGUI client)
+	public Chat(BaseClient client)
 	{
 		setPreferredSize(new Dimension(300,500)); 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
@@ -27,7 +27,7 @@ class Chat extends JPanel {
 		JButton send = new JButton("Send"); 
 		send.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
- 				myClient.sendCommand(/*GAME_ID+targetList.getSelectedItem()+*/" "); //4 header indicates chat
+ 				myClient.sendCommand(); //4 header indicates chat
  				input.setText(""); 
             }
         });
