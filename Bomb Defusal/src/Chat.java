@@ -17,7 +17,7 @@ class Chat extends JPanel {
 	JTextField input;
 	JTextArea output;
 	JComboBox targetList; //Who you can message
-	public Chat(ClientGUI client)
+	public Chat(BaseClient client)
 	{
 		setPreferredSize(new Dimension(300,500)); 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 

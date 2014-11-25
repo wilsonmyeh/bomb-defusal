@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 abstract class BaseClient extends JFrame
 {
-	private Socket mySocket; 
+	protected Socket mySocket; 
 	private String myUserName; //This is your role in the game (i.e Supervisor 1))
 	private int team;
 	private Chat chat; 
