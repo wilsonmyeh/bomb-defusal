@@ -1,16 +1,23 @@
 public class StartClient {
 	BaseClient bc;
-	Client(IP, port){
+	//Client(IP, port){
 		//200*500 size
-	}
+	//}
 	
-	//assign each player supervisor or operator
-	void parse(){
+	//here goes the connection to the server
+	StartClient(){
 		
 	}
-	main(){
+	//assign each player supervisor or operator
+	//return 1 for supervisor, return -1 for operator
+	static int parse(){
+		return -1;
+	}
+	public static void main(String [] args){
 		//wait for server to assign
-		clientgui1 = new SupervisorGUI();//or OperatorGUI();
-		
+		if(parse() == -1)
+			new OperatorGUI();
+		else
+			new SupervisorGUI();
 	}
 }
