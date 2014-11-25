@@ -7,16 +7,22 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class Lobby extends JPanel{
-	private JButton jbCutTheWire,jbFindLocation,jbTwoStage,jbLogicGame;
+	private JButton jbCutTheWire,jbFindLocation,jbTwoStage,jbLogicGame,jbBack;
 	
 
 	public Lobby(){
 		this.setSize(500,500);	
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		jbCutTheWire = new JButton("Go to Cut The Wire Game");
+		jbCutTheWire.setAlignmentX(CENTER_ALIGNMENT);
 		jbFindLocation = new JButton("Go to Find The Location Game");
+		jbFindLocation.setAlignmentX(CENTER_ALIGNMENT);
 		jbTwoStage = new JButton("Go to Two Stage Game");
+		jbTwoStage.setAlignmentX(CENTER_ALIGNMENT);
 		jbLogicGame = new JButton("Go to Logic Game");
+		jbLogicGame.setAlignmentX(CENTER_ALIGNMENT);
+		jbBack = new JButton("Go back to Instruction to review the rules");
+		jbBack.setAlignmentX(CENTER_ALIGNMENT);
 		this.add(jbTwoStage);
 		add(Box.createGlue());
 		this.add(jbCutTheWire);
@@ -25,7 +31,7 @@ public class Lobby extends JPanel{
 		add(Box.createGlue());
 		this.add(jbLogicGame);
 		add(Box.createGlue());	
-		
+		this.add(jbBack);
 		
 		//add action
 				jbCutTheWire.addActionListener(new ActionListener(){
@@ -57,6 +63,15 @@ public class Lobby extends JPanel{
 						//ClientGUI cg
 						StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"TwoStageGame_Supervisor");
 						//send command to server to let operator enter the game
+					}
+				});
+				jbBack.addActionListener(new ActionListener(){
+					public void actionPerformed(ActionEvent ae){
+
+						StartClient.bc.mainCardLayout.first(StartClient.bc.mainPanel);
+						//StartClient.bc.mainPanel.revalidate();
+						//StartClient.bc.mainPanel.repaint();
+						
 					}
 				});
 	}
