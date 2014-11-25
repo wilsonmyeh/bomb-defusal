@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -32,15 +33,35 @@ class Instruction extends JPanel {
 		
 		//supervisor
 		if(identity.equals("Supervisor")){
-		jtaInstruction.setText(jtaInstruction.getText() + "Use your mouse to find the secret location on the picture given. When the operator gives you the go-ahead, click finalize, and your location will be selected. If correct, you will win the game. If not, you will have to start over." + "\n");
-		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 2" + "\n");
-		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3" + "\n");
-		jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 4" + "\n");
+			Font font = new Font("Verdana", Font.BOLD, 15);
+			jtaInstruction.setFont(font);
+			jtaInstruction.setText(jtaInstruction.getText() + "FIND THE LOCATION" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Use your mouse to find the secret location on the picture."+ "\n"+ "When the operator gives you the go-ahead,"+ "\n"+ "click finalize, and your location will be selected. "+ "\n"+ "If correct, you will win the game.  "+ "\n"+ "If not, you will have to start over." + "\n");
+			
+			jtaInstruction.setText(jtaInstruction.getText() + "CUT THE WIRE" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 2" + "\n");
+			
+			jtaInstruction.setText(jtaInstruction.getText() + "TWO STAGE" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3" + "\n");
+			
+			jtaInstruction.setText(jtaInstruction.getText() + "LOGIC GAME" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 4" + "\n");
 		}
 		else{
-			jtaInstruction.setText(jtaInstruction.getText() + " When the supervisor gives you the go-ahead, click analyze to see how close you are to the secret location. Relay to your supervisor the information, so they can make a more informed choice." + "\n");
+			Font font = new Font("Verdana", Font.BOLD, 40);
+			jtaInstruction.setFont(font);
+			jtaInstruction.setText(jtaInstruction.getText() + "FIND THE LOCATION" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + " When the supervisor gives you the go-ahead, click analyze to see how close you are to the secret location."+ "\n"+ " Relay to your supervisor the information, so they can make a more informed choice." + "\n");
+			
+
+			jtaInstruction.setText(jtaInstruction.getText() + "CUT THE WIRE" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 2" + "\n");
+
+			jtaInstruction.setText(jtaInstruction.getText() + "TWO STAGE" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3" + "\n");
+			
+
+			jtaInstruction.setText(jtaInstruction.getText() + "LOGIC GAME" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 4" + "\n");
 		}
 		

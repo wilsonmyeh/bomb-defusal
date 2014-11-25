@@ -83,6 +83,34 @@ class Server {
 		int ind = (int) line.charAt(1) - 48;
 		if (ind == 4) {
 			// TODO: Chat stuff
+
+			int target = (int) line.charAt(0) - 48; 
+			switch(target)
+			{
+			case 1: {
+				out0[0].println(line.substring(2));
+				out0[0].flush();
+				out0[1].println(line.substring(2)); 
+				out0[1].flush(); 
+			}
+			case 2:{
+				out1[0].println(line.substring(2));
+				out1[0].flush();
+				out1[1].println(line.substring(2)); 
+				out1[1].flush(); 
+			}
+			case 3:{
+				out1[0].println(line.substring(2));
+				out1[0].flush();
+				out1[1].println(line.substring(2)); 
+				out1[1].flush(); 
+				out0[0].println(line.substring(2));
+				out0[0].flush();
+				out0[1].println(line.substring(2)); 
+				out0[1].flush();
+			}
+				
+			}
 		} else {
 			if (line.charAt(0) == 0) {
 				team0[ind].parseCommand(line.substring(2));
