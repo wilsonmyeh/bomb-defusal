@@ -30,7 +30,6 @@ class Chat extends JPanel {
 		JButton send = new JButton("Send"); 
 		send.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
- 				myClient.sendCommand(); //4 header indicates chat
             	int sendHere;
             	if(targetList.getSelectedItem().equals("All"))
             	{
@@ -40,7 +39,7 @@ class Chat extends JPanel {
             	{
             		sendHere = otherteam; 
             	}
- 				myClient.sendCommand(sendHere,input.getText()); //4 header indicates chat
+ 				myClient.sendCommand(Integer.toString(sendHere)+"4"+input.getText()); //4 header indicates chat
  				input.setText(""); 
             }
         });
