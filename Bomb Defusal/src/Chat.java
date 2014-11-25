@@ -49,5 +49,4 @@ class Chat extends JPanel {
 		output.setText(output.getText()+/*+client.myUserName+*/": "+text+"\n");
 		output.setCaretPosition(output.getDocument().getLength()); 
 	}
-	
 }

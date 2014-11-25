@@ -1,3 +1,13 @@
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.util.Arrays;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 //Should be the gateway between gameservers and individual clients
 class Server {
 	BaseMiniGameServer[] team0 = new BaseMiniGameServer[4];
@@ -15,12 +25,12 @@ class Server {
 		team0[0] = new FindTheLocationServer();
 		team0[1] = new TwoStageServer();
 		team0[2] = new CutTheWireServer();
-		team0[3] = new LogicPuzzleServer();
+		team0[3] = new LogicGameServer();
 		
 		team1[0] = new FindTheLocationServer();
 		team1[1] = new TwoStageServer();
 		team1[2] = new CutTheWireServer();
-		team1[3] = new LogicPuzzleServer();
+		team1[3] = new LogicGameServer();
 		
 		try {
 			ServerSocket ss = new ServerSocket(port);
@@ -31,7 +41,7 @@ class Server {
 					if(clients < 2) //Who's what is based on who joins first
 						out0[clients] = new PrintWriter(s.getOutputStream());
 					else out1[clients % 2] = new PrintWriter(s.getOutputStream());
-					players[clients] = new ServerThread(s,clients);
+					players[clients] = new ServerThread(s);
 					players[clients].start();
 					clients++;
 				} catch (IOException e) {
@@ -39,13 +49,15 @@ class Server {
 				}
 			}
 			//Start the game, assign each client a team# and role
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
+		
 	}
 	
-	void kick( Client specificClient) //Kicks a specific client to 'lobby view' 
+	void kick()
 	{
-		//specificClient.cardLayout.show(lobby);
-		specificClient.kick();
+		
 	}
 	
 	boolean[] gamesAvailable() {
@@ -63,10 +75,10 @@ class Server {
 		}
 		else {
 			if(line.charAt(0) == 0) {
-				team0[ind].parse(line.substring(2));
+				team0[ind].parseCommand(line.substring(2));
 			}
 			else {
-				team1[ind].parse(line.substring(2));
+				team1[ind].parseCommand(line.substring(2));
 			}
 		}
 		
@@ -88,17 +100,24 @@ class Server {
 	void sendCommand(BaseMiniGameServer mg, String command){
 		
 		for(int i = 0;i < team1.length;i++) {
-			if(Arrays.indexOf(team1,mg) != -1) {
+			if(indexOf(team1,mg) != -1) {
+				out0[i].println(command);
+				out0[i].flush();
+			}
+			else {
 				out1[i].println(command);
 				out1[i].flush();
 			}
-			else {
-				out2[i].println(command);
-				out2[i].flush();
-			}
 			
 		}
-				
+	}
+	
+	int indexOf(BaseMiniGameServer[] a, BaseMiniGameServer t) {
+		for(int i = 0;i < a.length;i++) {
+			if(a[i] == t)
+				return i; 
+		}
+		return -1;
 	}
 	
 	class ServerThread extends Thread { //Just listens, no printing
@@ -118,8 +137,13 @@ class Server {
 		@Override
 		public void run() {
 			while(!checkWin(team0) && !checkWin(team1)) {
-				String line = br.readLine();
-				parse(line);
+				try {
+					String line = br.readLine();
+					parse(line);
+				}
+				catch(IOException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 		

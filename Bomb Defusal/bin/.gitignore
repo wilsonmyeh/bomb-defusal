@@ -13,14 +13,29 @@
 /LogicGameOperator.class
 /LogicGameServer.class
 /LogicGameSupervisor.class
+<<<<<<< HEAD
+/Server.class
+/TwoStageOperator.class
+/TwoStageServer.class
+/TwoStageSupervisor.class
+/Server$ServerThread.class
+=======
 /Server$ServerThread.class
 /Server.class
 /TwoStageOperator.class
 /TwoStageServer.class
 /TwoStageSupervisor.class
 /Instruction$1.class
+>>>>>>> branch 'master' of https://github.com/wpyeh/bomb-defusal
 /BaseClient.class
+<<<<<<< HEAD
+/BaseMiniGameServer$1.class
+/StartClient.class
+/SupervisorGUI.class
+/OperatorGUI.class
+=======
 /OperatorGUI.class
 /StartClient.class
 /SupervisorGUI.class
 /Chat$1.class
+>>>>>>> branch 'master' of https://github.com/wpyeh/bomb-defusal
