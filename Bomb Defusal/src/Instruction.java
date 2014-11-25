@@ -48,7 +48,7 @@ class Instruction extends JPanel {
 			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 4" + "\n");
 		}
 		else{
-			Font font = new Font("Verdana", Font.BOLD, 40);
+			Font font = new Font("Verdana", Font.BOLD, 15);
 			jtaInstruction.setFont(font);
 			jtaInstruction.setText(jtaInstruction.getText() + "FIND THE LOCATION" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + " When the supervisor gives you the go-ahead, click analyze to see how close you are to the secret location."+ "\n"+ " Relay to your supervisor the information, so they can make a more informed choice." + "\n");
