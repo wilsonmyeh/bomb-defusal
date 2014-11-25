@@ -17,7 +17,7 @@ abstract class BaseClient extends JFrame
 	
 	public BaseClient()
 	{
-
+		Database.initialize();
 	}
 	//should display warning since you've just been kicked and should move you back to lobby (query server for what should be available) 
 	void kick()
