@@ -2,9 +2,10 @@
 import java.awt.CardLayout;
 import java.net.Socket;
 
+import javafx.scene.paint.Color;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import javax.swing.JPanel;
 
 
@@ -13,10 +14,10 @@ public class SupervisorGUI extends BaseClient{
 	int teamNum;
 	Socket s;
 	
-	SupervisorGUI(int teamNum, Socket s){
+	SupervisorGUI(int teamNum){
 		this.setSize(800,500);
 		
-		this.s = s;
+
 		//initiate all panels
 		mainPanel = new JPanel();
 		jpLobby = new Lobby();
@@ -35,8 +36,9 @@ public class SupervisorGUI extends BaseClient{
 		mainCardLayout = new CardLayout();		
 		mainPanel = new JPanel(mainCardLayout);
 	
-		mainPanel.add(jpLobby,"Lobby");
 		mainPanel.add(jpInstruction,"Intruction");
+		mainPanel.add(jpLobby,"Lobby");
+	
 	
 		mainPanel.add(jpTwoStageGame_Sup,"TwoStageGame_Supervisor");
 		mainPanel.add(jpCutWireGame_Sup,"CutWireGame_Supervisor");
