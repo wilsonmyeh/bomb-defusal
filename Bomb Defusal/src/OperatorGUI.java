@@ -20,9 +20,9 @@ public class OperatorGUI extends BaseClient{
 		//initiate all panels
 		mainPanel = new JPanel();
 		this.teamNum  = teamNum;
-		String identity = "Operator";
+		myUserName = "Operator";
 		String teamNumStr = teamNum + "";
-		jpInstruction = new Instruction(identity,teamNumStr);
+		jpInstruction = new Instruction(myUserName,teamNumStr);
 		
 		jpTwoStageGame_Ope = new TwoStageOperator();
 		jpCutWireGame_Ope = new CutTheWireOperator();
