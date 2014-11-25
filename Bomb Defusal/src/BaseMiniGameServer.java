@@ -1,4 +1,36 @@
-
-public class BaseMiniGameServer {
-
+//should only talk to THE server
+abstract class BaseMiniGameServer {
+	boolean active;
+	boolean solved;
+	int teamNumber;
+	int gameNumber;
+	Server server;
+	boolean kickable;
+	BaseMiniGameServer me = this;
+	Thread timer = new Thread() {
+		public void run() {
+			try {
+				Thread.sleep(15000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			kickable = true;
+			//server.sendCommand("kickable")
+			server.sendCommand(me,"KICK ME HARD"); 
+		}
+	};
+	
+	public BaseMiniGameServer() {
+		kickable = false;
+		active = false;
+	}
+	
+	
+	abstract void parseCommand(String command);
+		//if(start) { timer.start(); active = true; } or something liek that
+	
+	void sendCommand(String command){
+		server.sendCommand(this,command);
+	}
+	
 }
