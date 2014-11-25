@@ -1,4 +1,4 @@
 
-public interface BaseMiniGameClient {
-
+interface BaseMiniGameClient {
+	
 }

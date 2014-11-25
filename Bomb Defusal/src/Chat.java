@@ -11,7 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-
 class Chat extends JPanel {
 	private final int GAME_ID = 4;
 	BaseClient myClient;
@@ -21,17 +20,17 @@ class Chat extends JPanel {
 	public Chat(ClientGUI client)
 	{
 		setPreferredSize(new Dimension(300,500)); 
-		setLayout(new BorderLayout(this, BoxLayout.Y_AXIS)); 
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); 
 		input = new JTextField(20); 
 		output = new JTextArea(100, 20); 
 		output.setEditable(false);
 		JButton send = new JButton("Send"); 
 		send.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				myClient.sendCommand(GAME_ID+targetList.getSelectedItem+" "+); //4 header indicates chat
-				input.setText(""); 
-			}
-		});
+            public void actionPerformed(ActionEvent e) {
+ 				myClient.sendCommand(/*GAME_ID+targetList.getSelectedItem()+*/" "); //4 header indicates chat
+ 				input.setText(""); 
+            }
+        });
 		JScrollPane display = new JScrollPane(output);
 		JPanel container = new JPanel();
 		container.setLayout(new BorderLayout()); 
@@ -40,15 +39,14 @@ class Chat extends JPanel {
 		container.add(input, BorderLayout.CENTER); 
 		container.add(send, BorderLayout.EAST); 
 		container.add(targetList, BorderLayout.NORTH); 
-
+		
 		add(display); 
 		add(container); 
 		setVisible(true); 
 	}
 	public void addText(String text)
 	{
-		output.setText(output.getText()+client.myUserName+": " text+"\n");
-		output.setCaretPosition(outputArea.getDocument().getLength()); 
+		output.setText(output.getText()+/*+client.myUserName+*/": "+text+"\n");
+		output.setCaretPosition(output.getDocument().getLength()); 
 	}
-
 }
