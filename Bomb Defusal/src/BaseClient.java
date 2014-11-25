@@ -1,6 +1,8 @@
+import java.awt.CardLayout;
 import java.net.Socket;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 
 abstract class BaseClient extends JFrame
@@ -10,6 +12,9 @@ abstract class BaseClient extends JFrame
 	private int team;
 	private Chat chat; 
 
+	CardLayout mainCardLayout;
+	JPanel mainPanel;
+	
 	public BaseClient()
 	{
 

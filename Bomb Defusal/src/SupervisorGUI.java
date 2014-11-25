@@ -9,8 +9,7 @@ import javax.swing.JPanel;
 
 
 public class SupervisorGUI extends BaseClient{
-	private CardLayout mainCardLayout;
-	private JPanel mainPanel, jpLobby, jpInstruction, jpTwoStageGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
+	private JPanel jpLobby, jpInstruction, jpTwoStageGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
 	int teamNum;
 	Socket s;
 	

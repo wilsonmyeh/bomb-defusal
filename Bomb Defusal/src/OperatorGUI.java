@@ -6,8 +6,7 @@ import javax.swing.JPanel;
 
 
 public class OperatorGUI extends BaseClient{
-	private CardLayout mainCardLayout;
-	private JPanel mainPanel,jpInstruction,jpTwoStageGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
+	private JPanel jpInstruction,jpTwoStageGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
 	int teamNum;
 	Socket s;
 	

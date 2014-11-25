@@ -43,7 +43,7 @@ class Instruction extends JPanel {
 	
 		jbStart.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ae){
-				StartClient.bc.getCardlayout().show(StartClient.bc.getMainpanel(),"Lobby");
+				StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"Lobby");
 			}
 		});
 	}
