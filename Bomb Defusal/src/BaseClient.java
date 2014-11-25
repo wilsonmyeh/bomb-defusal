@@ -1,4 +1,7 @@
 import java.awt.CardLayout;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 
 import javax.swing.JFrame;
@@ -11,6 +14,8 @@ abstract class BaseClient extends JFrame
 	protected String myUserName; //This is your role in the game (i.e Supervisor 1))
 	protected int team;
 	protected Chat chat; 
+	protected PrintWriter pw;
+	protected BufferedReader br;
 
 
 	CardLayout mainCardLayout;
@@ -18,7 +23,8 @@ abstract class BaseClient extends JFrame
 	
 	public BaseClient()
 	{
-
+		pw = null;
+		br = null; 
 		Database.initialize();
 
 	}
@@ -34,8 +40,17 @@ abstract class BaseClient extends JFrame
 	}
 
 	public void sendCommand(String command){
-		String packet = team + command; //appends team# to beginning of packet
-		
+		if(pw == null)
+		{
+			try {
+				pw = new PrintWriter(mySocket.getOutputStream());
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+		}
+		pw.println(command);
+		pw.flush(); 
 	}
 }
 
