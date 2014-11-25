@@ -20,3 +20,6 @@
 /Server$ServerThread.class
 /BaseClient.class
 /BaseMiniGameServer$1.class
+/StartClient.class
+/SupervisorGUI.class
+/OperatorGUI.class
