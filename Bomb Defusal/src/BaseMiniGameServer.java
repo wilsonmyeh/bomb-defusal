@@ -3,7 +3,6 @@ abstract class BaseMiniGameServer {
 	boolean active;
 	boolean solved;
 	int teamNumber;
-	int gameNumber;
 	Server server;
 	boolean kickable;
 	BaseMiniGameServer me = this;
@@ -12,7 +11,8 @@ abstract class BaseMiniGameServer {
 			try {
 				Thread.sleep(15000);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
+				//If the puzzle is solved before it becomes kickable, interrupt thread 'timer'
+				return;
 			}
 			kickable = true;
 			//server.sendCommand("kickable")
@@ -31,6 +31,7 @@ abstract class BaseMiniGameServer {
 	
 	void sendCommand(String command){
 		server.sendCommand(this,command);
+		
 	}
 	
 }
