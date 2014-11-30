@@ -56,9 +56,21 @@ class FindTheLocationServer extends BaseMiniGameServer{
 	}
 	//Message possibilities
 	/*
+	 * op to server
+	 * analyze
+	 * 
+	 * sup to server
 	 * location x y
+	 * finalize
 	 * 
+	 * server to op
+	 * win
+	 * percent
+	 * reset
 	 * 
+	 * server to sup
+	 * win
+	 * reset
 	 */
 	
 	
@@ -79,6 +91,12 @@ class FindTheLocationServer extends BaseMiniGameServer{
 		maxDistance = Math.abs((int) Math.sqrt((double)((desiredX - maxXDistance) * (desiredX - maxXDistance) + (desiredY - maxYDistance) * (desiredY - maxYDistance))));
 	}
 	
+	void reset(){
+		currentX = -1;
+		currentY = -1;
+		setDesiredLocation();
+	}
+	
 	void setCurrentLocation(int x, int y){
 		currentX = x;
 		currentY = y;
@@ -88,11 +106,26 @@ class FindTheLocationServer extends BaseMiniGameServer{
 	}
 	
 	boolean checkWin(){
+		if(currentPercent >= 90){
+			active = false;
+			solved = true;
+			sendCommand("win");
+		}
+		else{
+			sendCommand("reset");
+		}
 		return (currentPercent >= 90);
 	}
 
 	@Override
 	void parseCommand(String command) {
-		// TODO Auto-generated method stub
+		if(command.startsWith("location")){
+			String[] data = command.split(" ");
+			setCurrentLocation(Integer.parseInt(data[1]), Integer.parseInt(data[2]));
+		}
+		
+		if(command.startsWith("finalize")){
+			checkWin();
+		}
 	}
 }

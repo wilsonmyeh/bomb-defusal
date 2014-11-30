@@ -14,15 +14,17 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 
-class FindTheLocationSupervisor extends JPanel implements BaseMiniGameClient{
+class FindTheLocationSupervisor extends BaseMiniGameClient{
 	private final int GAME_ID = 0;
 	private Random rand;
 	private Image image;
+	private int currentImageIndex;
 	private int currentX;
 	private int currentY;
 	private JButton finalize;
 	
-	public FindTheLocationSupervisor(){
+	public FindTheLocationSupervisor(BaseClient bc){
+		super(bc);
 		rand = new Random();
 		this.addMouseListener(new MouseAdapter(){
 			public void mousePressed(MouseEvent e) {
@@ -38,6 +40,7 @@ class FindTheLocationSupervisor extends JPanel implements BaseMiniGameClient{
 		
 		currentX = -1;
 		currentY = -1;
+		currentImageIndex = -1;
 		setImage(-1);
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -49,6 +52,8 @@ class FindTheLocationSupervisor extends JPanel implements BaseMiniGameClient{
 	}
 	
 	public void updateCrosshairs(){
+		String command = bc.team + GAME_ID + "location " + currentX + " " + currentY;
+		bc.sendCommand(command);
 		repaint();
 		//send message to server
 	}
@@ -59,6 +64,7 @@ class FindTheLocationSupervisor extends JPanel implements BaseMiniGameClient{
 		String imageLocation;
 		if(notMe == -1){
 			imageIndex = rand.nextInt(5);
+			currentImageIndex = imageIndex;
 			imageIndexStr = String.valueOf(imageIndex);
 			imageLocation = imageIndexStr + ".jpg";
 			image = new ImageIcon(imageLocation).getImage(); 
@@ -70,6 +76,7 @@ class FindTheLocationSupervisor extends JPanel implements BaseMiniGameClient{
 					imageIndex = -1;
 				}
 				else{
+					currentImageIndex = imageIndex;
 					imageIndexStr = String.valueOf(imageIndex);
 					imageLocation = imageIndexStr + ".jpg";
 					image = new ImageIcon(imageLocation).getImage();
@@ -77,6 +84,12 @@ class FindTheLocationSupervisor extends JPanel implements BaseMiniGameClient{
 			}
 		}
 		repaint();
+	}
+	
+	public void reset(){
+		currentX = -1;
+		currentY = -1;
+		setImage(currentImageIndex);
 	}
 	
 	public void paintComponent(Graphics g){
@@ -95,11 +108,21 @@ class FindTheLocationSupervisor extends JPanel implements BaseMiniGameClient{
 	public static void main(String[] args){
 		JFrame test = new JFrame();
 		test.setSize(500, 500);
-		JPanel testPanel = new FindTheLocationSupervisor();
+		JPanel testPanel = new FindTheLocationSupervisor(null);
 		test.add(testPanel);
 		
 		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		test.setVisible(true);
+	}
+
+	@Override
+	public void parseCommand(String command) {
+		if(command.startsWith("win")){
+			bc.switchToLobby();
+		}
+		else if(command.startsWith("reset")){
+			reset();
+		}
 	}
 }
 

@@ -16,6 +16,7 @@ abstract class BaseClient extends JFrame
 	protected Chat chat; 
 	protected PrintWriter pw;
 	protected BufferedReader br;
+	public BaseMiniGameClient[] gameClients = new BaseMiniGameClient[4];
 
 
 	CardLayout mainCardLayout;
@@ -52,5 +53,39 @@ abstract class BaseClient extends JFrame
 		pw.println(command);
 		pw.flush(); 
 	}
+	
+	public void routeCommand(String command){
+		int ind = Character.getNumericValue(command.charAt(0));
+		switch(ind){
+			case 0:{
+				gameClients[0].parseCommand(command.substring(1));
+				break;
+			}
+			
+			case 1:{
+				gameClients[1].parseCommand(command.substring(1));
+				break;
+			}
+			
+			case 2:{
+				gameClients[2].parseCommand(command.substring(1));
+				break;
+			}
+			
+			case 3:{
+				gameClients[3].parseCommand(command.substring(1));
+				break;
+			}
+			
+			case 4:{
+				getChat().addText(command.substring(1));
+				break;
+			}
+		}
+	}
+	
+	public abstract void switchToLobby();
+	
+	
 }
 

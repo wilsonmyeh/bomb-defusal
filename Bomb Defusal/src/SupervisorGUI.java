@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 
 
 public class SupervisorGUI extends BaseClient{
-	private JPanel jpLobby, jpInstruction, jpTwoStageGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
+	private JPanel jpLobby, jpInstruction;
+	private BaseMiniGameClient jpTwoStageGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
 	int teamNum;
 
 	
@@ -29,10 +30,21 @@ public class SupervisorGUI extends BaseClient{
 		myUserName = "Supervisor";
 		jpInstruction = new Instruction(myUserName, teamNumStr); 
 		
-		jpTwoStageGame_Sup = new TwoStageSupervisor();
-		jpCutWireGame_Sup = new CutTheWireSupervisor();
-		jpFindLocationGame_Sup = new FindTheLocationSupervisor();
-		jpLogicGame_Sup = new LogicGameSupervisor();
+		jpTwoStageGame_Sup = new TwoStageSupervisor(this);
+		jpCutWireGame_Sup = new CutTheWireSupervisor(this);
+		jpFindLocationGame_Sup = new FindTheLocationSupervisor(this);
+		jpLogicGame_Sup = new LogicGameSupervisor(this);
+		
+		//Populate gameClients array
+		// 0=FindTheLocation,
+		// 1=TwoStage,
+		// 2=CutWire,
+		// 3=LogicPuzzle
+		gameClients[0] = jpFindLocationGame_Sup;
+		gameClients[1] = jpTwoStageGame_Sup;
+		gameClients[2] = jpCutWireGame_Sup;
+		gameClients[3] = jpLogicGame_Sup;
+		
 		
 		//other teamNUm
 		chat = new Chat(this,(3-teamNum));
@@ -66,6 +78,10 @@ public class SupervisorGUI extends BaseClient{
 	}
 	public CardLayout getCardLayout(){
 		return mainCardLayout;
+	}
+	
+	public void switchToLobby(){
+		getCardLayout().show(this, "Lobby");
 	}
 
 }
