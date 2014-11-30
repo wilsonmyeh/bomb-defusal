@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 
 public class SupervisorGUI extends BaseClient{
-	private JPanel jpLobby, jpInstruction, jpTwoStageGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
+	private JPanel jpLobby, jpInstruction, jpLightGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
 	int teamNum;
 
 	
@@ -29,7 +29,7 @@ public class SupervisorGUI extends BaseClient{
 		myUserName = "Supervisor";
 		jpInstruction = new Instruction(myUserName, teamNumStr); 
 		
-		jpTwoStageGame_Sup = new TwoStageSupervisor();
+		jpLightGame_Sup = new LightSupervisor();
 		jpCutWireGame_Sup = new CutTheWireSupervisor();
 		jpFindLocationGame_Sup = new FindTheLocationSupervisor();
 		jpLogicGame_Sup = new LogicGameSupervisor();
@@ -45,7 +45,7 @@ public class SupervisorGUI extends BaseClient{
 		mainPanel.add(jpLobby,"Lobby");
 	
 	
-		mainPanel.add(jpTwoStageGame_Sup,"TwoStageGame_Supervisor");
+		mainPanel.add(jpLightGame_Sup,"LightGame_Supervisor");
 		mainPanel.add(jpCutWireGame_Sup,"CutWireGame_Supervisor");
 		mainPanel.add(jpFindLocationGame_Sup,"FindLocationGame_Supervisor");
 		mainPanel.add(jpLogicGame_Sup,"LogicGame_Supervisor");

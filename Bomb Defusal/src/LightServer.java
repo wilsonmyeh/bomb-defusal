@@ -1,20 +1,21 @@
 import java.util.Random;
 
-class TwoStageServer extends BaseMiniGameServer {
+class LightServer extends BaseMiniGameServer {
 	private final int GAME_ID = 1;
 	Random rand = new Random();
-	
-	private final int MAX_PRESSURE = 100000;
-	private final int MARGIN_OF_ERROR = 5000;
 	
 	private boolean[] lights;
 	private byte[] buttons; //map from button# to light#
 	
+	/*
+	private final int MAX_PRESSURE = 100000;
+	private final int MARGIN_OF_ERROR = 5000;
+	
 	private int pressure; //0 to 100
 	private int threshold;
+	*/
 	
-	
-	public TwoStageServer() {
+	public LightServer() {
 		lights = new boolean[6];
 		for(int i = 0;i < lights.length;i++)
 			lights[i] = (rand.nextInt() % 2) == 1;
@@ -25,8 +26,10 @@ class TwoStageServer extends BaseMiniGameServer {
 		for(int i = 0;i < 100;i++)
 			swap(buttons,rand.nextInt() % 6,rand.nextInt() % 6);
 		
+		/*
 		pressure = 0;
 		threshold = rand.nextInt() % (MAX_PRESSURE/2) + (MAX_PRESSURE/4);
+		*/
 		
 	}
 	
@@ -35,9 +38,9 @@ class TwoStageServer extends BaseMiniGameServer {
 		if(command.startsWith("START")) {
 			active = true;
 			timer.start();
-			sendCommand(GAME_ID + "VALVE THRESHOLD " + threshold);
 			sendLights();
-			sendPressure();
+			//sendCommand(GAME_ID + "VALVE THRESHOLD " + threshold);
+			//sendPressure();
 		}
 		
 		else if(command.startsWith("LIGHT")) { //LIGHT <button>
@@ -50,7 +53,7 @@ class TwoStageServer extends BaseMiniGameServer {
 				lights[light+1] = !lights[light+1];
 			checkLightWin();
 		}
-		
+		/*
 		else if(command.startsWith("VALVE")) { //VALVE <rate>
 			String[] data = command.split(" ");
 			int rate = Integer.parseInt(data[1]);
@@ -60,6 +63,7 @@ class TwoStageServer extends BaseMiniGameServer {
 			if(rate == 0)
 				checkValveWin();
 		}
+		*/
 		
 		else if(command.startsWith("WIN")) {
 			solved = true;
@@ -75,13 +79,6 @@ class TwoStageServer extends BaseMiniGameServer {
 		sendCommand(GAME_ID + "LIGHT WIN");
 	}
 	
-	void checkValveWin() {
-		if(pressure >= threshold && pressure <= threshold+MARGIN_OF_ERROR)
-		{
-			sendCommand(GAME_ID + "VALVE WIN");
-		}
-	}
-	
 	void sendLights() {
 		String s = GAME_ID + "LIGHT "; //LIGHTS <on/off values>
 		for(int i = 0;i < lights.length;i++)
@@ -89,10 +86,19 @@ class TwoStageServer extends BaseMiniGameServer {
 		sendCommand(s);
 	}
 	
+	/*
+	void checkValveWin() {
+		if(pressure >= threshold && pressure <= threshold+MARGIN_OF_ERROR)
+		{
+			sendCommand(GAME_ID + "VALVE WIN");
+		}
+	}
+
 	void sendPressure() {
 		String s = GAME_ID + "VALVE " + pressure; //VALVE <pressure>
 		sendCommand(s);
 	}
+	*/
 	
 	void swap(byte[] arr, int a, int b) {
 		arr[a] += arr[b];

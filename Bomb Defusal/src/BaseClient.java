@@ -52,5 +52,6 @@ abstract class BaseClient extends JFrame
 		pw.println(command);
 		pw.flush(); 
 	}
+	
 }
 
