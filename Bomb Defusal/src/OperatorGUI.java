@@ -7,7 +7,8 @@ import javax.swing.JPanel;
 
 
 public class OperatorGUI extends BaseClient{
-	private JPanel jpInstruction,jpLightGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
+	private JPanel jpInstruction;
+	private BaseMiniGameClient jpLightGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
 	int teamNum;
 	
 	
@@ -24,10 +25,21 @@ public class OperatorGUI extends BaseClient{
 		String teamNumStr = teamNum + "";
 		jpInstruction = new Instruction(myUserName,teamNumStr);
 		
-		jpLightGame_Ope = new LightOperator();
-		jpCutWireGame_Ope = new CutTheWireOperator();
-		jpFindLocationGame_Ope = new FindTheLocationOperator();
-		jpLogicGame_Ope = new LogicGameOperator();
+		jpLightGame_Ope = new LightOperator(this);
+		jpCutWireGame_Ope = new CutTheWireOperator(this);
+		jpFindLocationGame_Ope = new FindTheLocationOperator(this);
+		jpLogicGame_Ope = new LogicGameOperator(this);
+		
+		//Adding games to gameClients array
+		//Populate gameClients array
+				// 0=FindTheLocation,
+				// 1=TwoStage,
+				// 2=CutWire,
+				// 3=LogicPuzzle
+		gameClients[0] = jpFindLocationGame_Ope;
+		gameClients[1] = jpLightGame_Ope;
+		gameClients[2] = jpCutWireGame_Ope;
+		gameClients[3] = jpLogicGame_Ope;
 		
 		mainCardLayout = new CardLayout();		
 		mainPanel = new JPanel(mainCardLayout);

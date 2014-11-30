@@ -11,7 +11,8 @@ import javax.swing.JPanel;
 
 
 public class SupervisorGUI extends BaseClient{
-	private JPanel jpLobby, jpInstruction, jpLightGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
+	private JPanel jpLobby, jpInstruction;
+	private BaseMiniGameClient jpLightGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
 	int teamNum;
 
 	
@@ -29,10 +30,20 @@ public class SupervisorGUI extends BaseClient{
 		myUserName = "Supervisor";
 		jpInstruction = new Instruction(myUserName, teamNumStr); 
 		
-		jpLightGame_Sup = new LightSupervisor();
-		jpCutWireGame_Sup = new CutTheWireSupervisor();
-		jpFindLocationGame_Sup = new FindTheLocationSupervisor();
-		jpLogicGame_Sup = new LogicGameSupervisor();
+		jpLightGame_Sup = new LightSupervisor(this);
+		jpCutWireGame_Sup = new CutTheWireSupervisor(this);
+		jpFindLocationGame_Sup = new FindTheLocationSupervisor(this);
+		jpLogicGame_Sup = new LogicGameSupervisor(this);
+		
+		//Populate gameClients array
+		// 0=FindTheLocation,
+		// 1=TwoStage,
+		// 2=CutWire,
+		// 3=LogicPuzzle
+		gameClients[0] = jpFindLocationGame_Sup;
+		gameClients[1] = jpLightGame_Sup;
+		gameClients[2] = jpCutWireGame_Sup;
+		gameClients[3] = jpLogicGame_Sup;
 		
 		//other teamNUm
 		chat = new Chat(this,(3-teamNum));
@@ -60,12 +71,4 @@ public class SupervisorGUI extends BaseClient{
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
 		setVisible(true);
 	}
-	
-	public JPanel getMainpanel(){
-		return mainPanel;
-	}
-	public CardLayout getCardLayout(){
-		return mainCardLayout;
-	}
-
 }
