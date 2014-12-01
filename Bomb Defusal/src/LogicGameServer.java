@@ -5,7 +5,8 @@ class LogicGameServer extends BaseMiniGameServer{
 	Random rand;
 	int randomNum;
 	
-	LogicGameServer(){
+	LogicGameServer(Server s){
+		super(s);
 		rand = new Random();
 		randomNum = rand.nextInt(10);
 		sendCommand( GAME_ID + "Random " + randomNum);
