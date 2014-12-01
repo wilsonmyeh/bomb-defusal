@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 class LogicGameSupervisor extends BaseMiniGameClient{
 	private final int GAME_ID = 3;
 
-	private Image imWilson, imSteven, imHaohan, imBlake, Wilson_large, Steven_large;
+	private Image imWilson, imSteven, imHaohan, imBlake, Wilson_large, Steven_large, background;
 	private String [] stevenS = new String[10];
 	private String [] wilsonS = new String[10];
 	private String [] haohanS = new String[10];
@@ -47,6 +47,8 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		imHaohan = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		temp = ImageIO.read(new File("Assets/Logic/blake.jpg"));
 		imBlake = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
+		temp = ImageIO.read(new File("Assets/Logic/background.jpg"));
+		background = temp.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
 		
 		 rule1 = "Find the bomber and he will tell you which button to click on" ;
 	     rule2  = "Else, game restarts in 5 seconds";
@@ -118,6 +120,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 	
 	 protected void paintComponent(Graphics g) {
 	        super.paintComponent(g);
+	        g.drawImage(background, 0, 0, null);
 	        g.setColor(Color.DARK_GRAY);
 	        g.drawString(rule1,50,20);
 	        g.drawString(rule2,50,35);
