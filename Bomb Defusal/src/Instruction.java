@@ -76,7 +76,7 @@ class Instruction extends JPanel {
 		if(identity.equals("Supervisor")){
 			jbStart.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent ae){
-					StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"Lobby");
+					StartClient.bc.getCardLayout().show(StartClient.bc.getMainpanel(),"Lobby");
 				}
 			});
 		}
