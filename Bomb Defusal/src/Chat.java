@@ -39,7 +39,7 @@ class Chat extends JPanel {
             	{
             		sendHere = otherteam; 
             	}
- 				myClient.sendCommand(Integer.toString(sendHere)+"4"+input.getText()); //4 header indicates chat
+ 				myClient.sendCommand("4"+sendHere+input.getText()); //4 header indicates chat
  				input.setText(""); 
             }
         });

@@ -17,9 +17,9 @@ public class SupervisorGUI extends BaseClient{
 
 	
 	SupervisorGUI(int teamNum, Socket s) throws InterruptedException, IOException{
+		super(s); 
 		this.setSize(800,500);
 		this.setLayout(new BorderLayout());
-
 		mySocket = s;
 		//initiate all panels
 		mainPanel = new JPanel();

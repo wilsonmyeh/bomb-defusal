@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class StartClient {
-	static BaseClient bc;
+	private BaseClient bc;
 	private int role;
 	private int teamNum;
 	private Socket s; 
@@ -20,7 +20,7 @@ public class StartClient {
 		//then team 1 operator, then team 2 operator
 		//role -1:operator  1:supervisor
 		try {
-			Socket s = new Socket(ip, port);
+			s = new Socket(ip, port);
 			br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 			role = Integer.parseInt(br.readLine()); 
 		} catch (IOException e) {
