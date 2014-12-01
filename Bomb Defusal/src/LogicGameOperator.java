@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 class LogicGameOperator extends BaseMiniGameClient{
 	private final int GAME_ID = 3;
 	
-	private Image Haohan_large, Blake_large, button;
+	private Image Haohan_large, Blake_large, button, background;
 	private String [] stevenS = new String[10];
 	private String [] wilsonS = new String[10];
 	private String [] haohanS = new String[10];
@@ -38,6 +38,8 @@ class LogicGameOperator extends BaseMiniGameClient{
 		Haohan_large = temp.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
 		temp = ImageIO.read(new File("Assets/Logic/blake.jpg"));
 		Blake_large = temp.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		temp = ImageIO.read(new File("Assets/Logic/background.jpg"));
+		background = temp.getScaledInstance(500, 500, Image.SCALE_SMOOTH);
 		//logic sentence pool
 				stevenS[0] = "Steven: I didn't build the bomb.";
 				wilsonS[0] = "Wilson: I guess the bomber is Steven or Haohan.";
@@ -107,6 +109,7 @@ class LogicGameOperator extends BaseMiniGameClient{
 
 	 protected void paintComponent(Graphics g) {
 	        super.paintComponent(g);
+	        g.drawImage(background, 0, 0, null);
 	        g.setColor(Color.DARK_GRAY);
 	        rule1 = "Click the right button to defuse bomb!" ;
 	        String b1 = "Button1";
