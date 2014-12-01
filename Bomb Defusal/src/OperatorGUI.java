@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 
 
 public class OperatorGUI extends BaseClient{
-	private JPanel jpInstruction,jpTwoStageGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
+	private JPanel jpInstruction,jpTwoStageGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope, jplogicRestart_Ope;
 	int teamNum;
 	
 	
@@ -38,6 +38,10 @@ public class OperatorGUI extends BaseClient{
 		mainPanel.add(jpCutWireGame_Ope,"CutWireGame_Operator");
 		mainPanel.add(jpFindLocationGame_Ope,"FindLocationGame_Operator");
 		mainPanel.add(jpLogicGame_Ope,"LogicGame_Operator");
+		
+		//for logic game
+		jplogicRestart_Ope = new LogicGameRestartOperator();
+		mainPanel.add(jplogicRestart_Sup,"LogicRestart_Ope");
 		
 		//other teamNUm
 		chat = new Chat(this,(3-teamNum));
