@@ -244,7 +244,7 @@ class Server {
 			}
 		}
 
-		@Override
+
 		public void run() {
 			while (!checkWin(team0) && !checkWin(team1)) {
 				try {

@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.io.IOException;
 import java.net.Socket;
 
 import javax.swing.JFrame;
@@ -8,14 +9,14 @@ import javax.swing.JPanel;
 
 public class OperatorGUI extends BaseClient{
 
-	private JPanel jpInstruction;
-	private BaseMiniGameClient jpLightGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope,jpWaiting;
-	private JPanel jplogicRestart_Sup; //for logic game
+	private JPanel jpInstruction,jpWaiting;
+	private BaseMiniGameClient jpLightGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
+	private JPanel jplogicRestart_Ope; //for logic game
 	int teamNum;
 	
 	
 	// no lobby panel
-	OperatorGUI(int teamNum, Socket s){
+	OperatorGUI(int teamNum, Socket s) throws InterruptedException, IOException{
 		this.setSize(800,500);
 		this.setLayout(new BorderLayout());
 		
@@ -57,7 +58,7 @@ public class OperatorGUI extends BaseClient{
 		
 		//for logic game
 		jplogicRestart_Ope = new LogicGameRestartOperator();
-		mainPanel.add(jplogicRestart_Sup,"LogicRestart_Ope");
+		mainPanel.add(jplogicRestart_Ope,"LogicRestart_Ope");
 		
 		//other teamNUm
 		chat = new Chat(this,(3-teamNum));
