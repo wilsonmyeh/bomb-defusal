@@ -20,7 +20,8 @@ abstract class BaseMiniGameServer {
 		}
 	};
 	
-	public BaseMiniGameServer() {
+	public BaseMiniGameServer(Server s) {
+		this.server = s;
 		kickable = false;
 		active = false;
 	}

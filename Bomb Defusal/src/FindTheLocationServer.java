@@ -51,7 +51,8 @@ class FindTheLocationServer extends BaseMiniGameServer{
 	private int maxDistance;
 	private Random rand;
 	
-	FindTheLocationServer(){
+	FindTheLocationServer(Server s){
+		super(s);
 		rand = new Random();
 	}
 	//Message possibilities

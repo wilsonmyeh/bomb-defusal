@@ -56,20 +56,24 @@ class Server {
 			} catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-			team0[0] = new FindTheLocationServer();
-			team0[1] = new LightServer();
-			team0[2] = new CutTheWireServer();
-			team0[3] = new LogicGameServer();
+			team0[0] = new FindTheLocationServer(this);
+			team0[1] = new LightServer(this);
+			team0[2] = new CutTheWireServer(this);
+			team0[3] = new LogicGameServer(this);
 
-			team1[0] = new FindTheLocationServer();
-			team1[1] = new LightServer();
-			team1[2] = new CutTheWireServer();
-			team1[3] = new LogicGameServer();
+			team1[0] = new FindTheLocationServer(this);
+			team1[1] = new LightServer(this);
+			team1[2] = new CutTheWireServer(this);
+			team1[3] = new LogicGameServer(this);
 			//"Kicks" everyone to lobby to start the game
 			out0[0].println("5");
+			out0[0].flush();
 			out0[1].println("5");
+			out0[1].flush();
 			out1[0].println("5");
+			out1[0].flush();
 			out1[1].println("5");
+			out1[1].flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -81,21 +85,29 @@ class Server {
 
 			if(team0[game].active && team0[game].kickable) {
 				out0[0].println("5");
+				out0[0].flush();
 				out0[1].println("5");
+				out0[1].flush();
 			}
 			else if(team0[game].active) {
 				out1[0].println("5");
+				out1[0].flush();
 				out1[1].println("5");
+				out1[1].flush();
 			}
 		}
 		else if(team == 1) {
 			if(team1[game].active && team1[game].kickable) {
 				out1[0].println("5");
+				out1[0].flush();
 				out1[1].println("5");
+				out1[1].flush();
 			}
 			else if(team1[game].active){
 				out0[0].println("5");
+				out0[0].flush();
 				out0[1].println("5");
+				out0[1].flush();
 			}
 		}
 	}
@@ -121,22 +133,37 @@ class Server {
 		if(teamNumber == 0)
 		{
 			out0[0].println(6+temp);
+			out0[0].flush();
 			out0[1].println(6+temp);
+			out0[1].flush();
 		}
 		else if(teamNumber == 1)
 		{
 			out1[0].println(6+temp);
+			out1[0].flush();
 			out1[1].println(6+temp);
+			out1[1].flush();
 		}
 	}
 
 	void parse(String line) { // <Team#><Game#><Content> (Game#=4 refers to chat,
-		// Game#=5 refers to kick, Game#=6 refers to checkGamesAvailable)
+		// Game#=5 refers to kick, Game#=6 refers to checkGamesAvailable, Game#=8 refers to starting a game)
 		// e.g. "01XXXX" refers to team 0's
 		// TwoStagePuzzle
 		int ind = (int) line.charAt(1) - 48;
-
-		if(ind == 6) {
+		if(ind == 8) {
+			int team = (int) line.charAt(0) - 48;
+			int game = (int) line.charAt(2) - 48;
+			if(team == 0) {
+				out0[0].println("8"+game); //Only tell operators
+				out0[0].flush();
+			}
+			else {
+				out1[0].println("8"+game);
+				out1[0].flush();
+			}
+		}
+		else if(ind == 6) {
 			int team = (int) line.charAt(0) - 48;
 			BaseMiniGameServer[] select = (team==0) ? team0 : team1;
 			if(checkWin(select))
@@ -212,7 +239,7 @@ class Server {
 
 	void sendCommand(BaseMiniGameServer mg, String command) {
 		//Syntax for sending to client, <GameNumber><Message>
-		for (int i = 0; i < team1.length; i++) {
+		for (int i = 0; i < 2; i++) {
 			if (indexOf(team1, mg) != -1) {
 				out0[i].println(command);
 				out0[i].flush();

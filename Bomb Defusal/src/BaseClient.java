@@ -107,6 +107,11 @@ abstract class BaseClient extends JFrame
 				else defeat();
 				break; 
 			}
+			
+			case 8:{
+				int game = (int)command.charAt(1)-48;
+				//TODO: Switch card to proper game
+			}
 		}
 	}
 	
