@@ -57,50 +57,55 @@ abstract class BaseClient extends JFrame
 				e.printStackTrace();
 			} 
 		}
+		//System.out.println("TEAM+COMMAND"+team+command);
 		pw.println(team+command);
 		pw.flush(); 
 	}
 	
 	public void routeCommand(String command){
-		int ind = Character.getNumericValue(command.charAt(0));
+		System.out.println(command);
+		int ind = Character.getNumericValue(command.charAt(1));
 		switch(ind){
 			case 0:{
-				gameClients[0].parseCommand(command.substring(1));
+				gameClients[0].parseCommand(command.substring(2));
 				break;
 			}
 			
 			case 1:{
-				gameClients[1].parseCommand(command.substring(1));
+				gameClients[1].parseCommand(command.substring(2));
 				break;
 			}
 			
 			case 2:{
-				gameClients[2].parseCommand(command.substring(1));
+				gameClients[2].parseCommand(command.substring(2));
 				break;
 			}
 			
 			case 3:{
-				gameClients[3].parseCommand(command.substring(1));
+				gameClients[3].parseCommand(command.substring(2));
 				break;
 			}
 			
 			case 4:{
-				getChat().addText(command.substring(1));
+				getChat().addText(command.substring(3));
 				break;
 			}
 			
 			case 5:{
 				kick();
+				break;
 			}
 			
 			case 6:{
 				//TODO: Alter lobby
+				break;
 			}
 			
 			case 7:{
 				if(command.charAt(1)-48 == team)
 					victory();
 				else defeat();
+				break; 
 			}
 		}
 	}

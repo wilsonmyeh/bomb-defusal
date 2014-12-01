@@ -151,26 +151,24 @@ class Server {
 			else kick(0,game);
 		}
 		else if (ind == 4) {
-			// TODO: Chat stuff
-
 			int target = Integer.parseInt(line.substring(2,3)); 
-			System.out.println("TARGET:"+target);
-			String chatMessage = line.substring(2);
+			System.out.println(line+"TARGET:"+target);
+			String chatMessage = line;
 			switch(target)
 			{
-			case 1: { //Prints only to team 1 
+			case 1://Prints only to team 1 
 				out0[0].println(chatMessage);
 				out0[0].flush();
 				out0[1].println(chatMessage); 
 				out0[1].flush(); 
-			}
-			case 2:{ //Prints only to team 2
+				break; 
+			case 2://Prints only to team 2
 				out1[0].println(chatMessage);
 				out1[0].flush();
 				out1[1].println(chatMessage); 
 				out1[1].flush(); 
-			}
-			case 3:{ //Prints to everyone
+				break; 
+			case 3: //Prints to everyone
 				out1[0].println(chatMessage);
 				out1[0].flush();
 				out1[1].println(chatMessage); 
@@ -179,7 +177,7 @@ class Server {
 				out0[0].flush();
 				out0[1].println(chatMessage); 
 				out0[1].flush();
-			}
+				break; 
 
 			}
 		} else {
