@@ -76,7 +76,7 @@ public class Lobby extends JPanel{
 				});
 	}
 	
-	public static void main(String [] args){
-		new Lobby();
+	public void diableButton(){
+		
 	}
 }

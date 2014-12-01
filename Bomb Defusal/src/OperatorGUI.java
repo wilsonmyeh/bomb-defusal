@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class OperatorGUI extends BaseClient{
 
 	private JPanel jpInstruction;
-	private BaseMiniGameClient jpLightGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
+	private BaseMiniGameClient jpLightGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope,jpWaiting;
 	private JPanel jplogicRestart_Sup; //for logic game
 	int teamNum;
 	
@@ -31,7 +31,7 @@ public class OperatorGUI extends BaseClient{
 		jpCutWireGame_Ope = new CutTheWireOperator(this);
 		jpFindLocationGame_Ope = new FindTheLocationOperator(this);
 		jpLogicGame_Ope = new LogicGameOperator(this);
-		
+		jpWaiting = new WaitingRoom();
 		//Adding games to gameClients array
 		//Populate gameClients array
 				// 0=FindTheLocation,
@@ -52,6 +52,8 @@ public class OperatorGUI extends BaseClient{
 		mainPanel.add(jpCutWireGame_Ope,"CutWireGame_Operator");
 		mainPanel.add(jpFindLocationGame_Ope,"FindLocationGame_Operator");
 		mainPanel.add(jpLogicGame_Ope,"LogicGame_Operator");
+		mainPanel.add(jpWaiting,"WaitingRoom");
+		
 		
 		//for logic game
 		jplogicRestart_Ope = new LogicGameRestartOperator();

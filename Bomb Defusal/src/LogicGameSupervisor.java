@@ -184,7 +184,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
   			//rule2 = "";
   			//this.repaint();
   			//restart();
-  			bc.sendCommand("Reset");
+  			bc.sendCommand(GAME_ID + "Reset");
   			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Sup");
   			//restart();
 		}
@@ -241,7 +241,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 	public void parseCommand(String command) {
 		// TODO Auto-generated method stub
 		if(command.startsWith("Win")){
-			StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"Lobby");
+			switchToLobby();
 		}
 		else if(command.startsWith("Random")){
 			String [] temp = command.split(" ");
