@@ -17,7 +17,6 @@ import javax.swing.JPanel;
 class LogicGameOperator extends BaseMiniGameClient{
 	private final int GAME_ID = 3;
 	
-<<<<<<< HEAD
 	private Image Haohan_large, Blake_large, button;
 	private String [] stevenS = new String[10];
 	private String [] wilsonS = new String[10];
@@ -29,8 +28,8 @@ class LogicGameOperator extends BaseMiniGameClient{
 	static String rule1;
 	boolean firstTime = true;
 	
-	
-	LogicGameOperator() throws IOException{
+	LogicGameOperator(BaseClient bc) throws IOException{
+		super(bc);
 		
 		this.setSize(500,500);
 		Image temp = ImageIO.read(new File("src/button.jpg"));
@@ -101,13 +100,12 @@ class LogicGameOperator extends BaseMiniGameClient{
 				blakeS[9] = "Blake: I believe Haohan is telling the truth";
 				answer[9] = "Wilson";
 				
-				Random rand = new Random();
-				randomNum = rand.nextInt(10);
-		
+				//randomNum = rand.nextInt(10);
+				
 		
 	}
-	
-	
+
+
 	 protected void paintComponent(Graphics g) {
 	        super.paintComponent(g);
 	        g.setColor(Color.DARK_GRAY);
@@ -129,7 +127,7 @@ class LogicGameOperator extends BaseMiniGameClient{
 	        //info image
 	        g.drawImage(Haohan_large, 50, 200, null);
 	        g.drawImage(Blake_large, 320, 300, null);
-	        	//dialog
+	        //dialog
 	        g.drawLine(200, 200, 220, 220);
 	        g.drawLine(200, 200, 220, 250);
 	        g.drawLine(220, 220, 480, 220);
@@ -163,16 +161,18 @@ class LogicGameOperator extends BaseMiniGameClient{
 	 
 	 private void check(String name){
 		 if(answer[randomNum].equals(name)){
-  			rule1 = "Congrat! Bomb defused!";
+  			rule1 = "Congrat! Bomb defused! Waiting for supervisor to choose the next game.";
   			this.repaint();
   			//send signal
+  			bc.sendCommand("Win");
   		}
   		else if(!answer[randomNum].equals(name)){	
-  			StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Ope");
-  			restart();
+  			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Ope");
+  			//	restart();
+  			bc.sendCommand("Reset");
 		}
 	 }
-	 
+	 /*
 	 public void restart(){
 			//rule1 = "Find the bomber and he will tell you which button to click on" ;
 		    //rule2  = "Else, game restart.";
@@ -183,7 +183,7 @@ class LogicGameOperator extends BaseMiniGameClient{
 			randomNum = temp;
 			this.repaint(); 
 	 }
-	 
+	 */
 	 
 	 		//add action
 		 private MouseListener listener = new MouseAdapter() {
@@ -217,14 +217,19 @@ class LogicGameOperator extends BaseMiniGameClient{
 	 	    	repaint();
 	 	    }
 	     };
-	LogicGameOperator(BaseClient bc) {
-		super(bc);
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public void parseCommand(String command) {
-		// TODO Auto-generated method stub
+		else if(command.startsWith("Random")){
+			String [] temp = command.split(" ");
+			randomNum = Integer.parseInt(temp[1]);
+		}
+		else if(command.startsWith("Reset")){
+			String [] temp = command.split(" ");
+			randomNum = Integer.parseInt(temp[1]);
+			StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Ope");
+			this.repaint();
+		}
 		
 	}
 

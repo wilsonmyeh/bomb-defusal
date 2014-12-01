@@ -33,8 +33,8 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 	static String rule1, rule2;
 	boolean firstTime = true;
 	
-	
-	LogicGameSupervisor() throws IOException{
+	LogicGameSupervisor(BaseClient bc) throws IOException{
+		super(bc);
 		
 		this.setSize(500,500);
 		Image temp = ImageIO.read(new File("src/wilson.jpg"));
@@ -112,13 +112,9 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		blakeS[9] = "Blake: I believe Haohan is telling the truth";
 		answer[9] = "Wilson";
 		
-		Random rand = new Random();
-		randomNum = rand.nextInt(10);
+		//random num
 		
-		this.setLayout(new BorderLayout());
-		this.setVisible(true);
 	}
-	
 	
 	 protected void paintComponent(Graphics g) {
 	        super.paintComponent(g);
@@ -185,11 +181,12 @@ class LogicGameSupervisor extends BaseMiniGameClient{
   			//rule2 = "";
   			//this.repaint();
   			//restart();
-  			StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Sup");
-  			restart();
+  			bc.sendCommand("Reset");
+  			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Sup");
+  			//restart();
 		}
 	 }
-	 
+	 /*
 	 public void restart(){
 			//rule1 = "Find the bomber and he will tell you which button to click on" ;
 		    //rule2  = "Else, game restart.";
@@ -201,7 +198,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 			this.repaint(); 
 	 }
 	 
-	 
+	 */
 	 		//add action
 		 private MouseListener listener = new MouseAdapter() {
 			    public void mouseClicked(MouseEvent e) {
@@ -235,17 +232,24 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 	 	    }
 	     };
 	     
-	     
-
-	LogicGameSupervisor(BaseClient bc) {
-		super(bc);
-		// TODO Auto-generated constructor stub
-	}
+	    
 
 	@Override
 	public void parseCommand(String command) {
 		// TODO Auto-generated method stub
-		
+		if(command.startsWith("Win")){
+			StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"Lobby");
+		}
+		else if(command.startsWith("Random")){
+			String [] temp = command.split(" ");
+			randomNum = Integer.parseInt(temp[1]);
+		}
+		else if(command.startsWith("Reset")){
+			String [] temp = command.split(" ");
+			randomNum = Integer.parseInt(temp[1]);
+			StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Sup");
+			this.repaint();
+		}
 	}
 
 }
