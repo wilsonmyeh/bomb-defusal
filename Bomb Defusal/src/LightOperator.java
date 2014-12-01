@@ -16,10 +16,10 @@ class LightOperator extends BaseMiniGameClient {
 	private final int GAME_ID = 1;
 	
 	JButton[] buttons = new JButton[6];
-	ImageIcon button = new ImageIcon("Assets/Light/Button.png");
+	ImageIcon button = new ImageIcon("Assets\\Light\\Button.png");
 	Image background;
 	
-	MediaPlayer sfx = new MediaPlayer(new Media("Assets/Light/ButtonSFX.mp3"));
+	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\ButtonSFX.mp3"));
 	
 	ActionListener buttonPress = new ActionListener() {
 		@Override
@@ -30,7 +30,7 @@ class LightOperator extends BaseMiniGameClient {
 					break;
 				}
 			}
-			sfx.play();
+			//sfx.play();
 		}
 	};
 	
@@ -44,7 +44,7 @@ class LightOperator extends BaseMiniGameClient {
 		}
 		
 		try {
-			background = ImageIO.read(new File("Assets/Light/OperatorBackground.png"));
+			background = ImageIO.read(new File("Assets\\Light\\OperatorBackground.png"));
 			background = background.getScaledInstance(500,500,Image.SCALE_SMOOTH);
 		} catch(IOException e) {
 			e.printStackTrace();

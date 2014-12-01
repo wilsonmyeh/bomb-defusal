@@ -12,11 +12,11 @@ class LightSupervisor extends BaseMiniGameClient {
 	
 	boolean[] lights = new boolean[6];
 	JLabel[] lightLabels = new JLabel[6];
-	ImageIcon lightOff = new ImageIcon("Assets/Light/LightOff.png");
-	ImageIcon lightOn = new ImageIcon("Assets/Light/LightOn.png");
+	ImageIcon lightOff = new ImageIcon("Assets\\Light\\LightOff.png");
+	ImageIcon lightOn = new ImageIcon("Assets\\Light\\LightOn.png");
 	Image background;
 	
-	MediaPlayer sfx = new MediaPlayer(new Media("Assets/Light/LightSFX.mp3"));
+	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\LightSFX.mp3"));
 	
 	LightSupervisor(BaseClient bc) {
 		super(bc);
@@ -26,7 +26,7 @@ class LightSupervisor extends BaseMiniGameClient {
 			add(lightLabels[i]);
 		}
 		try {
-			background = ImageIO.read(new File("Assets/Light/SupervisorBackground.png"));
+			background = ImageIO.read(new File("Assets\\Light\\SupervisorBackground.png"));
 			background = background.getScaledInstance(500,500,Image.SCALE_SMOOTH);
 		} catch(IOException e) {
 			e.printStackTrace();
@@ -46,7 +46,7 @@ class LightSupervisor extends BaseMiniGameClient {
 					lightLabels[i].setIcon(lightOn);
 				else lightLabels[i].setIcon(lightOff);
 			}
-			sfx.play();
+			//sfx.play();
 			if(solved()) {
 				//TODO: Other win stuff?
 				bc.sendCommand(GAME_ID+"WIN");
