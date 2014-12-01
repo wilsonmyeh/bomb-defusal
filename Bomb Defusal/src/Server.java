@@ -59,7 +59,11 @@ class Server {
 				}
 			}
 			//5 second wait to start
-			Thread.sleep(5000);
+			try {
+				Thread.sleep(5000);
+			} catch(InterruptedException e) {
+				e.printStackTrace();
+			}
 			//"Kicks" everyone to lobby to start the game
 			out0[0].println("5");
 			out0[1].println("5");
@@ -75,13 +79,13 @@ class Server {
 		if(team == 0) {		//If can kick other team, kick other team. If can't kick other team, kick kicking team.
 			for(int i = 0;i < team0.length;i++) {
 				if(team0[i].active && team0[i].kickable) {
-					team0[0].println("5");
-					team0[1].println("5");
+					out0[0].println("5");
+					out0[1].println("5");
 					break;
 				}
 				else {
-					team1[0].println("5");
-					team1[1].println("5");
+					out1[0].println("5");
+					out1[1].println("5");
 					break;
 				}
 			}
@@ -89,13 +93,13 @@ class Server {
 		else if(team == 1) {
 			for(int i = 0;i < team1.length;i++) {
 				if(team1[i].active && team1[i].kickable) {
-					team1[0].println("5");
-					team1[1].println("5");
+					out1[0].println("5");
+					out1[1].println("5");
 					break;
 				}
 				else {
-					team0[0].println("5");
-					team0[1].println("5");
+					out0[0].println("5");
+					out0[1].println("5");
 					break;
 				}
 			}
