@@ -6,6 +6,7 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Scanner;
 
+//team: Steven Truong, Wilson Yeh, Haohan Tang, Blake Oler
 public class StartClient {
 	public static BaseClient bc;
 	private int role;
