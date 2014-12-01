@@ -1,6 +1,7 @@
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.io.IOException;
 import java.net.Socket;
 
 import javafx.scene.paint.Color;
@@ -17,7 +18,7 @@ public class SupervisorGUI extends BaseClient{
 	int teamNum;
 
 	
-	SupervisorGUI(int teamNum, Socket s){
+	SupervisorGUI(int teamNum, Socket s) throws InterruptedException, IOException{
 		this.setSize(800,500);
 		this.setLayout(new BorderLayout());
 
