@@ -12,9 +12,9 @@ import java.util.concurrent.locks.ReentrantLock;
 class Server {
 	BaseMiniGameServer[] team0 = new BaseMiniGameServer[4];
 	BaseMiniGameServer[] team1 = new BaseMiniGameServer[4]; // 0=FindTheLocation,
-															// 1=Light,
-															// 2=CutWire,
-															// 3=LogicPuzzle
+	// 1=Light,
+	// 2=CutWire,
+	// 3=LogicPuzzle
 	PrintWriter[] out0 = new PrintWriter[2]; // 0=Operator, 1=Supervisor
 	PrintWriter[] out1 = new PrintWriter[2]; // 0=Operator, 1=Supervisor
 
@@ -75,33 +75,26 @@ class Server {
 
 	}
 
-	void kick(int team) {	//Let the kicking team start the minigame.
+	void kick(int team, int game) {	//Let the kicking team start the minigame.
 		if(team == 0) {		//If can kick other team, kick other team. If can't kick other team, kick kicking team.
-			for(int i = 0;i < team0.length;i++) {
-				if(team0[i].active && team0[i].kickable) {
-					out0[0].println("5");
-					out0[1].println("5");
-					break;
-				}
-				else {
-					out1[0].println("5");
-					out1[1].println("5");
-					break;
-				}
+
+			if(team0[game].active && team0[game].kickable) {
+				out0[0].println("5");
+				out0[1].println("5");
+			}
+			else if(team0[game].active) {
+				out1[0].println("5");
+				out1[1].println("5");
 			}
 		}
 		else if(team == 1) {
-			for(int i = 0;i < team1.length;i++) {
-				if(team1[i].active && team1[i].kickable) {
-					out1[0].println("5");
-					out1[1].println("5");
-					break;
-				}
-				else {
-					out0[0].println("5");
-					out0[1].println("5");
-					break;
-				}
+			if(team1[game].active && team1[game].kickable) {
+				out1[0].println("5");
+				out1[1].println("5");
+			}
+			else if(team1[game].active){
+				out0[0].println("5");
+				out0[1].println("5");
 			}
 		}
 	}
@@ -137,20 +130,21 @@ class Server {
 	}
 
 	void parse(String line) { // <Team#><Game#><Content> (Game#=4 refers to chat,
-								// Game#=5 refers to kick, Game#=6 refers to checkGamesAvailable)
-								// e.g. "01XXXX" refers to team 0's
-								// TwoStagePuzzle
+		// Game#=5 refers to kick, Game#=6 refers to checkGamesAvailable)
+		// e.g. "01XXXX" refers to team 0's
+		// TwoStagePuzzle
 		int ind = (int) line.charAt(1) - 48;
-		
+
 		if(ind == 6) {
 			int team = (int) line.charAt(0) - 48;
 			gamesAvailable(team);
 		}
-		else if(ind == 5) {
+		else if(ind == 5) { //Kick Format: <YourTeam#><5><Game#>
 			int team = (int) line.charAt(0) - 48;
+			int game = (int) line.charAt(2) - 48;
 			if(team == 0)
-				kick(1);
-			else kick(0);
+				kick(1,game);
+			else kick(0,game);
 		}
 		else if (ind == 4) {
 			// TODO: Chat stuff
@@ -181,7 +175,7 @@ class Server {
 				out0[1].println(chatMessage); 
 				out0[1].flush();
 			}
-				
+
 			}
 		} else {
 			if (line.charAt(0) == 0) {
