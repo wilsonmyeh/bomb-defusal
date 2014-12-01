@@ -109,10 +109,10 @@ class FindTheLocationServer extends BaseMiniGameServer{
 		if(currentPercent >= 90){
 			active = false;
 			solved = true;
-			sendCommand("win");
+			sendCommand(GAME_ID + "win");
 		}
 		else{
-			sendCommand("reset");
+			sendCommand(GAME_ID + "reset");
 		}
 		return (currentPercent >= 90);
 	}

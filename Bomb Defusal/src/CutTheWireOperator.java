@@ -1,5 +1,3 @@
-package test;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -19,7 +17,7 @@ import javax.swing.Timer;
 import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
-public class CutTheWireOperator extends JPanel {
+public class CutTheWireOperator extends BaseMiniGameClient {
 
 	JLabel[] wires;
 	JLabel timer;
@@ -28,7 +26,8 @@ public class CutTheWireOperator extends JPanel {
 	Color[] selectedScheme;
 	boolean anyWireClicked; 
 
-	public CutTheWireOperator() {
+	public CutTheWireOperator(BaseClient bc) {
+		super(bc);
 		setSize(new Dimension(500, 500));
 		setLayout(null);
 		anyWireClicked = false; 

@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Lobby extends JPanel{
@@ -76,7 +77,20 @@ public class Lobby extends JPanel{
 				});
 	}
 	
+
 	public void diableButton(){
+
+	/*
+=======
+	public static void main(String [] args){
+		JFrame test = new JFrame();
+		test.setSize(500, 500);
+		Lobby lobby = new Lobby();
+		test.add(lobby);
 		
+		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		test.setVisible(true);
+>>>>>>> branch 'master' of https://github.com/wpyeh/bomb-defusal
 	}
+	*/
 }
