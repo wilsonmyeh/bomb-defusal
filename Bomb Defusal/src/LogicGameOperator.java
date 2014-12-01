@@ -32,13 +32,12 @@ class LogicGameOperator extends BaseMiniGameClient{
 		super(bc);
 		
 		this.setSize(500,500);
-		Image temp = ImageIO.read(new File("src/button.jpg"));
+		Image temp = ImageIO.read(new File("Assets/Logic/button.jpg"));
 		button = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-		temp = ImageIO.read(new File("src/haohan.jpg"));
+		temp = ImageIO.read(new File("Assets/Logic/haohan.jpg"));
 		Haohan_large = temp.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		temp = ImageIO.read(new File("src/blake.jpg"));
+		temp = ImageIO.read(new File("Assets/Logic/blake.jpg"));
 		Blake_large = temp.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		temp = ImageIO.read(new File("src/dialog.jpg"));
 		//logic sentence pool
 				stevenS[0] = "Steven: I didn't build the bomb.";
 				wilsonS[0] = "Wilson: I guess the bomber is Steven or Haohan.";

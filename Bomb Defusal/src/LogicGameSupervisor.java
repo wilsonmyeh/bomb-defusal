@@ -37,15 +37,15 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		super(bc);
 		
 		this.setSize(500,500);
-		Image temp = ImageIO.read(new File("src/wilson.jpg"));
+		Image temp = ImageIO.read(new File("Assets/Logic/wilson.jpg"));
 		imWilson = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		Wilson_large = temp.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		temp = ImageIO.read(new File("src/steven.jpg"));
+		temp = ImageIO.read(new File("Assets/Logic/steven.jpg"));
 		imSteven = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		Steven_large = temp.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		temp = ImageIO.read(new File("src/haohan.jpg"));
+		temp = ImageIO.read(new File("Assets/Logic/haohan.jpg"));
 		imHaohan = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
-		temp = ImageIO.read(new File("src/blake.jpg"));
+		temp = ImageIO.read(new File("Assets/Logic/blake.jpg"));
 		imBlake = temp.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 		
 		 rule1 = "Find the bomber and he will tell you which button to click on" ;
