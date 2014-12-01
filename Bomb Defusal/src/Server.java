@@ -179,8 +179,8 @@ class Server {
 		}
 		else if (ind == 4) {
 			int target = Integer.parseInt(line.substring(2,3)); 
-			System.out.println(line+"TARGET:"+target);
-			String chatMessage = line;
+			System.out.println("Server->parse(String)->ind==4 received " + line + " TARGET: "+target);
+			String chatMessage = 4 + line.substring(3);
 			switch(target)
 			{
 			case 1://Prints only to team 1 
@@ -280,6 +280,7 @@ class Server {
 				try {
 					String line = br.readLine();
 					if(line != null){
+						System.out.println("ServerThread while(true) received " + line);
 						parse(line);
 					}
 				} catch (IOException e) {

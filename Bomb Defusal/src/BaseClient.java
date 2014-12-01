@@ -60,34 +60,35 @@ abstract class BaseClient extends JFrame
 		//System.out.println("TEAM+COMMAND"+team+command);
 		pw.println(team+command);
 		pw.flush(); 
+		System.out.println("BaseClient->sendCommand(String) sent " + team + command);
 	}
 	
 	public void routeCommand(String command){
-		System.out.println(command);
-		int ind = Character.getNumericValue(command.charAt(1));
+		System.out.println("BaseClient->routeCommand(String) received " + command);
+		int ind = Character.getNumericValue(command.charAt(0));
 		switch(ind){
 			case 0:{
-				gameClients[0].parseCommand(command.substring(2));
+				gameClients[0].parseCommand(command.substring(1));
 				break;
 			}
 			
 			case 1:{
-				gameClients[1].parseCommand(command.substring(2));
+				gameClients[1].parseCommand(command.substring(1));
 				break;
 			}
 			
 			case 2:{
-				gameClients[2].parseCommand(command.substring(2));
+				gameClients[2].parseCommand(command.substring(1));
 				break;
 			}
 			
 			case 3:{
-				gameClients[3].parseCommand(command.substring(2));
+				gameClients[3].parseCommand(command.substring(1));
 				break;
 			}
 			
 			case 4:{
-				getChat().addText(command.substring(3));
+				getChat().addText(command.substring(1));
 				break;
 			}
 			

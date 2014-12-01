@@ -59,6 +59,7 @@ class Chat extends JPanel {
 	public void addText(String text)
 	{
 		output.setText(output.getText()+text+"\n");
+		System.out.println("Chat->addText(String) added " + text);
 		output.setCaretPosition(output.getDocument().getLength()); 
 	}
 }
