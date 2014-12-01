@@ -28,7 +28,7 @@ class LightSupervisor extends BaseMiniGameClient {
 			add(lightLabels[i]);
 		}
 		try {
-			background = ImageIO.read(new File("Assets\\Light\\SupervisorBackground.png"));
+			background = ImageIO.read(new File("Assets\\Light\\SupervisorBackground.jpg"));
 			background = background.getScaledInstance(500,500,Image.SCALE_SMOOTH);
 		} catch(IOException e) {
 			e.printStackTrace();
