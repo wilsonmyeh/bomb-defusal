@@ -71,8 +71,6 @@ class Server {
 			out1[1].println("5");
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
 		}
 
 	}
