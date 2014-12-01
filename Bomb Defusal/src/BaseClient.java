@@ -97,6 +97,12 @@ abstract class BaseClient extends JFrame
 			case 6:{
 				//TODO: Alter lobby
 			}
+			
+			case 7:{
+				if(command.charAt(1)-48 == team)
+					victory();
+				else defeat();
+			}
 		}
 	}
 	
@@ -115,6 +121,14 @@ abstract class BaseClient extends JFrame
 			e.printStackTrace();
 		}
 		getCardLayout().show(this, "Lobby");
+	}
+	
+	public void victory(){
+		//TODO: vic
+	}
+	
+	public void defeat(){
+		//TODO: shit
 	}
 	
 	//for operator

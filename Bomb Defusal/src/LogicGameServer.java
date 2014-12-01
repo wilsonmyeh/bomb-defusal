@@ -8,19 +8,19 @@ class LogicGameServer extends BaseMiniGameServer{
 	LogicGameServer(){
 		rand = new Random();
 		randomNum = rand.nextInt(10);
-		sendCommand("Random " + rand);
+		sendCommand( GAME_ID + "Random " + rand);
 	}
 	void parseCommand(String command) {
 		// TODO Auto-generated method stub
 		if(command.startsWith("Win")){
-			sendCommand("Win");
+			sendCommand(GAME_ID + "Win");
 		}
 		else if(command.startsWith("Reset")){
 			int temp = rand.nextInt(10);
 			while(temp == randomNum)
 				temp = rand.nextInt(10);
 			randomNum = temp;
-			sendCommand("Reset " + temp);
+			sendCommand(GAME_ID + "Reset " + temp);
 		}
 	}
 }

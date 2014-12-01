@@ -138,6 +138,9 @@ class Server {
 
 		if(ind == 6) {
 			int team = (int) line.charAt(0) - 48;
+			BaseMiniGameServer[] select = (team==0) ? team0 : team1;
+			if(checkWin(select))
+				notifyVictor(team);
 			gamesAvailable(team);
 		}
 		else if(ind == 5) { //Kick Format: <YourTeam#><5><Game#>
@@ -202,8 +205,11 @@ class Server {
 	}
 
 	// ends the game, displays winner
-	void notifyVictor() {
-		
+	void notifyVictor(int team) {
+		out0[0].println("7"+team);
+		out0[1].println("7"+team);
+		out1[0].println("7"+team);
+		out1[1].println("7"+team);
 	}
 
 	void sendCommand(BaseMiniGameServer mg, String command) {
