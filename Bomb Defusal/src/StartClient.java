@@ -7,7 +7,7 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class StartClient {
-	public BaseClient bc;
+	public static BaseClient bc;
 	private int role;
 	private int teamNum;
 	private Socket s; 
