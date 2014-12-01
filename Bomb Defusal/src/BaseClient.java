@@ -27,7 +27,6 @@ abstract class BaseClient extends JFrame
 		pw = null;
 		br = null; 
 		mySocket = s; 
-		System.out.println("I definitely initialized mySocket");
 		Database.initialize();
 
 	}
