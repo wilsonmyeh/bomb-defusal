@@ -22,10 +22,12 @@ abstract class BaseClient extends JFrame
 	CardLayout mainCardLayout;
 	JPanel mainPanel;
 	
-	public BaseClient()
+	public BaseClient(Socket s)
 	{
 		pw = null;
 		br = null; 
+		mySocket = s; 
+		System.out.println("I definitely initialized mySocket");
 		Database.initialize();
 
 	}
@@ -46,6 +48,10 @@ abstract class BaseClient extends JFrame
 		if(pw == null)
 		{
 			try {
+				if(mySocket == null)
+				{
+					System.out.println("HARD LIFE");
+				}
 				pw = new PrintWriter(mySocket.getOutputStream());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
