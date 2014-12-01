@@ -6,14 +6,12 @@ class CutTheWireOperator extends BaseMiniGameClient
 	
 	CutTheWireOperator(BaseClient bc) {
 		super(bc);
-		// TODO Auto-generated constructor stub
+		
 	}
-
 	
-
 	@Override
 	public void parseCommand(String command) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub 
 		
 	}
 }
