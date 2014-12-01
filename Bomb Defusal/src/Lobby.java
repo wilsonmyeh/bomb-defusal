@@ -78,7 +78,6 @@ public class Lobby extends JPanel{
 	}
 	
 
-	public void diableButton(){
 
 	/*
 =======

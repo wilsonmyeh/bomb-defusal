@@ -167,7 +167,7 @@ class LogicGameOperator extends BaseMiniGameClient{
   			this.repaint();
   			//send signal
   			bc.sendCommand(GAME_ID + "Win");
-  			switchToWaitingRoom();
+  			bc.switchToWaitingRoom();
   		}
   		else if(!answer[randomNum].equals(name)){	
   			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Ope");
@@ -223,7 +223,7 @@ class LogicGameOperator extends BaseMiniGameClient{
 
 	@Override
 	public void parseCommand(String command) {
-		else if(command.startsWith("Random")){
+		if(command.startsWith("Random")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
 		}
