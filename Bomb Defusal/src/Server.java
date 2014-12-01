@@ -65,23 +65,70 @@ class Server {
 
 	}
 
-	void kick() {
-
+	void kick(int team) { //Let the kicking team start. If can kick other team, kick other team. If can't kick other team, kick kicking team.
+		if(team == 0) {
+			for(int i = 0;i < team0.length;i++) {
+				if(team0[i].active && team0[i].kickable) {
+					team0[0].println("5");
+					team0[1].println("5");
+					break;
+				}
+				else {
+					team1[0].println("5");
+					team1[1].println("5");
+					break;
+				}
+			}
+		}
+		else if(team == 1) {
+			for(int i = 0;i < team1.length;i++) {
+				if(team1[i].active && team1[i].kickable) {
+					team1[0].println("5");
+					team1[1].println("5");
+					break;
+				}
+				else {
+					team0[0].println("5");
+					team0[1].println("5");
+					break;
+				}
+			}
+		}
 	}
 
-	boolean[] gamesAvailable() {
-		boolean[] temp = new boolean[4];
+	String gamesAvailable(int teamNumber) { //Returns 4 character string.
+		String temp = "";					//K=Kickable, U=Unavailble, A=Availble
 		for (int i = 0; i < 4; i++) {
-			temp[i] = (!team0[i].active && !team1[i].active);
+			if(teamNumber == 0) {
+				if(team1[i].kickable)
+					temp+="K";
+				else if(team1[i].active)
+					temp+="U";
+				else temp+="A";
+			}
+			else if(teamNumber == 1) {
+				if(team0[i].kickable)
+					temp+="K";
+				else if(team1[i].active)
+					temp+="U";
+				else temp+="A";
+			}
 		}
 		return temp;
 	}
 
 	void parse(String line) { // <Team#><Game#><Content> (Game#=4 refers to
-								// chat) e.g. "01XXXX" refers to team 0's
+								// chat, Game#=5 refers to kick)
+								// e.g. "01XXXX" refers to team 0's
 								// TwoStagePuzzle
 		int ind = (int) line.charAt(1) - 48;
-		if (ind == 4) {
+		if(ind == 5) {
+			int team = (int) line.charAt(0) - 48;
+			if(team == 0)
+				kick(1);
+			else kick(0);
+		}
+		else if (ind == 4) {
 			// TODO: Chat stuff
 
 			int target = (int) line.charAt(0) - 48;
