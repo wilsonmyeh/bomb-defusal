@@ -25,15 +25,7 @@ class Server {
 	int team1Status, team2Status;// -1=lose, 0=in progress, 1=win
 
 	public Server(int port) {
-		team0[0] = new FindTheLocationServer();
-		team0[1] = new LightServer();
-		team0[2] = new CutTheWireServer();
-		team0[3] = new LogicGameServer();
-
-		team1[0] = new FindTheLocationServer();
-		team1[1] = new LightServer();
-		team1[2] = new CutTheWireServer();
-		team1[3] = new LogicGameServer();
+		
 
 		try {
 			ServerSocket ss = new ServerSocket(port);
@@ -64,6 +56,15 @@ class Server {
 			} catch(InterruptedException e) {
 				e.printStackTrace();
 			}
+			team0[0] = new FindTheLocationServer();
+			team0[1] = new LightServer();
+			team0[2] = new CutTheWireServer();
+			team0[3] = new LogicGameServer();
+
+			team1[0] = new FindTheLocationServer();
+			team1[1] = new LightServer();
+			team1[2] = new CutTheWireServer();
+			team1[3] = new LogicGameServer();
 			//"Kicks" everyone to lobby to start the game
 			out0[0].println("5");
 			out0[1].println("5");
