@@ -8,7 +8,7 @@ class LogicGameServer extends BaseMiniGameServer{
 	LogicGameServer(){
 		rand = new Random();
 		randomNum = rand.nextInt(10);
-		sendCommand( GAME_ID + "Random " + rand);
+		sendCommand( GAME_ID + "Random " + randomNum);
 	}
 	void parseCommand(String command) {
 		// TODO Auto-generated method stub
