@@ -1,7 +1,9 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+/*
 import javafx.scene.media.*;
+*/
 
 import java.awt.*;
 import java.io.File;
