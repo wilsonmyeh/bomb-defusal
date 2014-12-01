@@ -47,13 +47,14 @@ class FindTheLocationServer extends BaseMiniGameServer{
 	private int desiredX;
 	private int desiredY;
 	private int currentPercent;
-	private int currentDistance;
-	private int maxDistance;
+	private double currentDistance;
+	private double maxDistance;
 	private Random rand;
 	
 	FindTheLocationServer(Server s){
 		super(s);
 		rand = new Random();
+		setDesiredLocation();
 	}
 	//Message possibilities
 	/*
@@ -89,7 +90,10 @@ class FindTheLocationServer extends BaseMiniGameServer{
 			maxYDistance = 500 - desiredY;
 		}
 		
-		maxDistance = Math.abs((int) Math.sqrt((double)((desiredX - maxXDistance) * (desiredX - maxXDistance) + (desiredY - maxYDistance) * (desiredY - maxYDistance))));
+		maxDistance = Math.abs((int) Math.sqrt((double)((maxXDistance) * (maxXDistance) + (maxYDistance) * (maxYDistance))));
+		System.out.println("Max distance calculated to be " + maxDistance);
+		System.out.println("maxXDistance is " + maxXDistance + " and maxYDistance is " + maxYDistance);
+		System.out.println("desiredX is " + desiredX + " and desiredY is " + desiredY);
 	}
 	
 	void reset(){
@@ -103,7 +107,9 @@ class FindTheLocationServer extends BaseMiniGameServer{
 		currentY = y;
 		
 		currentDistance = Math.abs((int) Math.sqrt((double)((desiredX - currentX) * (desiredX - currentX) + (desiredY - currentY) * (desiredY - currentY))));
-		currentPercent= 100 - currentDistance/maxDistance;
+		currentPercent= (int)(100 * (1 - currentDistance/maxDistance));
+		System.out.println("CurrentX is " + currentX + " and currentY is " + currentY);
+		System.out.println("Current Distance is " + currentDistance + " from the point, percent is " + currentPercent + " and the desired point is " + desiredX + ", " + desiredY);
 	}
 	
 	boolean checkWin(){

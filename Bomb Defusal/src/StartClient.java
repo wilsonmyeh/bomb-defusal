@@ -27,7 +27,7 @@ public class StartClient {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+		System.out.println("StartClient->role is " + role);
 		switch(role) {
 		case 0 : bc = new OperatorGUI(1,s); 
 				 break;
@@ -45,8 +45,8 @@ public class StartClient {
 			try {
 				String line = br.readLine();
 				if(line != null){
-					System.out.println(line);
-					bc.routeCommand(br.readLine());
+					System.out.println("StartClient while(true) not-null-check received " + line);
+					bc.routeCommand(line);
 				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
