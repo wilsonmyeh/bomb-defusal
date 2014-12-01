@@ -37,16 +37,16 @@ class Chat extends JPanel {
             	}
             	else
             	{
-            		sendHere = otherteam; 
+            		sendHere = 3-otherteam;  
             	}
- 				myClient.sendCommand("4"+sendHere+input.getText()); //4 header indicates chat
+ 				myClient.sendCommand("4"+sendHere+myClient.myUserName+":"+input.getText()); //4 header indicates chat
  				input.setText(""); 
             }
         });
 		JScrollPane display = new JScrollPane(output);
 		JPanel container = new JPanel();
 		container.setLayout(new BorderLayout()); 
-		String[] targets = {"Team "+Integer.toString(otherteam), "All"}; 
+		String[] targets = {"My team", "All"}; 
 		targetList = new JComboBox(targets); 
 		container.add(input, BorderLayout.CENTER); 
 		container.add(send, BorderLayout.EAST); 
@@ -58,7 +58,7 @@ class Chat extends JPanel {
 	}
 	public void addText(String text)
 	{
-		output.setText(output.getText()/*+myClient.getUsername()*/+" "+(3-otherteam)+":"+text+"\n");
+		output.setText(output.getText()+text+"\n");
 		output.setCaretPosition(output.getDocument().getLength()); 
 	}
 }

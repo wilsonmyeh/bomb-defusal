@@ -26,7 +26,7 @@ public class SupervisorGUI extends BaseClient{
 		//create instruction
 		this.teamNum = teamNum;
 		String teamNumStr = this.teamNum + "";
-		myUserName = "Supervisor";
+		myUserName = "Supervisor "+teamNum;
 		jpInstruction = new Instruction(myUserName, teamNumStr); 
 		
 		jpLightGame_Sup = new LightSupervisor(this);

@@ -45,6 +45,7 @@ public class StartClient {
 			try {
 				String line = br.readLine();
 				if(line != null){
+					System.out.println(line);
 					bc.routeCommand(br.readLine());
 				}
 			} catch (IOException e) {

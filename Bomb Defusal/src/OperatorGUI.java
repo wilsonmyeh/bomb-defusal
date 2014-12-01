@@ -25,7 +25,7 @@ public class OperatorGUI extends BaseClient{
 		//initiate all panels
 		mainPanel = new JPanel();
 		this.teamNum  = teamNum;
-		myUserName = "Operator";
+		myUserName = "Operator "+teamNum;
 		String teamNumStr = teamNum + "";
 		jpInstruction = new Instruction(myUserName,teamNumStr);
 		
