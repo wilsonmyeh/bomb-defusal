@@ -28,7 +28,7 @@ class FindTheLocationOperator extends BaseMiniGameClient{
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				bc.sendCommand(bc.team + GAME_ID + "analyze");
+				bc.sendCommand(GAME_ID + "analyze");
 			}
 			
 		});

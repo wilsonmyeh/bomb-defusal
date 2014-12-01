@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.io.IOException;
 import java.net.Socket;
 
 import javax.swing.JFrame;
@@ -8,14 +9,14 @@ import javax.swing.JPanel;
 
 public class OperatorGUI extends BaseClient{
 
-	private JPanel jpInstruction;
+	private JPanel jpInstruction,jpWaiting;
 	private BaseMiniGameClient jpLightGame_Ope,jpCutWireGame_Ope,jpFindLocationGame_Ope,jpLogicGame_Ope;
-	private JPanel jplogicRestart_Sup; //for logic game
+	private JPanel jplogicRestart_Ope; //for logic game
 	int teamNum;
 	
 	
 	// no lobby panel
-	OperatorGUI(int teamNum, Socket s){
+	OperatorGUI(int teamNum, Socket s) throws InterruptedException, IOException{
 		this.setSize(800,500);
 		this.setLayout(new BorderLayout());
 		
@@ -31,7 +32,7 @@ public class OperatorGUI extends BaseClient{
 		jpCutWireGame_Ope = new CutTheWireOperator(this);
 		jpFindLocationGame_Ope = new FindTheLocationOperator(this);
 		jpLogicGame_Ope = new LogicGameOperator(this);
-		
+		jpWaiting = new WaitingRoom();
 		//Adding games to gameClients array
 		//Populate gameClients array
 				// 0=FindTheLocation,
@@ -52,10 +53,12 @@ public class OperatorGUI extends BaseClient{
 		mainPanel.add(jpCutWireGame_Ope,"CutWireGame_Operator");
 		mainPanel.add(jpFindLocationGame_Ope,"FindLocationGame_Operator");
 		mainPanel.add(jpLogicGame_Ope,"LogicGame_Operator");
+		mainPanel.add(jpWaiting,"WaitingRoom");
+		
 		
 		//for logic game
 		jplogicRestart_Ope = new LogicGameRestartOperator();
-		mainPanel.add(jplogicRestart_Sup,"LogicRestart_Ope");
+		mainPanel.add(jplogicRestart_Ope,"LogicRestart_Ope");
 		
 		//other teamNUm
 		chat = new Chat(this,(3-teamNum));

@@ -77,6 +77,11 @@ public class Lobby extends JPanel{
 				});
 	}
 	
+
+	public void diableButton(){
+
+	/*
+=======
 	public static void main(String [] args){
 		JFrame test = new JFrame();
 		test.setSize(500, 500);
@@ -85,5 +90,7 @@ public class Lobby extends JPanel{
 		
 		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		test.setVisible(true);
+>>>>>>> branch 'master' of https://github.com/wpyeh/bomb-defusal
 	}
+	*/
 }

@@ -15,7 +15,7 @@ public class StartClient {
 	private BufferedReader br;
 	
 	//here goes the connection to the server
-	StartClient(String ip, int port){
+	StartClient(String ip, int port) throws InterruptedException, IOException{
 		//need t0 connect  to server, first to connect: team 1 supervisor, then team 2 supervisor
 		//then team 1 operator, then team 2 operator
 		//role -1:operator  1:supervisor
@@ -49,7 +49,7 @@ public class StartClient {
 			}
 		}
 	}
-	public static void main(String[] args){
+	public static void main(String[] args) throws InterruptedException, IOException{
 		//wait for server to assign
 		//Scanner scan = new Scanner(System.in); 
 		//System.out.println("IP?");

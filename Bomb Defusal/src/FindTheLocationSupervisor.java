@@ -1,7 +1,8 @@
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -47,12 +48,20 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 		add(Box.createVerticalGlue());
 		finalize = new JButton("Finalize.");
 		finalize.setAlignmentX(CENTER_ALIGNMENT);
+		finalize.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bc.sendCommand(GAME_ID + "finalize");
+			}
+			
+		});
 		add(finalize);
 		add(Box.createVerticalStrut(50));
 	}
 	
 	public void updateCrosshairs(){
-		String command = bc.team + GAME_ID + "location " + currentX + " " + currentY;
+		String command = GAME_ID + "location " + currentX + " " + currentY;
 		bc.sendCommand(command);
 		repaint();
 		//send message to server
@@ -66,7 +75,7 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 			imageIndex = rand.nextInt(5);
 			currentImageIndex = imageIndex;
 			imageIndexStr = String.valueOf(imageIndex);
-			imageLocation = imageIndexStr + ".jpg";
+			imageLocation = "Assets/Location/" + imageIndexStr + ".jpg";
 			image = new ImageIcon(imageLocation).getImage(); 
 		}
 		else{
@@ -78,7 +87,7 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 				else{
 					currentImageIndex = imageIndex;
 					imageIndexStr = String.valueOf(imageIndex);
-					imageLocation = imageIndexStr + ".jpg";
+					imageLocation = "Assets/Location/" + imageIndexStr + ".jpg";
 					image = new ImageIcon(imageLocation).getImage();
 				}
 			}

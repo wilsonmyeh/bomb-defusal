@@ -163,15 +163,16 @@ class LogicGameOperator extends BaseMiniGameClient{
 	 
 	 private void check(String name){
 		 if(answer[randomNum].equals(name)){
-  			rule1 = "Congrat! Bomb defused! Waiting for supervisor to choose the next game.";
+  			rule1 = "Congrat! Bomb defused! ";
   			this.repaint();
   			//send signal
-  			bc.sendCommand("Win");
+  			bc.sendCommand(GAME_ID + "Win");
+  			switchToWaitingRoom();
   		}
   		else if(!answer[randomNum].equals(name)){	
   			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Ope");
   			//	restart();
-  			bc.sendCommand("Reset");
+  			bc.sendCommand(GAME_ID + "Reset");
 		}
 	 }
 	 /*
