@@ -33,7 +33,8 @@ abstract class BaseClient extends JFrame
 	//should display warning since you've just been kicked and should move you back to lobby (query server for what should be available) 
 	void kick()
 	{
-		
+		//TODO: DISPLAY WARNING
+		switchToLobby();
 	}
 	
 	public Chat getChat()
@@ -81,6 +82,10 @@ abstract class BaseClient extends JFrame
 			case 4:{
 				getChat().addText(command.substring(1));
 				break;
+			}
+			
+			case 5:{
+				kick();
 			}
 		}
 	}

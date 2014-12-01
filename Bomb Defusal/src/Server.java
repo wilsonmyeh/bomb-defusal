@@ -69,13 +69,13 @@ class Server {
 		if(team == 0) {
 			for(int i = 0;i < team0.length;i++) {
 				if(team0[i].active && team0[i].kickable) {
-					team0[0].println("KICK");
-					team0[1].println("KICK");
+					team0[0].println("5");
+					team0[1].println("5");
 					break;
 				}
 				else {
-					team1[0].println("KICK");
-					team1[1].println("KICK");
+					team1[0].println("5");
+					team1[1].println("5");
 					break;
 				}
 			}
@@ -83,13 +83,13 @@ class Server {
 		else if(team == 1) {
 			for(int i = 0;i < team1.length;i++) {
 				if(team1[i].active && team1[i].kickable) {
-					team1[0].println("KICK");
-					team1[1].println("KICK");
+					team1[0].println("5");
+					team1[1].println("5");
 					break;
 				}
 				else {
-					team0[0].println("KICK");
-					team0[1].println("KICK");
+					team0[0].println("5");
+					team0[1].println("5");
 					break;
 				}
 			}
