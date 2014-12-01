@@ -100,6 +100,10 @@ abstract class BaseClient extends JFrame
 	public void switchToLobby(){
 		getCardLayout().show(this, "Lobby");
 	}
-
+	
+	//for operator
+	public void switchToWaitingRoom(){
+		getCardLayout().show(this, "WaitingRoom");
+	}
 }
 
