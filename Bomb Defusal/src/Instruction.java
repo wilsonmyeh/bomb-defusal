@@ -43,13 +43,13 @@ class Instruction extends JPanel {
 			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3" + "\n");
 			
 			jtaInstruction.setText(jtaInstruction.getText() + "LOGIC GAME" + "\n");
-			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 4" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Remember that only bomber is lying "+ "\n"+ "and others are telling the truth."+ "\n"+ "Find out the bomber and click on his picture" + "\n");
 		}
 		else{
 			Font font = new Font("Verdana", Font.BOLD, 15);
 			jtaInstruction.setFont(font);
 			jtaInstruction.setText(jtaInstruction.getText() + "FIND THE LOCATION" + "\n");
-			jtaInstruction.setText(jtaInstruction.getText() + " When the supervisor gives you the go-ahead, click analyze to see how close you are to the secret location."+ "\n"+ " Relay to your supervisor the information, so they can make a more informed choice." + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "When the supervisor gives you the go-ahead, click analyze "+ "\n"+ "to see how close you are to the secret location."+ "\n"+ "Relay to your supervisor the information, "+ "\n"+ "so they can make a more informed choice." + "\n");
 			
 
 			jtaInstruction.setText(jtaInstruction.getText() + "CUT THE WIRE" + "\n");
@@ -60,7 +60,7 @@ class Instruction extends JPanel {
 			
 
 			jtaInstruction.setText(jtaInstruction.getText() + "LOGIC GAME" + "\n");
-			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 4" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Remember that only bomber is lying "+ "\n"+ "and others are telling the truth." + "\n" + "Follow supervisor's instruction and click the right button to defuse"+ "\n");
 		}
 		
 		add(Box.createGlue());
