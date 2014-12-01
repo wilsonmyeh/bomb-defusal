@@ -52,7 +52,7 @@ abstract class BaseClient extends JFrame
 				e.printStackTrace();
 			} 
 		}
-		pw.println(command);
+		pw.println(team+command);
 		pw.flush(); 
 	}
 	
@@ -87,6 +87,10 @@ abstract class BaseClient extends JFrame
 			case 5:{
 				kick();
 			}
+			
+			case 6:{
+				//TODO: Alter lobby
+			}
 		}
 	}
 	
@@ -98,6 +102,12 @@ abstract class BaseClient extends JFrame
 	}
 	
 	public void switchToLobby(){
+		sendCommand("6");
+		try {
+			Thread.sleep(1000); //Some time for Lobby to update
+		} catch(InterruptedException e) {
+			e.printStackTrace();
+		}
 		getCardLayout().show(this, "Lobby");
 	}
 	

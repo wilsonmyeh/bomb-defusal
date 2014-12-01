@@ -108,7 +108,7 @@ class Server {
 		}
 	}
 
-	String gamesAvailable(int teamNumber) { //Returns 4 character string.
+	void gamesAvailable(int teamNumber) { //Returns 4 character string.
 		String temp = "";					//K=Kickable, U=Unavailble, A=Availble
 		for (int i = 0; i < 4; i++) {
 			if(teamNumber == 0) {
@@ -126,15 +126,29 @@ class Server {
 				else temp+="A";
 			}
 		}
-		return temp;
+		if(teamNumber == 0)
+		{
+			out0[0].println(6+temp);
+			out0[1].println(6+temp);
+		}
+		else if(teamNumber == 1)
+		{
+			out1[0].println(6+temp);
+			out1[1].println(6+temp);
+		}
 	}
 
-	void parse(String line) { // <Team#><Game#><Content> (Game#=4 refers to
-								// chat, Game#=5 refers to kick)
+	void parse(String line) { // <Team#><Game#><Content> (Game#=4 refers to chat,
+								// Game#=5 refers to kick, Game#=6 refers to checkGamesAvailable)
 								// e.g. "01XXXX" refers to team 0's
 								// TwoStagePuzzle
 		int ind = (int) line.charAt(1) - 48;
-		if(ind == 5) {
+		
+		if(ind == 6) {
+			int team = (int) line.charAt(0) - 48;
+			gamesAvailable(team);
+		}
+		else if(ind == 5) {
 			int team = (int) line.charAt(0) - 48;
 			if(team == 0)
 				kick(1);
