@@ -19,8 +19,9 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-class LogicGameSupervisor extends JPanel implements BaseMiniGameClient{
+class LogicGameSupervisor extends BaseMiniGameClient{
 	private final int GAME_ID = 3;
+
 	private Image imWilson, imSteven, imHaohan, imBlake, Wilson_large, Steven_large;
 	private String [] stevenS = new String[10];
 	private String [] wilsonS = new String[10];
@@ -235,4 +236,16 @@ class LogicGameSupervisor extends JPanel implements BaseMiniGameClient{
 	     };
 	     
 	     
+
+	LogicGameSupervisor(BaseClient bc) {
+		super(bc);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void parseCommand(String command) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

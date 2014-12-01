@@ -14,9 +14,10 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-class LogicGameOperator extends JPanel implements BaseMiniGameClient{
+class LogicGameOperator extends BaseMiniGameClient{
 	private final int GAME_ID = 3;
 	
+<<<<<<< HEAD
 	private Image Haohan_large, Blake_large, button;
 	private String [] stevenS = new String[10];
 	private String [] wilsonS = new String[10];
@@ -216,4 +217,15 @@ class LogicGameOperator extends JPanel implements BaseMiniGameClient{
 	 	    	repaint();
 	 	    }
 	     };
+	LogicGameOperator(BaseClient bc) {
+		super(bc);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void parseCommand(String command) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

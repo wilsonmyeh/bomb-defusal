@@ -12,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 class Server {
 	BaseMiniGameServer[] team0 = new BaseMiniGameServer[4];
 	BaseMiniGameServer[] team1 = new BaseMiniGameServer[4]; // 0=FindTheLocation,
-															// 1=TwoStage,
+															// 1=Light,
 															// 2=CutWire,
 															// 3=LogicPuzzle
 	PrintWriter[] out0 = new PrintWriter[2]; // 0=Operator, 1=Supervisor
@@ -26,12 +26,12 @@ class Server {
 
 	public Server(int port) {
 		team0[0] = new FindTheLocationServer();
-		team0[1] = new TwoStageServer();
+		team0[1] = new LightServer();
 		team0[2] = new CutTheWireServer();
 		team0[3] = new LogicGameServer();
 
 		team1[0] = new FindTheLocationServer();
-		team1[1] = new TwoStageServer();
+		team1[1] = new LightServer();
 		team1[2] = new CutTheWireServer();
 		team1[3] = new LogicGameServer();
 
@@ -84,29 +84,30 @@ class Server {
 		if (ind == 4) {
 			// TODO: Chat stuff
 
-			int target = (int) line.charAt(0) - 48; 
+			int target = (int) line.charAt(0) - 48;
+			String chatMessage = 4 + line.substring(2);
 			switch(target)
 			{
 			case 1: {
-				out0[0].println(line.substring(2));
+				out0[0].println(chatMessage);
 				out0[0].flush();
-				out0[1].println(line.substring(2)); 
+				out0[1].println(chatMessage); 
 				out0[1].flush(); 
 			}
 			case 2:{
-				out1[0].println(line.substring(2));
+				out1[0].println(chatMessage);
 				out1[0].flush();
-				out1[1].println(line.substring(2)); 
+				out1[1].println(chatMessage); 
 				out1[1].flush(); 
 			}
 			case 3:{
-				out1[0].println(line.substring(2));
+				out1[0].println(chatMessage);
 				out1[0].flush();
-				out1[1].println(line.substring(2)); 
+				out1[1].println(chatMessage); 
 				out1[1].flush(); 
-				out0[0].println(line.substring(2));
+				out0[0].println(chatMessage);
 				out0[0].flush();
-				out0[1].println(line.substring(2)); 
+				out0[1].println(chatMessage); 
 				out0[1].flush();
 			}
 				
@@ -134,7 +135,7 @@ class Server {
 	}
 
 	void sendCommand(BaseMiniGameServer mg, String command) {
-
+		//Syntax for sending to client, <GameNumber><Message>
 		for (int i = 0; i < team1.length; i++) {
 			if (indexOf(team1, mg) != -1) {
 				out0[i].println(command);

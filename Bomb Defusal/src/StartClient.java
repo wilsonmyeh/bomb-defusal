@@ -42,8 +42,7 @@ public class StartClient {
 		while(true)
 		{
 			try {
-				String printThisToGUI = br.readLine();
-				bc.getChat().addText(printThisToGUI);
+				bc.routeCommand(br.readLine());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
