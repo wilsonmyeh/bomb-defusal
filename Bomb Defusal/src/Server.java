@@ -214,7 +214,7 @@ class Server {
 
 	void sendCommand(BaseMiniGameServer mg, String command) {
 		//Syntax for sending to client, <GameNumber><Message>
-		for (int i = 0; i < team1.length; i++) {
+		for (int i = 0; i < 2; i++) {
 			if (indexOf(team1, mg) != -1) {
 				out0[i].println(command);
 				out0[i].flush();
