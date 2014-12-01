@@ -56,15 +56,15 @@ class Server {
 			} catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-			team0[0] = new FindTheLocationServer();
-			team0[1] = new LightServer();
-			team0[2] = new CutTheWireServer();
-			team0[3] = new LogicGameServer();
+			team0[0] = new FindTheLocationServer(this);
+			team0[1] = new LightServer(this);
+			team0[2] = new CutTheWireServer(this);
+			team0[3] = new LogicGameServer(this);
 
-			team1[0] = new FindTheLocationServer();
-			team1[1] = new LightServer();
-			team1[2] = new CutTheWireServer();
-			team1[3] = new LogicGameServer();
+			team1[0] = new FindTheLocationServer(this);
+			team1[1] = new LightServer(this);
+			team1[2] = new CutTheWireServer(this);
+			team1[3] = new LogicGameServer(this);
 			//"Kicks" everyone to lobby to start the game
 			out0[0].println("5");
 			out0[1].println("5");
@@ -214,7 +214,7 @@ class Server {
 
 	void sendCommand(BaseMiniGameServer mg, String command) {
 		//Syntax for sending to client, <GameNumber><Message>
-		for (int i = 0; i < team1.length; i++) {
+		for (int i = 0; i < 2; i++) {
 			if (indexOf(team1, mg) != -1) {
 				out0[i].println(command);
 				out0[i].flush();
