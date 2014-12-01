@@ -58,15 +58,21 @@ class Server {
 					e.printStackTrace();
 				}
 			}
-			// Start the game, assign each client a team# and role
+			//5 second wait to start
+			Thread.sleep(5000);
+			//"Kicks" everyone to lobby to start the game
+			out0[0].println("5");
+			out0[1].println("5");
+			out1[0].println("5");
+			out1[1].println("5");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
 
-	void kick(int team) { //Let the kicking team start. If can kick other team, kick other team. If can't kick other team, kick kicking team.
-		if(team == 0) {
+	void kick(int team) {	//Let the kicking team start the minigame.
+		if(team == 0) {		//If can kick other team, kick other team. If can't kick other team, kick kicking team.
 			for(int i = 0;i < team0.length;i++) {
 				if(team0[i].active && team0[i].kickable) {
 					team0[0].println("5");
