@@ -129,7 +129,7 @@ abstract class BaseClient extends JFrame
 		} catch(InterruptedException e) {
 			e.printStackTrace();
 		}
-		getCardLayout().show(this, "Lobby");
+		getCardLayout().show(getMainpanel(), "Lobby");
 	}
 	
 	public void victory(){
