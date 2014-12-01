@@ -18,13 +18,13 @@ class LightServer extends BaseMiniGameServer {
 	public LightServer() {
 		lights = new boolean[6];
 		for(int i = 0;i < lights.length;i++)
-			lights[i] = (rand.nextInt() % 2) == 1;
+			lights[i] = (Math.abs(rand.nextInt()) % 2) == 1;
 		
 		buttons = new byte[6];
 		for(byte i = 0;i < buttons.length;i++)
 			buttons[i] = i;
 		for(int i = 0;i < 100;i++)
-			swap(buttons,rand.nextInt() % 6,rand.nextInt() % 6);
+			swap(buttons,Math.abs(rand.nextInt()) % 6,Math.abs(rand.nextInt()) % 6);
 		
 		/*
 		pressure = 0;

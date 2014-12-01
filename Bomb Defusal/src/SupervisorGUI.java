@@ -33,7 +33,12 @@ public class SupervisorGUI extends BaseClient{
 		jpLightGame_Sup = new LightSupervisor(this);
 		jpCutWireGame_Sup = new CutTheWireSupervisor(this);
 		jpFindLocationGame_Sup = new FindTheLocationSupervisor(this);
-		jpLogicGame_Sup = new LogicGameSupervisor(this);
+		try {
+			jpLogicGame_Sup = new LogicGameSupervisor(this);
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		//Populate gameClients array
 		// 0=FindTheLocation,
@@ -62,7 +67,12 @@ public class SupervisorGUI extends BaseClient{
 		mainPanel.add(jpLogicGame_Sup,"LogicGame_Supervisor");
 		
 		//for logic game
-		jplogicRestart_Sup = new LogicGameRestartSupervisor();
+		try {
+			jplogicRestart_Sup = new LogicGameRestartSupervisor();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		mainPanel.add(jplogicRestart_Sup,"LogicRestart_Sup");
 	
 		

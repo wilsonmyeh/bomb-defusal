@@ -196,7 +196,7 @@ class Server {
 
 	// ends the game, displays winner
 	void notifyVictor() {
-
+		
 	}
 
 	void sendCommand(BaseMiniGameServer mg, String command) {
