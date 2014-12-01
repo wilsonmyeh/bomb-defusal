@@ -4,8 +4,6 @@ import java.awt.CardLayout;
 import java.io.IOException;
 import java.net.Socket;
 
-import javafx.scene.paint.Color;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPanel;

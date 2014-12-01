@@ -5,7 +5,6 @@ class LogicGameServer extends BaseMiniGameServer{
 	Random rand;
 	int randomNum;
 	
-	@Override
 	LogicGameServer(){
 		rand = new Random();
 		randomNum = rand.nextInt(10);
@@ -17,7 +16,7 @@ class LogicGameServer extends BaseMiniGameServer{
 			sendCommand("Win");
 		}
 		else if(command.startsWith("Reset")){
-			temp = rand.nextInt(10);
+			int temp = rand.nextInt(10);
 			while(temp == randomNum)
 				temp = rand.nextInt(10);
 			randomNum = temp;

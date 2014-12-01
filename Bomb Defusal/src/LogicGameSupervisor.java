@@ -12,8 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Random;
 
-import javafx.scene.control.Cell;
-
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -241,7 +239,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 	public void parseCommand(String command) {
 		// TODO Auto-generated method stub
 		if(command.startsWith("Win")){
-			switchToLobby();
+			bc.switchToLobby();
 		}
 		else if(command.startsWith("Random")){
 			String [] temp = command.split(" ");
