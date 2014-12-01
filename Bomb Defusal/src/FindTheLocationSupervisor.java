@@ -75,7 +75,7 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 			imageIndex = rand.nextInt(5);
 			currentImageIndex = imageIndex;
 			imageIndexStr = String.valueOf(imageIndex);
-			imageLocation = imageIndexStr + ".jpg";
+			imageLocation = "Assets/Location/" + imageIndexStr + ".jpg";
 			image = new ImageIcon(imageLocation).getImage(); 
 		}
 		else{
@@ -87,7 +87,7 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 				else{
 					currentImageIndex = imageIndex;
 					imageIndexStr = String.valueOf(imageIndex);
-					imageLocation = imageIndexStr + ".jpg";
+					imageLocation = "Assets/Location/" + imageIndexStr + ".jpg";
 					image = new ImageIcon(imageLocation).getImage();
 				}
 			}
