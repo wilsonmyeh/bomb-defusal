@@ -1,21 +1,37 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 class FindTheLocationOperator extends BaseMiniGameClient{
 	private final int GAME_ID = 0;
-	private BaseClient bc;
 	private JButton analyze;
 	private int percentage;
-	private JLabel percentLabel;
 	
 	FindTheLocationOperator(BaseClient bc){
 		super(bc);
 		percentage = 0;
-		percentLabel = new JLabel("--%");
+		analyze = new JButton("Analyze");
+		analyze.setAlignmentX(CENTER_ALIGNMENT);
+		
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		add(Box.createVerticalStrut(300));
+		add(analyze);
+		
+		analyze.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				bc.sendCommand(bc.team + GAME_ID + "analyze");
+			}
+			
+		});
 	}
 	
 	public void paintComponent(Graphics g){

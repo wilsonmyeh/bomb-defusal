@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Scanner;
+import java.util.Vector;
 
 public class Database {
 	private static Connection conn;
@@ -32,7 +32,38 @@ public class Database {
 		}
 	}
 	
-	//public void 
+	public static Vector<Entry> getRecords(){
+		//SELECT team_name, time FROM scores ORDER BY time ASC LIMIT 10;
+		Statement statement = null;
+		ResultSet entrySet = null;
+		Vector<Entry> entries = new Vector<Entry>();
+		try{
+			statement = conn.createStatement();
+			entrySet = statement.executeQuery("SELECT team_name, time FROM scores ORDER BY time ASC LIMIT 10");
+			entrySet.next();
+			for(int i = 0; i < 10; i++){
+				if(!entrySet.isAfterLast()){
+					String teamName = entrySet.getString(1);
+					int time = entrySet.getInt(2);
+					entries.add(new Entry(teamName, time));
+					entrySet.next();
+				}
+			}
+		}catch(SQLException sqle){
+			sqle.printStackTrace();
+		}
+		return entries;
+	}
 	
 	
+}
+
+class Entry{
+	public String teamName;
+	public int time;
+	
+	Entry(String teamName, int time){
+		this.teamName = teamName;
+		this.time = time;
+	}
 }
