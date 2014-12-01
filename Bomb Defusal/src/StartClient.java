@@ -42,7 +42,10 @@ public class StartClient {
 		while(true)
 		{
 			try {
-				bc.routeCommand(br.readLine());
+				String line = br.readLine();
+				if(line != null){
+					bc.routeCommand(br.readLine());
+				}
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

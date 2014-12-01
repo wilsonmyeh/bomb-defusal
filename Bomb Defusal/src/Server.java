@@ -189,9 +189,14 @@ class Server {
 	}
 
 	boolean checkWin(BaseMiniGameServer[] team) {
-		for (int i = 0; i < team.length; i++)
-			if (!team[i].solved)
+		for (int i = 0; i < team.length; i++){
+			if(team[i] == null){
 				return false;
+			}
+			else if (!team[i].solved){
+				return false;
+			}
+		}
 		return true;
 	}
 
@@ -242,7 +247,9 @@ class Server {
 			while (!checkWin(team0) && !checkWin(team1)) {
 				try {
 					String line = br.readLine();
-					parse(line);
+					if(line != null){
+						parse(line);
+					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
