@@ -18,7 +18,7 @@ import javax.swing.border.Border;
 import javax.swing.border.TitledBorder;
 
 public class CutTheWireOperator extends BaseMiniGameClient {
-
+	private final int GAME_ID = 2;
 	JLabel[] wires;
 	JLabel timer;
 	int secondsLeft;
