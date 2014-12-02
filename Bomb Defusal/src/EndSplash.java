@@ -19,6 +19,7 @@ public class EndSplash extends JPanel{
 	private JPanel entryPanel;
 	private JLabel myScore;
 	private boolean supervisor;
+	private boolean set;
 	
 	private JPanel endMessagePanel;
 	private JLabel endMessage;
@@ -84,23 +85,25 @@ public class EndSplash extends JPanel{
 	}
 	
 	public void setWinner(int winner, int timeMS){
-		this.winner = winner;
-		this.timeMS = timeMS;
-		if(thisTeam == winner){
-			myScore.setText("Score: " + timeMS/1000 + " seconds");
-			myScore.setVisible(true);
-			endMessage.setText("Congratulations! You won.");
-			if(supervisor){
-				entryInfo.setVisible(true);
-				teamName.setVisible(true);
-				sendTeamInfo.setVisible(true);
+		if(!set){
+			this.winner = winner;
+			this.timeMS = timeMS;
+			if(thisTeam == winner){
+				myScore.setText("Score: " + timeMS/1000 + " seconds");
+				myScore.setVisible(true);
+				endMessage.setText("Congratulations! You won.");
+				if(supervisor){
+					entryInfo.setVisible(true);
+					teamName.setVisible(true);
+					sendTeamInfo.setVisible(true);
+				}
 			}
-		}
-		else{
-			endMessage.setText("You didn't make it. Better luck next time!");
-		}
+			else{
+				endMessage.setText("You didn't make it. Better luck next time!");
+			}
 		
-		populateRecords(Database.getRecords());
+			populateRecords(Database.getRecords());
+		}
 	}
 	
 	public void populateRecords(Vector<Entry> recordsVector){
@@ -110,6 +113,7 @@ public class EndSplash extends JPanel{
 			records.add(winner);
 		}
 		records.add(Box.createVerticalGlue());
+		set = true;
 	}
 	
 	public static void main(String[] args){
