@@ -60,10 +60,10 @@ public class StartClient {
 	public static void main(String[] args) throws InterruptedException, IOException{
 		//wait for server to assign
 		Scanner scan = new Scanner(System.in); 
-		//System.out.println("IP?");
-		//String ip = scan.nextLine(); 
+		System.out.println("IP?");
+		String ip = scan.nextLine(); 
 		//System.out.println("Port?");
 		//int port = scan.nextInt(); 
-		new StartClient("localhost",3469); 
+		new StartClient(ip,3469); 
 	}
 }
