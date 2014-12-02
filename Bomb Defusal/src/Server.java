@@ -81,39 +81,7 @@ class Server {
 		}
 
 	}
-
-	void kick(int team, int game) {	//Let the kicking team start the minigame.
-		if(team == 0) {		//If can kick other team, kick other team. If can't kick other team, kick kicking team.
-
-			if(team0[game].active && team0[game].kickable) {
-				out0[0].println("5");
-				out0[0].flush();
-				out0[1].println("5");
-				out0[1].flush();
-			}
-			else if(team0[game].active) {
-				out1[0].println("5");
-				out1[0].flush();
-				out1[1].println("5");
-				out1[1].flush();
-			}
-		}
-		else if(team == 1) {
-			if(team1[game].active && team1[game].kickable) {
-				out1[0].println("5");
-				out1[0].flush();
-				out1[1].println("5");
-				out1[1].flush();
-			}
-			else if(team1[game].active){
-				out0[0].println("5");
-				out0[0].flush();
-				out0[1].println("5");
-				out0[1].flush();
-			}
-		}
-	}
-
+	/*
 	void gamesAvailable(int teamNumber) { //Returns 4 character string.
 		String temp = "";					//K=Kickable, U=Unavailble, A=Availble
 		for (int i = 0; i < 4; i++) {
@@ -146,7 +114,7 @@ class Server {
 			out1[1].println(6+temp);
 			out1[1].flush();
 		}
-	}
+	}*/
 
 	void parse(String line) { // <Team#><Game#><Content> (Game#=4 refers to chat,
 		// Game#=5 refers to kick, Game#=6 refers to checkGamesAvailable, Game#=8 refers to starting a game)
@@ -270,14 +238,14 @@ class Server {
 
 		}
 	}
-
+	/*
 	int indexOf(BaseMiniGameServer[] a, BaseMiniGameServer t) {
 		for (int i = 0; i < a.length; i++) {
 			if (a[i] == t)
 				return i;
 		}
 		return -1;
-	}
+	}*/
 
 	class ServerThread extends Thread { // Just listens, no printing
 		private Socket s;
