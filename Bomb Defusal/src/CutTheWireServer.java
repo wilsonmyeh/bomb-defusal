@@ -11,6 +11,10 @@ class CutTheWireServer extends BaseMiniGameServer {
 	}
 
 	void parseCommand(String command) {
-
+		if(command.contains("Win")){
+			sendCommand(GAME_ID + "Win");
+			solved = true;
+			active = false;			
+		}
 	}
 }
