@@ -20,7 +20,7 @@ abstract class BaseClient extends JFrame
 	public String[] gamePanelNames = new String[4];
 	public EndSplash endSplash;
 
-
+	JPanel jpLobby;
 	CardLayout mainCardLayout;
 	JPanel mainPanel;
 	
@@ -135,6 +135,9 @@ abstract class BaseClient extends JFrame
 	public CardLayout getCardLayout(){
 		return mainCardLayout;
 	}
+	public JPanel getLobby(){
+		return jpLobby;
+	}
 	
 	public void switchToLobby(){
 		sendCommand("6");
@@ -162,5 +165,6 @@ abstract class BaseClient extends JFrame
 	public void switchtoEndSplash(){
 		mainCardLayout.show(mainPanel, "endSplash");
 	}
+	
 }
 
