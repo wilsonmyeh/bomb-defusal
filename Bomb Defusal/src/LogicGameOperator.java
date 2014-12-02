@@ -236,7 +236,7 @@ class LogicGameOperator extends BaseMiniGameClient{
 		else if(command.startsWith("Reset")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
-			StartClient.bc.mainCardLayout.show(StartClient.bc.getMainpanel(),"LogicRestart_Ope");
+			StartClient.bc.getCardLayout().show(StartClient.bc.getMainpanel(),"LogicRestart_Ope");
 			this.repaint();
 			System.out.println("Operator receive reset: " + randomNum);
 		}
