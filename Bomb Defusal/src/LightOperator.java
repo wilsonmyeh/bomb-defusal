@@ -58,8 +58,9 @@ class LightOperator extends BaseMiniGameClient {
 	
 	@Override
 	public void paintComponent(Graphics g){
-		super.paintComponent(g);
+		
 		g.drawImage(background, 0, 0, null);
+		super.paintComponent(g);
 	}
 
 	@Override
