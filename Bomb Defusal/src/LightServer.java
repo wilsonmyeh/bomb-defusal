@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 class LightServer extends BaseMiniGameServer {
@@ -26,7 +27,6 @@ class LightServer extends BaseMiniGameServer {
 			buttons[i] = i;
 		for(int i = 0;i < 100;i++)
 			swap(buttons,Math.abs(rand.nextInt()) % 6,Math.abs(rand.nextInt()) % 6);
-		
 		sendLights();
 		/*
 		pressure = 0;
@@ -48,6 +48,7 @@ class LightServer extends BaseMiniGameServer {
 		else if(command.startsWith("LIGHT")) { //LIGHT <button>
 			String[] data = command.split(" ");
 			int light = buttons[Integer.parseInt(data[1])];
+			System.out.println(light);
 			lights[light] = !lights[light]; //Toggles light and adjacent lights
 			if(light != 0)
 				lights[light-1] = !lights[light-1];
@@ -67,19 +68,16 @@ class LightServer extends BaseMiniGameServer {
 				checkValveWin();
 		}
 		*/
-		
-		else if(command.startsWith("WIN")) {
-			solved = true;
-			active = false;
-			timer.interrupt();
-		}
 	}
 	
 	void checkLightWin() {
 		for(int i = 0;i < lights.length;i++)
 			if(!lights[i])
 				return;
-		sendCommand(GAME_ID + "LIGHT WIN");
+		sendCommand(GAME_ID + "WIN");
+		solved = true;
+		active = false;
+		timer.interrupt();
 	}
 	
 	void sendLights() {
@@ -104,8 +102,8 @@ class LightServer extends BaseMiniGameServer {
 	*/
 	
 	void swap(int[] arr, int a, int b) {
-		arr[a] += arr[b];
-		arr[b] = (arr[a] - arr[b]);
-		arr[a] -= arr[b];
+		int temp = arr[a];
+		arr[a] = arr[b];
+		arr[b] = temp;
 	}
 }

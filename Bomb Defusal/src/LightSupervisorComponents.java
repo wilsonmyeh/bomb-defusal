@@ -1,10 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-/*
-import javafx.scene.media.*;
-*/
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -34,6 +30,11 @@ class LightSupervisorComponents extends BaseMiniGameClient {
 
 	@Override
 	public void parseCommand(String command) {
+		if(command.startsWith("WIN")) {
+			System.out.println("W E W O N B O Y S");
+			Lobby.DisableLightGame();
+			bc.switchToLobby();
+		}
 		if(command.startsWith("LIGHT")) {
 			String[] inp = command.split(" ");
 			for(int i = 0;i < inp[1].length();i++) {
