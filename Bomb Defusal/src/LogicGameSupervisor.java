@@ -79,7 +79,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		
 		stevenS[4] = "Steven: Haohan and Wilson are not lying.";
 		wilsonS[4] = "Wilson: Haohan is not the bomber";
-		haohanS[4] = "Haohan: Wilson build the bomb.";
+		haohanS[4] = "Haohan: Steven didn't build the bomb.";
 		blakeS[4] = "Blake: I didn't built the bomb";
 		answer[4] = "Blake";
 		
@@ -89,10 +89,10 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		blakeS[5] = "Blake: All I do is coding";
 		answer[5] = "Steven";
 		
-		stevenS[6] = "Steven: Haohan and Wilson are not lying.";
+		stevenS[6] = "Steven: I am innocent!";
 		wilsonS[6] = "Wilson: Haohan is not the bomber";
-		haohanS[6] = "Haohan: Wilson build the bomb.";
-		blakeS[6] = "Blake: I didn't built the bomb";
+		haohanS[6] = "Haohan: I saw Blake coding all the time.";
+		blakeS[6] = "Blake: Haohan and wilson are not bomber.";
 		answer[6] = "Blake";
 		
 		stevenS[7] = "Steven: I don't know how to build a bomb.";
