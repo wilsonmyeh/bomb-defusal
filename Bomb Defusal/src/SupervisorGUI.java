@@ -16,7 +16,7 @@ public class SupervisorGUI extends BaseClient{
 
 	
 	SupervisorGUI(int teamNum, Socket s) throws InterruptedException, IOException{
-		super(s); 
+		super(s, teamNum); 
 		this.setSize(800,500);
 		this.setLayout(new BorderLayout());
 		mySocket = s;
