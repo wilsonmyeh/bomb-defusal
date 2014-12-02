@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 
 public class SupervisorGUI extends BaseClient{
-	private JPanel jpLobby, jpInstruction;
+	private JPanel jpInstruction;
 	private BaseMiniGameClient jpLightGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
 	private JPanel jplogicRestart_Sup;//for logic game
 	int teamNum;

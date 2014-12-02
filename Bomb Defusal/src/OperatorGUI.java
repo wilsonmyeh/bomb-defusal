@@ -2,6 +2,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.io.IOException;
 import java.net.Socket;
+import java.util.Random;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -30,7 +31,8 @@ public class OperatorGUI extends BaseClient{
 		jpInstruction = new Instruction("Operator",teamNumStr);
 		
 		jpLightGame_Ope = new LightOperator(this);
-		jpCutWireGame_Ope = new CutTheWireOperator(this);
+		Random rand = new Random();
+		jpCutWireGame_Ope = new CutTheWireOperator(this, rand.nextInt(5));
 		jpFindLocationGame_Ope = new FindTheLocationOperator(this);
 		jpLogicGame_Ope = new LogicGameOperator(this);
 		jpWaiting = new WaitingRoom();

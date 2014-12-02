@@ -24,7 +24,7 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 	private int currentY;
 	private JButton finalize;
 	
-	public FindTheLocationSupervisor(BaseClient bc){
+	public FindTheLocationSupervisor(final BaseClient bc){
 		super(bc);
 		rand = new Random();
 		this.addMouseListener(new MouseAdapter(){
@@ -128,6 +128,7 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 	public void parseCommand(String command) {
 		if(command.startsWith("win")){
 			System.out.println("won");
+			Lobby.DisableLogicGame();
 			bc.switchToLobby();
 		}
 		else if(command.startsWith("reset")){
