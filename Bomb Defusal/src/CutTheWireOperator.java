@@ -179,8 +179,8 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	{
 		super.paintComponent(g); 
 		Random rand = new Random();
-		int puzzleNum = rand.nextInt(5)+1; 
-		correctAnswer = puzzleNum; 
+		int puzzleNum = rand.nextInt(5); 
+		correctAnswer = puzzleNum+1; 
 		for(int i = 0; i < 5; i++)
 		{
 			wires[i].setBackground(colorSchemes.get(puzzleNum)[i]);
