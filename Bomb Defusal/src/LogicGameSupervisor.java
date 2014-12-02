@@ -246,6 +246,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		else if(command.startsWith("Random")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
+			this.repaint();
 			System.out.println("Supervisor receive random: " + randomNum);
 		}
 		else if(command.startsWith("Reset")){
