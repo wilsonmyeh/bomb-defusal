@@ -129,18 +129,15 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	}
 
 	// Randomizes color scheme
-	public void setButtons() {
-	Random rand = new Random(); 
-	int randomPick = rand.nextInt(5); 
-	bc.sendCommand(GAME_ID+"ANSWER"+randomPick);
+	public void setButtons(int puzzleNum) {
 	for(int i = 0; i < 5; i++)
 	{
 		wires[i].addMouseListener(new myMouseAdapter());
 	}
 	for(int i = 0; i < 5; i++)
 	{
-		wires[i].setBackground(colorSchemes.get(randomPick)[i]);
-		wires[i].setForeground(colorSchemes.get(randomPick)[i]); 
+		wires[i].setBackground(colorSchemes.get(puzzleNum)[i]);
+		wires[i].setForeground(colorSchemes.get(puzzleNum)[i]); 
 	}
 	}
 
@@ -161,7 +158,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	
 	public void parseCommand(String command)
 	{
-
+		
 	}
 	/*public static void main(String[] args) {
 
