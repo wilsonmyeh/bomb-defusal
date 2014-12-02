@@ -100,10 +100,6 @@ class LogicGameOperator extends BaseMiniGameClient{
 				haohanS[9] = "Haohan: Wilson is lying, he never start it.";
 				blakeS[9] = "Blake: I believe Haohan is telling the truth";
 				answer[9] = "Wilson";
-				
-				//randomNum = rand.nextInt(10);
-				
-		
 	}
 
 
@@ -165,18 +161,11 @@ class LogicGameOperator extends BaseMiniGameClient{
 		 if(answer[randomNum].equals(name)){
   			rule1 = "Congrat! Bomb defused! ";
   			this.repaint();
-  			//send signal
-  			
+  			//send signal		
   			bc.sendCommand(GAME_ID + "Win");
-
-  			
-
   		}
   		else if(!answer[randomNum].equals(name)){	
-  			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Ope");
-  			//	restart();
-
-			bc.sendCommand(GAME_ID + "Reset");
+  			bc.sendCommand(GAME_ID + "Reset");
 		}
 	 }
 	 /*
@@ -236,8 +225,8 @@ class LogicGameOperator extends BaseMiniGameClient{
 		else if(command.startsWith("Reset")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
-			StartClient.bc.getCardLayout().show(StartClient.bc.getMainpanel(),"LogicRestart_Ope");
 			this.repaint();
+			StartClient.bc.getCardLayout().show(StartClient.bc.getMainpanel(),"LogicRestart_Ope");
 			System.out.println("Operator receive reset: " + randomNum);
 		}
 		else if(command.startsWith("Win")){

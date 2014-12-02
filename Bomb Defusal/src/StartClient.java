@@ -17,6 +17,7 @@ public class StartClient {
 	private PrintWriter pw;
 	private BufferedReader br;
 	
+	
 	//here goes the connection to the server
 	StartClient(String ip, int port) throws InterruptedException, IOException{
 		//need t0 connect  to server, first to connect: team 1 supervisor, then team 2 supervisor
