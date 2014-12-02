@@ -54,7 +54,7 @@ class FindTheLocationOperator extends BaseMiniGameClient{
 			repaint();
 		}
 		else if(command.startsWith("win")){
-			bc.switchToLobby();
+			bc.switchToWaitingRoom();
 		}
 	}
 	
