@@ -27,6 +27,7 @@ class LightServer extends BaseMiniGameServer {
 		for(int i = 0;i < 100;i++)
 			swap(buttons,Math.abs(rand.nextInt()) % 6,Math.abs(rand.nextInt()) % 6);
 		
+		sendLights();
 		/*
 		pressure = 0;
 		threshold = rand.nextInt() % (MAX_PRESSURE/2) + (MAX_PRESSURE/4);
