@@ -10,8 +10,8 @@ class LightSupervisorComponents extends BaseMiniGameClient {
 	
 	boolean[] lights = new boolean[6];
 	JLabel[] lightLabels = new JLabel[6];
-	ImageIcon lightOff = new ImageIcon("Assets\\Light\\LightBulbOff.png");
-	ImageIcon lightOn = new ImageIcon("Assets\\Light\\LightBulbOn.png");
+	ImageIcon lightOff = new ImageIcon("Assets/Light/LightBulbOff.png");
+	ImageIcon lightOn = new ImageIcon("Assets/Light/LightBulbOn.png");
 	
 	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\LightSFX.mp3"));
 	
@@ -19,7 +19,6 @@ class LightSupervisorComponents extends BaseMiniGameClient {
 		super(bc);
 		setLayout(new GridLayout());
 		for(int i = 0;i < lightLabels.length;i++) {
-			lightLabels[i] = new JLabel("WHY"+i);
 			lightLabels[i].setIcon(lightOn);
 			add(lightLabels[i],i);
 		}
@@ -31,7 +30,6 @@ class LightSupervisorComponents extends BaseMiniGameClient {
 	@Override
 	public void parseCommand(String command) {
 		if(command.startsWith("WIN")) {
-			System.out.println("W E W O N B O Y S");
 			Lobby.DisableLightGame();
 			bc.switchToLobby();
 		}

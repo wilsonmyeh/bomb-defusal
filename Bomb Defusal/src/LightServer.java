@@ -48,7 +48,6 @@ class LightServer extends BaseMiniGameServer {
 		else if(command.startsWith("LIGHT")) { //LIGHT <button>
 			String[] data = command.split(" ");
 			int light = buttons[Integer.parseInt(data[1])];
-			System.out.println(light);
 			lights[light] = !lights[light]; //Toggles light and adjacent lights
 			if(light != 0)
 				lights[light-1] = !lights[light-1];

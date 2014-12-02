@@ -19,7 +19,7 @@ class LightOperatorComponents extends BaseMiniGameClient {
 	private final int GAME_ID = 1;
 	
 	JButton[] buttons = new JButton[6];
-	ImageIcon button = new ImageIcon("Assets\\Light\\Button.png");
+	ImageIcon button = new ImageIcon("Assets/Light/Button.png");
 	
 	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\ButtonSFX.mp3"));
 	
@@ -55,7 +55,6 @@ class LightOperatorComponents extends BaseMiniGameClient {
 	@Override
 	public void parseCommand(String command) {
 		if(command.startsWith("WIN")) {
-			System.out.println("W E W O N B O Y S");
 			bc.switchToWaitingRoom();
 		}
 	}
