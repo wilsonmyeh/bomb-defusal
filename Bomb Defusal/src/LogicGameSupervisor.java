@@ -219,6 +219,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		// TODO Auto-generated method stub
 		if(command.startsWith("Win")){
 			bc.switchToLobby();
+			Lobby.DisableLogicGame();
 			System.out.println("Supervisor receive win");
 		}
 		else if(command.startsWith("Random")){

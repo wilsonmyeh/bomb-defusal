@@ -8,7 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Lobby extends JPanel{
-	private JButton jbCutTheWire,jbFindLocation,jbLightGame,jbLogicGame,jbBack;
+	private static JButton jbLogicGame,jbCutTheWire,jbFindLocation,jbLightGame;
+	private JButton jbBack;
 
 
 	public Lobby(){
@@ -85,16 +86,16 @@ public class Lobby extends JPanel{
 	}
 
 	
-	public void DisableCutTheWire(){
+	public static void DisableCutTheWire(){
 		jbCutTheWire.setEnabled(false);
 	}
-	public void DisableFindLocation(){
+	public static void DisableFindLocation(){
 		jbFindLocation.setEnabled(false);
 	}
-	public void DisablLightGame(){
+	public static void DisablLightGame(){
 		jbLightGame.setEnabled(false);
 	}
-	public void DisableLogicGame(){
+	public static void DisableLogicGame(){
 		jbLogicGame.setEnabled(false);
 	}
 
