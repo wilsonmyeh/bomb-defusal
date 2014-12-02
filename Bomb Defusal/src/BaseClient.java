@@ -116,6 +116,12 @@ abstract class BaseClient extends JFrame
 				mainCardLayout.show(mainPanel, gamePanelNames[game]);
 				
 				//TODO: Switch card to proper game
+				break; 
+			}
+			
+			default: {
+				System.out.println("Unroutable");
+				break; 
 			}
 		}
 	}
