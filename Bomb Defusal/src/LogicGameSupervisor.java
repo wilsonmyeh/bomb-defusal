@@ -30,6 +30,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 	static int randomNum;
 	static String rule1, rule2;
 	boolean firstTime = true;
+	Random rand;
 	
 	LogicGameSupervisor(BaseClient bc) throws IOException{
 		super(bc);
@@ -182,7 +183,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
   			//rule2 = "";
   			//this.repaint();
   			//restart();
-  			bc.sendCommand(GAME_ID + "Reset");
+			bc.sendCommand(GAME_ID + "Reset");
   			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Sup");
   			//restart();
 		}
@@ -240,16 +241,19 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		// TODO Auto-generated method stub
 		if(command.startsWith("Win")){
 			bc.switchToLobby();
+			System.out.println("Supervisor receive win");
 		}
 		else if(command.startsWith("Random")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
+			System.out.println("Supervisor receive random: " + randomNum);
 		}
 		else if(command.startsWith("Reset")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
 			StartClient.bc.mainCardLayout.show(StartClient.bc.getMainpanel(),"LogicRestart_Sup");
 			this.repaint();
+			System.out.println("Supervisor receive reset"  + randomNum);
 		}
 	}
 
