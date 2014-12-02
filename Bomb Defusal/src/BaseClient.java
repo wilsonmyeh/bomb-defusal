@@ -18,6 +18,7 @@ abstract class BaseClient extends JFrame
 	protected BufferedReader br;
 	public BaseMiniGameClient[] gameClients = new BaseMiniGameClient[4];
 	public String[] gamePanelNames = new String[4];
+	public EndSplash endSplash;
 
 
 	CardLayout mainCardLayout;
@@ -29,7 +30,7 @@ abstract class BaseClient extends JFrame
 		br = null; 
 		mySocket = s; 
 		Database.initialize();
-
+		endSplash = new EndSplash(team);
 	}
 	
 	//should display warning since you've just been kicked and should move you back to lobby (query server for what should be available) 
@@ -104,6 +105,8 @@ abstract class BaseClient extends JFrame
 			}
 			
 			case 7:{
+				long time = Long.parseLong(command.substring(2));
+				//endSplash.
 				if(command.charAt(1)-48 == team)
 					victory();
 				else defeat();
@@ -154,6 +157,10 @@ abstract class BaseClient extends JFrame
 	//for operator
 	public void switchToWaitingRoom(){
 		mainCardLayout.show(mainPanel, "WaitingRoom");
+	}
+	
+	public void switchtoEndSplash(){
+		mainCardLayout.show(mainPanel, "endSplash");
 	}
 }
 

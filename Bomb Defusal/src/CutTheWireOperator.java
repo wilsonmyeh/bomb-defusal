@@ -139,8 +139,8 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	}
 	for(int i = 0; i < 5; i++)
 	{
-		wires[i].setBackground(colorSchemes.get(randomPick)[i]);
-		wires[i].setForeground(colorSchemes.get(randomPick)[i]); 
+		//wires[i].setBackground(colorSchemes.get(randomPick)[i]);
+		//wires[i].setForeground(colorSchemes.get(randomPick)[i]); 
 	}
 	}
 

@@ -79,7 +79,8 @@ public class SupervisorGUI extends BaseClient{
 		add(mainPanel,BorderLayout.CENTER);
 		add(chat,BorderLayout.EAST);
 		//show instruction page
-		mainCardLayout.show(mainPanel,"Instruction");
+		mainCardLayout.show(mainPanel, "Instruction");
+		mainCardLayout.show(mainPanel, "endSplash");
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
 		setVisible(true);

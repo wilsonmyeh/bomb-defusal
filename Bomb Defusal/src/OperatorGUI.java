@@ -72,7 +72,7 @@ public class OperatorGUI extends BaseClient{
 		add(chat,BorderLayout.EAST);
 		//show instruction page
 		mainCardLayout.show(mainPanel,"Instruction");
-		
+		mainCardLayout.show(mainPanel, "endSplash");
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
 		setVisible(true);	
