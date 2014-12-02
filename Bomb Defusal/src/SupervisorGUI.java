@@ -16,7 +16,7 @@ public class SupervisorGUI extends BaseClient{
 
 	
 	SupervisorGUI(int teamNum, Socket s) throws InterruptedException, IOException{
-		super(s); 
+		super(s, teamNum); 
 		this.setSize(800,500);
 		this.setLayout(new BorderLayout());
 		mySocket = s;
@@ -24,6 +24,7 @@ public class SupervisorGUI extends BaseClient{
 		mainPanel = new JPanel();
 		jpLobby = new Lobby();
 		//create instruction
+		this.team = teamNum;
 		this.teamNum = teamNum;
 		String teamNumStr = this.teamNum + "";
 		myUserName = "Supervisor "+teamNum;

@@ -17,13 +17,14 @@ public class OperatorGUI extends BaseClient{
 	
 	// no lobby panel
 	OperatorGUI(int teamNum, Socket s) throws InterruptedException, IOException{
-		super(s); 
+		super(s , teamNum); 
 		this.setSize(800,500);
 		this.setLayout(new BorderLayout());
 		
 		mySocket = s;
 		//initiate all panels
 		mainPanel = new JPanel();
+		this.team = teamNum;
 		this.teamNum  = teamNum;
 		myUserName = "Operator "+teamNum;
 		String teamNumStr = teamNum + "";

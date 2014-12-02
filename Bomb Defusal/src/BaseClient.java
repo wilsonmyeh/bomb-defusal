@@ -24,8 +24,9 @@ abstract class BaseClient extends JFrame
 	CardLayout mainCardLayout;
 	JPanel mainPanel;
 	
-	public BaseClient(Socket s)
+	public BaseClient(Socket s, int team)
 	{
+		this.team = team;
 		pw = null;
 		br = null; 
 		mySocket = s; 
@@ -62,7 +63,7 @@ abstract class BaseClient extends JFrame
 		//System.out.println("TEAM+COMMAND"+team+command);
 		pw.println(team+command);
 		pw.flush(); 
-		//System.out.println("BaseClient->sendCommand(String) sent " + team + command);
+		System.out.println("BaseClient->sendCommand(String) sent " + team + command);
 	}
 	
 	public void routeCommand(String command){
@@ -106,10 +107,8 @@ abstract class BaseClient extends JFrame
 			
 			case 7:{
 				long time = Long.parseLong(command.substring(2));
-				//endSplash.
-				if(command.charAt(1)-48 == team)
-					victory();
-				else defeat();
+				endSplash.setWinner(command.charAt(1) - 48, (int) time);
+				
 				break; 
 			}
 			
