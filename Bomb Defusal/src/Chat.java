@@ -1,8 +1,8 @@
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+import javax.swing.AbstractAction;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -28,7 +28,7 @@ class Chat extends JPanel {
 		output = new JTextArea(100, 20); 
 		output.setEditable(false);
 		JButton send = new JButton("Send"); 
-		send.addActionListener(new ActionListener() {
+		AbstractAction submit = new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
             	int sendHere;
             	if(targetList.getSelectedItem().equals("All"))
@@ -42,7 +42,11 @@ class Chat extends JPanel {
  				myClient.sendCommand("4"+sendHere+myClient.myUserName+":"+input.getText()); //4 header indicates chat
  				input.setText(""); 
             }
-        });
+        }; 
+		send.addActionListener(submit);
+		 send.getInputMap(javax.swing.JComponent.WHEN_IN_FOCUSED_WINDOW).
+         put(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_ENTER,0), "ENTER_pressed");
+		send.getActionMap().put("ENTER_pressed", submit);
 		JScrollPane display = new JScrollPane(output);
 		JPanel container = new JPanel();
 		container.setLayout(new BorderLayout()); 
