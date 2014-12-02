@@ -134,5 +134,9 @@ class FindTheLocationServer extends BaseMiniGameServer{
 		if(command.startsWith("finalize")){
 			checkWin();
 		}
+		
+		if(command.startsWith("analyze")){
+			sendCommand(GAME_ID + "percentage " + currentPercent);
+		}
 	}
 }

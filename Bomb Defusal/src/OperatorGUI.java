@@ -44,6 +44,10 @@ public class OperatorGUI extends BaseClient{
 		gameClients[1] = jpLightGame_Ope;
 		gameClients[2] = jpCutWireGame_Ope;
 		gameClients[3] = jpLogicGame_Ope;
+		gamePanelNames[0] = "FindLocationGame_Operator"; 
+		gamePanelNames[1] = "LightGame_Operator";
+		gamePanelNames[2] = "CutWireGame_Operator";
+		gamePanelNames[3] = "LogicGame_Operator";
 		
 		mainCardLayout = new CardLayout();		
 		mainPanel = new JPanel(mainCardLayout);
