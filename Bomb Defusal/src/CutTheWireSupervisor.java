@@ -134,7 +134,7 @@ public class CutTheWireSupervisor extends BaseMiniGameClient {
 		}
 		for(int i = 0; i < 10; i++)
 		{
-			blackWires[i].setOpaque(true);; 
+			blackWires[i].setOpaque(true);
 		}
 	}
 	/*public static void main(String[] args) {
@@ -146,8 +146,10 @@ public class CutTheWireSupervisor extends BaseMiniGameClient {
 	
 	@Override
 	public void parseCommand(String command) {
-		// TODO Auto-generated method stub
-		
+		if(command.startsWith("Win")){
+			bc.switchToLobby();
+			Lobby.DisableCutTheWire();
+		}
 	}
 	
 	class rightActionListener implements ActionListener {
