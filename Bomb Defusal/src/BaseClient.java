@@ -32,7 +32,6 @@ abstract class BaseClient extends JFrame
 		br = null; 
 		mySocket = s; 
 		Database.initialize();
-		endSplash = new EndSplash(team);
 	}
 	
 	//should display warning since you've just been kicked and should move you back to lobby (query server for what should be available) 
@@ -109,7 +108,8 @@ abstract class BaseClient extends JFrame
 			case 7:{
 				long time = Long.parseLong(command.substring(2));
 				endSplash.setWinner(command.charAt(1) - 48, (int) time);
-				
+				switchtoEndSplash();
+				System.out.println("went here fam");
 				break; 
 			}
 			
@@ -117,7 +117,7 @@ abstract class BaseClient extends JFrame
 				//We can assume that only the operator will get this...
 				int game = (int)command.charAt(1)-48;
 				mainCardLayout.show(mainPanel, gamePanelNames[game]);
-				
+
 				//TODO: Switch card to proper game
 				break; 
 			}
