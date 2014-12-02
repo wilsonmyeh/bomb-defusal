@@ -17,6 +17,7 @@ public class EndSplash extends JPanel{
 	private int winner;
 	private int timeMS;
 	private JPanel entryPanel;
+	private JLabel myScore;
 	private boolean supervisor;
 	
 	private JPanel endMessagePanel;
@@ -41,6 +42,7 @@ public class EndSplash extends JPanel{
 		records.add(Box.createVerticalGlue());
 		
 		entryInfo = new JLabel("Team Name:");
+		myScore = new JLabel();
 		
 		endMessagePanel = new JPanel();
 		endMessage = new JLabel();
@@ -62,6 +64,8 @@ public class EndSplash extends JPanel{
 			}
 		});
 		
+		entryPanel.add(myScore);
+		myScore.setVisible(false);
 		entryPanel.add(entryInfo);
 		entryPanel.add(teamName);
 		entryPanel.add(sendTeamInfo);
@@ -75,6 +79,8 @@ public class EndSplash extends JPanel{
 		this.winner = winner;
 		this.timeMS = timeMS;
 		if(thisTeam == winner){
+			myScore.setText("Score: " + timeMS/1000 + " seconds");
+			myScore.setVisible(true);
 			endMessage.setText("Congratulations! You won.");
 			if(supervisor){
 				entryInfo.setVisible(true);
