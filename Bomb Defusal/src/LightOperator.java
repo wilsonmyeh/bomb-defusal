@@ -20,6 +20,8 @@ class LightOperator extends BaseMiniGameClient {
 	
 	JButton[] buttons = new JButton[6];
 	ImageIcon button = new ImageIcon("Assets\\Light\\Button.png");
+	
+	LightOperatorComponents comps;
 	Image background;
 	
 	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\ButtonSFX.mp3"));
@@ -46,7 +48,8 @@ class LightOperator extends BaseMiniGameClient {
 			e.printStackTrace();
 		}
 		setLayout(null);
-		add(new LightOperatorComponents(bc));
+		comps = new LightOperatorComponents(bc);
+		add(comps);
 		setVisible(true);
 	}
 	
@@ -59,7 +62,8 @@ class LightOperator extends BaseMiniGameClient {
 	
 	@Override
 	public void parseCommand(String command) {
-		// No parsing needed
+		comps.parseCommand(command);
+		setVisible(true);
 	}
 	
 }

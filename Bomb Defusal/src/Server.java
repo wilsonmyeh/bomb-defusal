@@ -186,6 +186,10 @@ class Server {
 		else if (ind == 4) { //CHAT
 			int target = Integer.parseInt(line.substring(2,3)); 
 			System.out.println("Server->parse(String)->ind==4 received " + line + " TARGET: "+target);
+			if(target != 3)
+			{
+				target++; 
+			}
 			String chatMessage = 4 + line.substring(3);
 			switch(target)
 			{
