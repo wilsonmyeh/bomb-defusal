@@ -17,6 +17,7 @@ public class EndSplash extends JPanel{
 	private int winner;
 	private int timeMS;
 	private JPanel entryPanel;
+	private boolean supervisor;
 	
 	private JPanel endMessagePanel;
 	private JLabel endMessage;
@@ -28,7 +29,8 @@ public class EndSplash extends JPanel{
 	private JButton sendTeamInfo;
 	
 	
-	public EndSplash(int thisTeam){
+	public EndSplash(int thisTeam, boolean supervisor){
+		this.supervisor = supervisor;
 		this.setSize(500,500);	
 		this.thisTeam = thisTeam;
 		this.setLayout(new BorderLayout());
@@ -74,9 +76,11 @@ public class EndSplash extends JPanel{
 		this.timeMS = timeMS;
 		if(thisTeam == winner){
 			endMessage.setText("Congratulations! You won.");
-			entryInfo.setVisible(true);
-			teamName.setVisible(true);
-			sendTeamInfo.setVisible(true);
+			if(supervisor){
+				entryInfo.setVisible(true);
+				teamName.setVisible(true);
+				sendTeamInfo.setVisible(true);
+			}
 		}
 		else{
 			endMessage.setText("You didn't make it. Better luck next time!");
@@ -99,9 +103,9 @@ public class EndSplash extends JPanel{
 		test.setSize(500, 500);
 		
 		Database.initialize();
-		EndSplash testPanel = new EndSplash(0);
-		testPanel.setWinner(0, 54345000);
-		test.add(testPanel);
+		//EndSplash testPanel = new EndSplash(0);
+		//testPanel.setWinner(0, 54345000);
+		//test.add(testPanel);
 		
 		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		test.setVisible(true);
