@@ -205,7 +205,6 @@ class Server {
 				out0[1].println(chatMessage); 
 				out0[1].flush();
 				break; 
-
 			}
 		} else { //if it's a game 
 			if (((int)line.charAt(0) - 48) == 0) {

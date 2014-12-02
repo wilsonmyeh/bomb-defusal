@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Random;
 import java.util.Vector;
 
 import javax.swing.BorderFactory;
@@ -50,22 +51,27 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 		wires[0].setOpaque(true);
 		wires[0].setSize(new Dimension(300, 10));
 		wires[0].setLocation(100, 110);
+		wires[0].setText("1"); 
 		wires[1] = new JLabel();
 		wires[1].setOpaque(true);
 		wires[1].setSize(new Dimension(300, 10));
 		wires[1].setLocation(100, 140);
+		wires[1].setText("2"); 
 		wires[2] = new JLabel();
 		wires[2].setOpaque(true);
 		wires[2].setSize(new Dimension(300, 10));
 		wires[2].setLocation(100, 170);
+		wires[2].setText("3"); 
 		wires[3] = new JLabel();
 		wires[3].setOpaque(true);
 		wires[3].setSize(new Dimension(300, 10));
 		wires[3].setLocation(100, 200);
+		wires[3].setText("4"); 
 		wires[4] = new JLabel();
 		wires[4].setOpaque(true);
 		wires[4].setSize(new Dimension(300, 10));
 		wires[4].setLocation(100, 230);
+		wires[4].setText("5"); 
 		timer = new JLabel();
 		Border blackline = BorderFactory.createLineBorder(Color.black);
 		TitledBorder border = BorderFactory.createTitledBorder(blackline,
@@ -108,27 +114,33 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 		add(title);
 		add(instructions); 
 		setButtons(); 
+		Color[] scheme1 = {Color.red, Color.blue, Color.yellow, Color.green, Color.cyan};//Cut the red one
+		Color[] scheme2 = {Color.red, Color.red, Color.red, Color.red, Color.red}; //Cut the second one
+		Color[] scheme3 = {Color.green, Color.yellow, Color.green, Color.yellow, Color.green}; //cut the green one
+		Color[] scheme4 = {Color.red, Color.red, Color.red, Color.blue, Color.red}; //cut the blue one
+		Color[] scheme5 = {Color.blue, Color.red, Color.blue, Color.blue, Color.blue}; //last blue one
+		colorSchemes.add(scheme1); 
+		colorSchemes.add(scheme2);
+		colorSchemes.add(scheme3);
+		colorSchemes.add(scheme4);
+		colorSchemes.add(scheme5);
 		setVisible(true);
 		
 	}
 
 	// Randomizes color scheme
 	public void setButtons() {
-	Color[] scheme1 = {Color.red, Color.blue, Color.yellow, Color.green, Color.cyan};//Cut the red one
-	Color[] scheme2 = {Color.red, Color.red, Color.red, Color.red, Color.red}; //Cut the second one
-	Color[] scheme3 = {Color.green, Color.yellow, Color.green, Color.yellow, Color.green}; //cut the green one
-	Color[] scheme4 = {Color.red, Color.red, Color.red, Color.blue, Color.red}; //cut the blue one
-	Color[] scheme5 = {Color.blue, Color.red, Color.blue, Color.blue, Color.blue}; //last blue one
-	colorSchemes.add(scheme1); 
-	colorSchemes.add(scheme2);
-	colorSchemes.add(scheme3);
+	Random rand = new Random(); 
+	int randomPick = rand.nextInt(5); 
+	bc.sendCommand(GAME_ID+"ANSWER"+randomPick);
 	for(int i = 0; i < 5; i++)
 	{
 		wires[i].addMouseListener(new myMouseAdapter());
 	}
 	for(int i = 0; i < 5; i++)
 	{
-		wires[i].setBackground(scheme3[i]);
+		wires[i].setBackground(colorSchemes.get(randomPick)[i]);
+		wires[i].setForeground(colorSchemes.get(randomPick)[i]); 
 	}
 	}
 
@@ -149,7 +161,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	
 	public void parseCommand(String command)
 	{
-		
+
 	}
 	/*public static void main(String[] args) {
 
@@ -166,6 +178,8 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 			{
 			anyWireClicked = true; 
 	        ((JComponent) e.getComponent()).setOpaque(false); 
+	        int myChoice = Integer.parseInt(((JLabel) e.getComponent()).getText()); 
+	        bc.sendCommand(GAME_ID+"CHOICE"+myChoice); 
 	        repaint();
 	        revalidate(); 
 			}

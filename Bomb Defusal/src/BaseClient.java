@@ -61,7 +61,7 @@ abstract class BaseClient extends JFrame
 		//System.out.println("TEAM+COMMAND"+team+command);
 		pw.println(team+command);
 		pw.flush(); 
-		System.out.println("BaseClient->sendCommand(String) sent " + team + command);
+		//System.out.println("BaseClient->sendCommand(String) sent " + team + command);
 	}
 	
 	public void routeCommand(String command){
