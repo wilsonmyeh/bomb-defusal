@@ -17,7 +17,7 @@ public class OperatorGUI extends BaseClient{
 	
 	// no lobby panel
 	OperatorGUI(int teamNum, Socket s) throws InterruptedException, IOException{
-		super(s); 
+		super(s,teamNum); 
 		this.setSize(800,500);
 		this.setLayout(new BorderLayout());
 		

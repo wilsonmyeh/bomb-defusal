@@ -24,12 +24,13 @@ abstract class BaseClient extends JFrame
 	CardLayout mainCardLayout;
 	JPanel mainPanel;
 	
-	public BaseClient(Socket s)
+	public BaseClient(Socket s,int teamNum)
 	{
 		pw = null;
 		br = null; 
 		mySocket = s; 
 		Database.initialize();
+		team = teamNum;
 		endSplash = new EndSplash(team);
 	}
 	
