@@ -105,7 +105,7 @@ public class CutTheWireSupervisor extends BaseMiniGameClient {
 			colorWires(colorSchemes.get(0)); 
 			break;
 		case 2:
-			bottom.setText("HINT: The middle index number of a 5 element array.");
+			bottom.setText("HINT: 5-4-3+3+4-3");
 			colorWires(colorSchemes.get(1)); 
 			break;
 		case 3:
