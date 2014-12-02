@@ -248,7 +248,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		else if(command.startsWith("Reset")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
-			StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Sup");
+			StartClient.bc.mainCardLayout.show(StartClient.bc.getMainpanel(),"LogicRestart_Sup");
 			this.repaint();
 		}
 	}
