@@ -21,7 +21,7 @@ class Server {
 	ServerThread[] players = new ServerThread[4];
 
 	int playerCount;// check for connection
-	long timerTeam1, timerTeam2;
+	long timerStart, timerEnd, timerResult;
 	int team1Status, team2Status;// -1=lose, 0=in progress, 1=win
 
 	public Server(int port) {
@@ -74,6 +74,8 @@ class Server {
 			out1[0].flush();
 			out1[1].println("5");
 			out1[1].flush();
+			
+			timerStart = System.currentTimeMillis();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -166,8 +168,11 @@ class Server {
 		else if(ind == 6) {
 			int team = (int) line.charAt(0) - 48;
 			BaseMiniGameServer[] select = (team==0) ? team0 : team1;
-			if(checkWin(select))
-				notifyVictor(team);
+			if(checkWin(select)){
+				timerEnd = System.currentTimeMillis();
+				timerResult = timerEnd - timerStart;
+				notifyVictor(team, timerResult);
+			}
 			gamesAvailable(team);
 		}
 		else if(ind == 5) { //Kick Format: <YourTeam#><5><Game#>
@@ -207,7 +212,7 @@ class Server {
 				break; 
 			}
 		} else { //if it's a game 
-			if (((int)line.charAt(0) - 48) == 0) {
+			if (line.charAt(0) == 0) {
 				team0[ind].parseCommand(line.substring(2));
 			} else {
 				team1[ind].parseCommand(line.substring(2));
@@ -229,11 +234,11 @@ class Server {
 	}
 
 	// ends the game, displays winner
-	void notifyVictor(int team) {
-		out0[0].println("7"+team);
-		out0[1].println("7"+team);
-		out1[0].println("7"+team);
-		out1[1].println("7"+team);
+	void notifyVictor(int team, long time) {
+		out0[0].println("7"+team+time);
+		out0[1].println("7"+team+time);
+		out1[0].println("7"+team+time);
+		out1[1].println("7"+team+time);
 	}
 
 	void sendCommand(BaseMiniGameServer mg, String command) {
