@@ -37,7 +37,7 @@ class Instruction extends JPanel {
 			jtaInstruction.setText(jtaInstruction.getText() + "Use your mouse to find the secret location on the picture."+ "\n"+ "When the operator gives you the go-ahead,"+ "\n"+ "click finalize, and your location will be selected. "+ "\n"+ "If correct, you will win the game.  "+ "\n"+ "If not, you will have to start over." + "\n");
 			
 			jtaInstruction.setText(jtaInstruction.getText() + "CUT THE WIRE" + "\n");
-			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 2" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Only one wire is the right wire to cut. Check the manual!" + "\n");
 			
 			jtaInstruction.setText(jtaInstruction.getText() + "TWO STAGE" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3" + "\n");
