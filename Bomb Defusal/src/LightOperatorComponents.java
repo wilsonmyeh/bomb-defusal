@@ -54,7 +54,10 @@ class LightOperatorComponents extends BaseMiniGameClient {
 	
 	@Override
 	public void parseCommand(String command) {
-		// No parsing needed
+		if(command.startsWith("WIN")) {
+			System.out.println("W E W O N B O Y S");
+			bc.switchToWaitingRoom();
+		}
 	}
 	
 }

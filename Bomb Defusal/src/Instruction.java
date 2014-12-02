@@ -39,8 +39,8 @@ class Instruction extends JPanel {
 			jtaInstruction.setText(jtaInstruction.getText() + "CUT THE WIRE" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + "Only one wire is the right wire to cut. Check the manual!" + "\n");
 			
-			jtaInstruction.setText(jtaInstruction.getText() + "TWO STAGE" + "\n");
-			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "LIGHT PUZZLE" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Figure it out :)" + "\n");
 			
 			jtaInstruction.setText(jtaInstruction.getText() + "LOGIC GAME" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + "Remember that only bomber is lying "+ "\n"+ "and others are telling the truth."+ "\n"+ "Find out the bomber and click on his picture" + "\n");
@@ -55,8 +55,8 @@ class Instruction extends JPanel {
 			jtaInstruction.setText(jtaInstruction.getText() + "CUT THE WIRE" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 2" + "\n");
 
-			jtaInstruction.setText(jtaInstruction.getText() + "TWO STAGE" + "\n");
-			jtaInstruction.setText(jtaInstruction.getText() + "Instruction for game 3" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "LIGHT PUZZLE" + "\n");
+			jtaInstruction.setText(jtaInstruction.getText() + "Figure it out :)" + "\n");
 			
 
 			jtaInstruction.setText(jtaInstruction.getText() + "LOGIC GAME" + "\n");
