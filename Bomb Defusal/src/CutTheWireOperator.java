@@ -181,6 +181,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 			anyWireClicked = true; 
 	        ((JComponent) e.getComponent()).setOpaque(false); 
 	        int myChoice = Integer.parseInt(((JLabel) e.getComponent()).getText()); 
+	     
 	        if(myChoice != correctAnswer)
 	        {
 	        	((OperatorGUI) bc).restartCW(); 
