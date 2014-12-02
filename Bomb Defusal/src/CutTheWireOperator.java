@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
@@ -53,28 +54,28 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 		wires[0].setOpaque(true);
 		wires[0].setSize(new Dimension(300, 10));
 		wires[0].setLocation(100, 110);
-		wires[0].setText("1"); 
+		wires[0].setText("0"); 
 		wires[1] = new JLabel();
 		wires[1].setOpaque(true);
 		wires[1].setSize(new Dimension(300, 10));
 		wires[1].setLocation(100, 140);
-		wires[1].setText("2"); 
+		wires[1].setText("1"); 
 		wires[2] = new JLabel();
 		wires[2].setOpaque(true);
 		wires[2].setSize(new Dimension(300, 10));
 		wires[2].setLocation(100, 170);
-		wires[2].setText("3"); 
+		wires[2].setText("2"); 
 		wires[3] = new JLabel();
 		wires[3].setOpaque(true);
 		wires[3].setSize(new Dimension(300, 10));
 		wires[3].setLocation(100, 200);
-		wires[3].setText("4"); 
+		wires[3].setText("3"); 
 		wires[4] = new JLabel();
 		wires[4].setOpaque(true);
 		wires[4].setSize(new Dimension(300, 10));
 		wires[4].setLocation(100, 230);
-		wires[4].setText("5"); 
-		timer = new JLabel();
+		wires[4].setText("4"); 
+		/*timer = new JLabel();
 		Border blackline = BorderFactory.createLineBorder(Color.black);
 		TitledBorder border = BorderFactory.createTitledBorder(blackline,
 				"Timer");
@@ -83,7 +84,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 		timer.setSize(new Dimension(60, 60));
 		timer.setForeground(Color.red);
 		timer.setLocation(400, 400);
-		timer.setHorizontalAlignment(SwingConstants.CENTER);
+		timer.setHorizontalAlignment(SwingConstants.CENTER);*/
 		JLabel[] blackWires = new JLabel[5];
 		for(int i = 0; i < 5; i++)
 		{
@@ -112,7 +113,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 			add(blackWires[i]);
 			add(blackWires2[i]); 
 		}
-		add(timer);
+		//add(timer);
 		add(title);
 		add(instructions); 
 		//setButtons(); 
@@ -133,6 +134,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 
 	// Randomizes color scheme
 	public void setButtons(int puzzleNum) {
+	correctAnswer = puzzleNum; 
 	for(int i = 0; i < 5; i++)
 	{
 		wires[i].addMouseListener(new myMouseAdapter());
@@ -172,7 +174,22 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 		test.getContentPane().add(new CutTheWireOperator());
 		test.setVisible(true);
 	}*/
-	
+	@Override
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g); 
+		Random rand = new Random();
+		int puzzleNum = rand.nextInt(5); 
+		correctAnswer = puzzleNum; 
+		for(int i = 0; i < 5; i++)
+		{
+			wires[i].setBackground(colorSchemes.get(puzzleNum)[i]);
+			wires[i].setForeground(colorSchemes.get(puzzleNum)[i]); 
+			wires[i].setOpaque(true); 
+		}
+		anyWireClicked = false; 
+		
+	}
 	class myMouseAdapter extends MouseAdapter
 	{
 		public void mouseClicked(MouseEvent e) {
@@ -181,12 +198,16 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 			anyWireClicked = true; 
 	        ((JComponent) e.getComponent()).setOpaque(false); 
 	        int myChoice = Integer.parseInt(((JLabel) e.getComponent()).getText()); 
+	        System.out.println("MYCHOICE:"+myChoice+" CORRECT:"+correctAnswer);
 	        if(myChoice != correctAnswer)
 	        {
-	        	((OperatorGUI) bc).restartCW(); 
+	        	/*((OperatorGUI) bc).restartCW(); */
+	        	repaint(); 
+	        	revalidate(); 
 	        }
 	        else
 	        {
+	        	System.out.println("WON");
 	        	bc.sendCommand(GAME_ID+"Win");
 	        }
 	        repaint();
