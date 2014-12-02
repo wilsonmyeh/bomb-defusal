@@ -52,6 +52,7 @@ class LightServer extends BaseMiniGameServer {
 				lights[light-1] = !lights[light-1];
 			if(light != 5)
 				lights[light+1] = !lights[light+1];
+			sendLights();
 			checkLightWin();
 		}
 		/*

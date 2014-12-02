@@ -39,30 +39,24 @@ class LightOperator extends BaseMiniGameClient {
 	
 	LightOperator(BaseClient bc) {
 		super(bc);
-		setLayout(new GridLayout());
-		for(int i = 0;i < buttons.length;i++) {
-			buttons[i] = new JButton(button);
-			buttons[i].addActionListener(buttonPress);
-			add(buttons[i],i%3,i/3);
-		}
-		
 		try {
 			background = ImageIO.read(new File("Assets\\Light\\OperatorBackground.png"));
 			background = background.getScaledInstance(500,500,Image.SCALE_SMOOTH);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-		
+		setLayout(null);
+		add(new LightOperatorComponents(bc));
 		setVisible(true);
 	}
 	
 	@Override
 	public void paintComponent(Graphics g){
-		
-		g.drawImage(background, 0, 0, null);
 		super.paintComponent(g);
+		g.drawImage(background, 0, 0, null);
+		
 	}
-
+	
 	@Override
 	public void parseCommand(String command) {
 		// No parsing needed
