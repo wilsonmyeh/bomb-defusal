@@ -67,7 +67,7 @@ class LogicGameOperator extends BaseMiniGameClient{
 				
 				stevenS[4] = "Steven: Haohan and Wilson are not lying.";
 				wilsonS[4] = "Wilson: Haohan is not the bomber";
-				haohanS[4] = "Haohan: Wilson build the bomb.";
+				haohanS[4] = "Haohan: Steven didn't build the bomb.";
 				blakeS[4] = "Blake: I didn't built the bomb";
 				answer[4] = "Blake";
 				
@@ -77,10 +77,10 @@ class LogicGameOperator extends BaseMiniGameClient{
 				blakeS[5] = "Blake: All I do is coding";
 				answer[5] = "Steven";
 				
-				stevenS[6] = "Steven: Haohan and Wilson are not lying.";
+				stevenS[6] = "Steven: I am innocent!";
 				wilsonS[6] = "Wilson: Haohan is not the bomber";
-				haohanS[6] = "Haohan: Wilson build the bomb.";
-				blakeS[6] = "Blake: I didn't built the bomb";
+				haohanS[6] = "Haohan: I saw Blake coding all the time.";
+				blakeS[6] = "Blake: Haohan and wilson are not bomber.";
 				answer[6] = "Blake";
 				
 				stevenS[7] = "Steven: I don't know how to build a bomb.";
@@ -100,10 +100,6 @@ class LogicGameOperator extends BaseMiniGameClient{
 				haohanS[9] = "Haohan: Wilson is lying, he never start it.";
 				blakeS[9] = "Blake: I believe Haohan is telling the truth";
 				answer[9] = "Wilson";
-				
-				//randomNum = rand.nextInt(10);
-				
-		
 	}
 
 
@@ -165,18 +161,11 @@ class LogicGameOperator extends BaseMiniGameClient{
 		 if(answer[randomNum].equals(name)){
   			rule1 = "Congrat! Bomb defused! ";
   			this.repaint();
-  			//send signal
-  			
+  			//send signal		
   			bc.sendCommand(GAME_ID + "Win");
-
-  			
-
   		}
   		else if(!answer[randomNum].equals(name)){	
-  			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Ope");
-  			//	restart();
-
-			bc.sendCommand(GAME_ID + "Reset");
+  			bc.sendCommand(GAME_ID + "Reset");
 		}
 	 }
 	 /*
@@ -236,8 +225,8 @@ class LogicGameOperator extends BaseMiniGameClient{
 		else if(command.startsWith("Reset")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
-			StartClient.bc.getCardLayout().show(StartClient.bc.getMainpanel(),"LogicRestart_Ope");
 			this.repaint();
+			StartClient.bc.getCardLayout().show(StartClient.bc.getMainpanel(),"LogicRestart_Ope");
 			System.out.println("Operator receive reset: " + randomNum);
 		}
 		else if(command.startsWith("Win")){

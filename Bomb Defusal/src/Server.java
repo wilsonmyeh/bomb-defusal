@@ -166,9 +166,11 @@ class Server {
 			}
 		}
 		else if(ind == 6) {
+			System.out.println("GAME FINISHED!!");
 			int team = (int) line.charAt(0) - 48;
 			BaseMiniGameServer[] select = (team==0) ? team0 : team1;
 			if(checkWin(select)){
+				System.out.println("WE WON FAM!");
 				timerEnd = System.currentTimeMillis();
 				timerResult = timerEnd - timerStart;
 				notifyVictor(team, timerResult);
@@ -229,7 +231,9 @@ class Server {
 			else if (!team[i].solved){
 				return false;
 			}
+			System.out.println("Game " + i + " is solved.");
 		}
+		System.out.println("gONAN AWWIIIINN");
 		return true;
 	}
 

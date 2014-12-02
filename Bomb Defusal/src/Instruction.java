@@ -21,7 +21,7 @@ class Instruction extends JPanel {
 		this.setSize(500,500);	
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		if(identity.equals("Supervisor"))
+		if(identity.contains("Supervisor"))
 			jbStart = new JButton("Start");
 		else 
 			jlWait = new JLabel("Wait for supervisor to choose a game");
@@ -30,7 +30,7 @@ class Instruction extends JPanel {
 		jtaInstruction = new JTextArea("You are on TEAM: " + teamNum + " and you are a " + identity + "." + "\n");
 		
 		//supervisor
-		if(identity.equals("Supervisor")){
+		if(identity.contains("Supervisor")){
 			Font font = new Font("Verdana", Font.BOLD, 15);
 			jtaInstruction.setFont(font);
 			jtaInstruction.setText(jtaInstruction.getText() + "FIND THE LOCATION" + "\n");

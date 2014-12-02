@@ -53,6 +53,7 @@ class FindTheLocationServer extends BaseMiniGameServer{
 	
 	FindTheLocationServer(Server s){
 		super(s);
+		solved = false;
 		rand = new Random();
 		setDesiredLocation();
 	}

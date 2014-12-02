@@ -79,7 +79,7 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		
 		stevenS[4] = "Steven: Haohan and Wilson are not lying.";
 		wilsonS[4] = "Wilson: Haohan is not the bomber";
-		haohanS[4] = "Haohan: Wilson build the bomb.";
+		haohanS[4] = "Haohan: Steven didn't build the bomb.";
 		blakeS[4] = "Blake: I didn't built the bomb";
 		answer[4] = "Blake";
 		
@@ -89,10 +89,10 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		blakeS[5] = "Blake: All I do is coding";
 		answer[5] = "Steven";
 		
-		stevenS[6] = "Steven: Haohan and Wilson are not lying.";
+		stevenS[6] = "Steven: I am innocent!";
 		wilsonS[6] = "Wilson: Haohan is not the bomber";
-		haohanS[6] = "Haohan: Wilson build the bomb.";
-		blakeS[6] = "Blake: I didn't built the bomb";
+		haohanS[6] = "Haohan: I saw Blake coding all the time.";
+		blakeS[6] = "Blake: Haohan and wilson are not bomber.";
 		answer[6] = "Blake";
 		
 		stevenS[7] = "Steven: I don't know how to build a bomb.";
@@ -112,9 +112,6 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		haohanS[9] = "Haohan: Wilson is lying, he never start it.";
 		blakeS[9] = "Blake: I believe Haohan is telling the truth";
 		answer[9] = "Wilson";
-		
-		//random num
-		
 	}
 	
 	 protected void paintComponent(Graphics g) {
@@ -179,28 +176,9 @@ class LogicGameSupervisor extends BaseMiniGameClient{
   			this.repaint();
   		}
   		else if(!answer[randomNum].equals(name)){	
-  			//rule1 = "Sorry you are wrong. Game restart in 5 minutes." ;
-  			//rule2 = "";
-  			//this.repaint();
-  			//restart();
 			bc.sendCommand(GAME_ID + "Reset");
-  			//StartClient.bc.mainCardLayout.show(StartClient.bc.mainPanel,"LogicRestart_Sup");
-  			//restart();
 		}
 	 }
-	 /*
-	 public void restart(){
-			//rule1 = "Find the bomber and he will tell you which button to click on" ;
-		    //rule2  = "Else, game restart.";
-			Random rand = new Random();
-			int temp = rand.nextInt(10);
-			while(temp == randomNum)
-				temp = rand.nextInt(10);
-			randomNum = temp;
-			this.repaint(); 
-	 }
-	 
-	 */
 	 		//add action
 		 private MouseListener listener = new MouseAdapter() {
 			    public void mouseClicked(MouseEvent e) {
@@ -252,8 +230,8 @@ class LogicGameSupervisor extends BaseMiniGameClient{
 		else if(command.startsWith("Reset")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
-			StartClient.bc.getCardLayout().show(StartClient.bc.getMainpanel(),"LogicRestart_Sup");
 			this.repaint();
+			StartClient.bc.getCardLayout().show(StartClient.bc.getMainpanel(),"LogicRestart_Sup");
 			System.out.println("Supervisor receive reset: "  + randomNum);
 		}
 	}

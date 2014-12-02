@@ -17,6 +17,7 @@ public class StartClient {
 	private PrintWriter pw;
 	private BufferedReader br;
 	
+	
 	//here goes the connection to the server
 	StartClient(String ip, int port) throws InterruptedException, IOException{
 		//need t0 connect  to server, first to connect: team 1 supervisor, then team 2 supervisor
@@ -31,13 +32,13 @@ public class StartClient {
 		}
 		System.out.println("StartClient->role is " + role);
 		switch(role) {
-		case 0 : bc = new OperatorGUI(1,s); 
+		case 0 : bc = new OperatorGUI(0,s); 
 				 break;
-		case 1 : bc = new SupervisorGUI(1,s);
+		case 1 : bc = new SupervisorGUI(0,s);
 		         break;
-		case 2 : bc = new OperatorGUI(2,s); 
+		case 2 : bc = new OperatorGUI(1,s); 
 		         break;
-		case 3 : bc = new SupervisorGUI(2,s); 
+		case 3 : bc = new SupervisorGUI(1,s); 
 		         break;
 		default : System.out.println("Something went horribly wrong.");
 		}
