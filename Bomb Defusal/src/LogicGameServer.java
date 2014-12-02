@@ -15,13 +15,16 @@ class LogicGameServer extends BaseMiniGameServer{
 		// TODO Auto-generated method stub
 		if(command.startsWith("Win")){
 			sendCommand(GAME_ID + "Win");
+			solved = true;
+			active = false;
 		}
 		else if(command.startsWith("Reset")){
-			int temp = rand.nextInt(10);
-			while(temp == randomNum)
+			rand = new Random();
+  			int temp = rand.nextInt(10);
+  			while(temp == randomNum)
 				temp = rand.nextInt(10);
 			randomNum = temp;
-			sendCommand(GAME_ID + "Reset " + temp);
+			sendCommand(GAME_ID + "Reset " + randomNum);
 		}
 	}
 }
