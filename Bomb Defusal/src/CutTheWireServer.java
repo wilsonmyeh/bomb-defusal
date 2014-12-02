@@ -9,7 +9,6 @@ class CutTheWireServer extends BaseMiniGameServer
 
 	@Override
 	void parseCommand(String command) {
-		// TODO Auto-generated method stub
 		
 	}
 }

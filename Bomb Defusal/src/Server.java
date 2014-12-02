@@ -177,7 +177,7 @@ class Server {
 				kick(1,game);
 			else kick(0,game);
 		}
-		else if (ind == 4) {
+		else if (ind == 4) { //CHAT
 			int target = Integer.parseInt(line.substring(2,3)); 
 			System.out.println("Server->parse(String)->ind==4 received " + line + " TARGET: "+target);
 			String chatMessage = 4 + line.substring(3);
@@ -207,8 +207,8 @@ class Server {
 				break; 
 
 			}
-		} else {
-			if (line.charAt(0) == 0) {
+		} else { //if it's a game 
+			if (((int)line.charAt(0) - 48) == 0) {
 				team0[ind].parseCommand(line.substring(2));
 			} else {
 				team1[ind].parseCommand(line.substring(2));
