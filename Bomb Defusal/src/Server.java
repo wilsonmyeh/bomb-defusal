@@ -142,14 +142,14 @@ class Server {
 				System.out.println("WE WON FAM!");
 				notifyVictor(team);
 			}
-			gamesAvailable(team);
+			//gamesAvailable(team);
 		}
 		else if(ind == 5) { //Kick Format: <YourTeam#><5><Game#>
 			int team = (int) line.charAt(0) - 48;
 			int game = (int) line.charAt(2) - 48;
-			if(team == 0)
-				kick(1,game);
-			else kick(0,game);
+			//if(team == 0)
+				//kick(1,game);
+			//else //kick(0,game);
 		}
 		else if (ind == 4) { //CHAT
 			int target = Integer.parseInt(line.substring(2,3)); 
