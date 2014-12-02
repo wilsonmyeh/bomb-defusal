@@ -10,7 +10,7 @@ public class WaitingRoom extends JPanel{
 		this.setSize(500,500);
 		this.setLayout(new BorderLayout());
 		Font font = new Font("Verdana", Font.BOLD, 10);
-		JLabel jl = new JLabel("Congratulations on defusing the bomb! Please wait for supervisor to choose the next game");
+		JLabel jl = new JLabel("Bomb defused! Please wait for supervisor to choose the next game");
 		this.add(jl);
 	}
 }

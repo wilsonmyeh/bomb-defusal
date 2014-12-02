@@ -31,8 +31,7 @@ abstract class BaseMiniGameServer {
 		//if(start) { timer.start(); active = true; } or something liek that
 	
 	void sendCommand(String command){
-		server.sendCommand(this,command);
-		
+		server.sendCommand(this,command);		
 	}
 	
 }

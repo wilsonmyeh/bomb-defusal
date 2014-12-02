@@ -214,7 +214,7 @@ class Server {
 				break; 
 			}
 		} else { //if it's a game 
-			if (line.charAt(0) == 0) {
+			if (line.charAt(0) == '0') {
 				team0[ind].parseCommand(line.substring(2));
 			} else {
 				team1[ind].parseCommand(line.substring(2));
