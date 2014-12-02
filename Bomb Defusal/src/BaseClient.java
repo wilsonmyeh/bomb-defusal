@@ -24,13 +24,18 @@ abstract class BaseClient extends JFrame
 	CardLayout mainCardLayout;
 	JPanel mainPanel;
 	
+<<<<<<< HEAD
 	public BaseClient(Socket s, int team)
+=======
+	public BaseClient(Socket s,int teamNum)
+>>>>>>> refs/remotes/origin/master
 	{
 		this.team = team;
 		pw = null;
 		br = null; 
 		mySocket = s; 
 		Database.initialize();
+		team = teamNum;
 		endSplash = new EndSplash(team);
 	}
 	
