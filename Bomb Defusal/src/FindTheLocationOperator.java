@@ -14,7 +14,7 @@ class FindTheLocationOperator extends BaseMiniGameClient{
 	private JButton analyze;
 	private int percentage;
 	
-	FindTheLocationOperator(BaseClient bc){
+	FindTheLocationOperator(final BaseClient bc){
 		super(bc);
 		percentage = 0;
 		analyze = new JButton("Analyze");

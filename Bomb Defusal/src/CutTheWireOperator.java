@@ -27,7 +27,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	Color[] selectedScheme;
 	boolean anyWireClicked; 
 
-	public CutTheWireOperator(BaseClient bc) {
+	public CutTheWireOperator(BaseClient bc, int wireSet) {
 		super(bc);
 		setSize(new Dimension(500, 500));
 		setLayout(null);
@@ -124,6 +124,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 		colorSchemes.add(scheme3);
 		colorSchemes.add(scheme4);
 		colorSchemes.add(scheme5);
+		setButtons(wireSet); 
 		setVisible(true);
 		
 	}
@@ -136,8 +137,8 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	}
 	for(int i = 0; i < 5; i++)
 	{
-		//wires[i].setBackground(colorSchemes.get(randomPick)[i]);
-		//wires[i].setForeground(colorSchemes.get(randomPick)[i]); 
+		wires[i].setBackground(colorSchemes.get(puzzleNum)[i]);
+		wires[i].setForeground(colorSchemes.get(puzzleNum)[i]); 
 	}
 	}
 

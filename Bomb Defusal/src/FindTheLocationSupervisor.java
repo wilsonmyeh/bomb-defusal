@@ -24,7 +24,7 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 	private int currentY;
 	private JButton finalize;
 	
-	public FindTheLocationSupervisor(BaseClient bc){
+	public FindTheLocationSupervisor(final BaseClient bc){
 		super(bc);
 		rand = new Random();
 		this.addMouseListener(new MouseAdapter(){
