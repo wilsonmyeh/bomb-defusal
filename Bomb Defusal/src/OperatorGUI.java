@@ -79,4 +79,12 @@ public class OperatorGUI extends BaseClient{
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
 		setVisible(true);	
 	}
+
+
+	public void restartCW() {
+		Random rand = new Random();
+		jpCutWireGame_Ope = new CutTheWireOperator(this, rand.nextInt(5));
+		revalidate();
+		repaint(); 
+	}
 }
