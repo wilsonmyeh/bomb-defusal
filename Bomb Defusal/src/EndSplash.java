@@ -27,7 +27,7 @@ public class EndSplash extends JPanel{
 	
 	private JLabel entryInfo;
 	private JTextField teamName;
-	private JButton sendTeamInfo;
+	private JButton sendTeamInfo,quit;
 	
 	
 	public EndSplash(int thisTeam, boolean supervisor){
@@ -43,6 +43,7 @@ public class EndSplash extends JPanel{
 		
 		entryInfo = new JLabel("Team Name:");
 		myScore = new JLabel();
+		quit = new JButton("Quit");
 		
 		endMessagePanel = new JPanel();
 		endMessage = new JLabel();
@@ -63,6 +64,11 @@ public class EndSplash extends JPanel{
 				}
 			}
 		});
+		quit.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent ae){
+				System.exit(0);
+			}
+		});
 		
 		
 		myScore.setVisible(false);
@@ -71,6 +77,7 @@ public class EndSplash extends JPanel{
 		entryPanel.add(sendTeamInfo);
 		endMessagePanel.add(myScore);
 		endMessagePanel.add(endMessage);
+		endMessagePanel.add(quit);
 		add(entryPanel, BorderLayout.SOUTH);
 		add(records, BorderLayout.CENTER);
 		add(endMessagePanel, BorderLayout.NORTH);
