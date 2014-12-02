@@ -17,6 +17,7 @@ abstract class BaseClient extends JFrame
 	protected PrintWriter pw;
 	protected BufferedReader br;
 	public BaseMiniGameClient[] gameClients = new BaseMiniGameClient[4];
+	public String[] gamePanelNames = new String[4];
 
 
 	CardLayout mainCardLayout;
@@ -110,7 +111,10 @@ abstract class BaseClient extends JFrame
 			}
 			
 			case 8:{
+				//We can assume that only the operator will get this...
 				int game = (int)command.charAt(1)-48;
+				mainCardLayout.show(mainPanel, gamePanelNames[game]);
+				
 				//TODO: Switch card to proper game
 			}
 		}
@@ -130,7 +134,7 @@ abstract class BaseClient extends JFrame
 		} catch(InterruptedException e) {
 			e.printStackTrace();
 		}
-		getCardLayout().show(getMainpanel(), "Lobby");
+		mainCardLayout.show(mainPanel, "Lobby");
 	}
 	
 	public void victory(){
@@ -143,7 +147,7 @@ abstract class BaseClient extends JFrame
 	
 	//for operator
 	public void switchToWaitingRoom(){
-		getCardLayout().show(this, "WaitingRoom");
+		mainCardLayout.show(mainPanel, "WaitingRoom");
 	}
 }
 
