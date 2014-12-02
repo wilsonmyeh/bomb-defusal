@@ -112,6 +112,12 @@ abstract class BaseClient extends JFrame
 			case 8:{
 				int game = (int)command.charAt(1)-48;
 				//TODO: Switch card to proper game
+				break; 
+			}
+			
+			default: {
+				System.out.println("Unroutable");
+				break; 
 			}
 		}
 	}
