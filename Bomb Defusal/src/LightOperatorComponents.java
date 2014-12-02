@@ -12,6 +12,7 @@ import javafx.scene.media.MediaPlayer;
 */
 
 
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -19,7 +20,7 @@ class LightOperatorComponents extends BaseMiniGameClient {
 	private final int GAME_ID = 1;
 	
 	JButton[] buttons = new JButton[6];
-	ImageIcon button = new ImageIcon("Assets/Light/Button.png");
+	ImageIcon button;
 	
 	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\ButtonSFX.mp3"));
 	
@@ -38,6 +39,12 @@ class LightOperatorComponents extends BaseMiniGameClient {
 	
 	LightOperatorComponents(BaseClient bc) {
 		super(bc);
+		if(System.getProperty("os.name").toLowerCase().contains("indow")) {
+			button = new ImageIcon("Assets\\Light\\Button.png");
+		}
+		else  {
+			button = new ImageIcon("Assets/Light/Button.png");
+		}
 		setLayout(new GridLayout(2,3));
 		for(int i = 0;i < buttons.length;i++) {
 			buttons[i] = new JButton(button);

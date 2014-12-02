@@ -1,10 +1,6 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-/*
-import javafx.scene.media.*;
-*/
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -20,7 +16,13 @@ class LightSupervisor extends BaseMiniGameClient {
 	LightSupervisor(BaseClient bc) {
 		super(bc);
 		try {
-			background = ImageIO.read(new File("Assets/Light/SupervisorBackground.jpg"));
+			if(System.getProperty("os.name").toLowerCase().contains("indow")) {
+				background = ImageIO.read(new File("Assets\\Light\\SupervisorBackground.jpg"));
+			}
+			else  {
+				background = ImageIO.read(new File("Assets/Light/SupervisorBackground.jpg"));
+			}
+			
 			background = background.getScaledInstance(500,500,Image.SCALE_SMOOTH);
 		} catch(IOException e) {
 			e.printStackTrace();

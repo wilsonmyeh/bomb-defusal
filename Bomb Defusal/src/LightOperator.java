@@ -12,6 +12,7 @@ import javafx.scene.media.MediaPlayer;
 */
 
 
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
@@ -27,7 +28,12 @@ class LightOperator extends BaseMiniGameClient {
 	LightOperator(BaseClient bc) {
 		super(bc);
 		try {
-			background = ImageIO.read(new File("Assets/Light/OperatorBackground.png"));
+			if(System.getProperty("os.name").toLowerCase().contains("indow")) {
+				background = ImageIO.read(new File("Assets\\Light\\OperatorBackground.png"));
+			}
+			else  {
+				background = ImageIO.read(new File("Assets/Light/OperatorBackground.png"));
+			}
 			background = background.getScaledInstance(500,500,Image.SCALE_SMOOTH);
 		} catch(IOException e) {
 			e.printStackTrace();

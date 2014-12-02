@@ -10,15 +10,24 @@ class LightSupervisorComponents extends BaseMiniGameClient {
 	
 	boolean[] lights = new boolean[6];
 	JLabel[] lightLabels = new JLabel[6];
-	ImageIcon lightOff = new ImageIcon("Assets/Light/LightBulbOff.png");
-	ImageIcon lightOn = new ImageIcon("Assets/Light/LightBulbOn.png");
+	ImageIcon lightOff;
+	ImageIcon lightOn;
 	
 	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\LightSFX.mp3"));
 	
 	LightSupervisorComponents(BaseClient bc) {
 		super(bc);
+		if(System.getProperty("os.name").contains("indow")) {
+			lightOff = new ImageIcon("Assets\\Light\\LightBulbOff.png");
+			lightOn = new ImageIcon("Assets\\Light\\LightBulbOn.png");
+		}
+		else  {
+			lightOff = new ImageIcon("Assets/Light/LightBulbOff.png");
+			lightOn = new ImageIcon("Assets/Light/LightBulbOn.png");
+		}
 		setLayout(new GridLayout());
 		for(int i = 0;i < lightLabels.length;i++) {
+			lightLabels[i] = new JLabel();
 			lightLabels[i].setIcon(lightOn);
 			add(lightLabels[i],i);
 		}
