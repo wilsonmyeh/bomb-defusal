@@ -161,7 +161,9 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	
 	public void parseCommand(String command)
 	{
-		
+		if(command.startsWith("Win")){
+			bc.switchToWaitingRoom();
+		}
 	}
 	/*public static void main(String[] args) {
 
