@@ -5,7 +5,7 @@ class LightServer extends BaseMiniGameServer {
 	Random rand = new Random();
 	
 	private boolean[] lights;
-	private byte[] buttons; //map from button# to light#
+	private int[] buttons; //map from button# to light#
 	
 	/*
 	private final int MAX_PRESSURE = 100000;
@@ -21,8 +21,8 @@ class LightServer extends BaseMiniGameServer {
 		for(int i = 0;i < lights.length;i++)
 			lights[i] = (Math.abs(rand.nextInt()) % 2) == 1;
 		
-		buttons = new byte[6];
-		for(byte i = 0;i < buttons.length;i++)
+		buttons = new int[6];
+		for(int i = 0;i < buttons.length;i++)
 			buttons[i] = i;
 		for(int i = 0;i < 100;i++)
 			swap(buttons,Math.abs(rand.nextInt()) % 6,Math.abs(rand.nextInt()) % 6);
@@ -103,9 +103,9 @@ class LightServer extends BaseMiniGameServer {
 	}
 	*/
 	
-	void swap(byte[] arr, int a, int b) {
+	void swap(int[] arr, int a, int b) {
 		arr[a] += arr[b];
-		arr[b] = (byte) (arr[a] - arr[b]);
+		arr[b] = (arr[a] - arr[b]);
 		arr[a] -= arr[b];
 	}
 }

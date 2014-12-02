@@ -30,7 +30,6 @@ class LightSupervisorComponents extends BaseMiniGameClient {
 		setSize(500,500);
 		setOpaque(false);
 		repaint();
-		setVisible(true);
 	}
 
 	@Override
@@ -50,7 +49,6 @@ class LightSupervisorComponents extends BaseMiniGameClient {
 			}
 		}
 		repaint();
-		setVisible(true);
 	}
 	
 	@Override

@@ -50,7 +50,6 @@ class LightOperatorComponents extends BaseMiniGameClient {
 		
 		setSize(500,500);
 		setOpaque(false);
-		setVisible(true);
 	}
 	
 	@Override

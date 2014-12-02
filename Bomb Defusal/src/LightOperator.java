@@ -50,7 +50,6 @@ class LightOperator extends BaseMiniGameClient {
 		setLayout(null);
 		comps = new LightOperatorComponents(bc);
 		add(comps);
-		setVisible(true);
 	}
 	
 	@Override
@@ -63,7 +62,7 @@ class LightOperator extends BaseMiniGameClient {
 	@Override
 	public void parseCommand(String command) {
 		comps.parseCommand(command);
-		setVisible(true);
+		repaint();
 	}
 	
 }

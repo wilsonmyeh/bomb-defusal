@@ -29,13 +29,12 @@ class LightSupervisor extends BaseMiniGameClient {
 		comps = new LightSupervisorComponents(bc);
 		add(comps);
 		
-		setVisible(true);
 	}
 
 	@Override
 	public void parseCommand(String command) {
 		comps.parseCommand(command);
-		setVisible(true);
+		repaint();
 	}
 	
 	@Override
