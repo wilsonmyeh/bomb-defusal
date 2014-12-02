@@ -92,7 +92,7 @@ public class Lobby extends JPanel{
 	public static void DisableFindLocation(){
 		jbFindLocation.setEnabled(false);
 	}
-	public static void DisablLightGame(){
+	public static void DisableLightGame(){
 		jbLightGame.setEnabled(false);
 	}
 	public static void DisableLogicGame(){

@@ -70,12 +70,6 @@ class LightServer extends BaseMiniGameServer {
 				checkValveWin();
 		}
 		*/
-		
-		else if(command.startsWith("WIN")) {
-			solved = true;
-			active = false;
-			timer.interrupt();
-		}
 	}
 	
 	void checkLightWin() {
@@ -83,6 +77,9 @@ class LightServer extends BaseMiniGameServer {
 			if(!lights[i])
 				return;
 		sendCommand(GAME_ID + "LIGHT WIN");
+		solved = true;
+		active = false;
+		timer.interrupt();
 	}
 	
 	void sendLights() {

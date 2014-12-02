@@ -34,6 +34,10 @@ class LightSupervisorComponents extends BaseMiniGameClient {
 
 	@Override
 	public void parseCommand(String command) {
+		if(command.startsWith("WIN")) {
+			Lobby.DisableLightGame();
+			bc.switchToLobby();
+		}
 		if(command.startsWith("LIGHT")) {
 			String[] inp = command.split(" ");
 			for(int i = 0;i < inp[1].length();i++) {
