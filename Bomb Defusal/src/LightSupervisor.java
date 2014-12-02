@@ -12,6 +12,7 @@ import java.io.IOException;
 class LightSupervisor extends BaseMiniGameClient {
 	private final int GAME_ID = 1;
 	
+	LightSupervisorComponents comps;
 	Image background;
 	
 	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\LightSFX.mp3"));
@@ -25,14 +26,16 @@ class LightSupervisor extends BaseMiniGameClient {
 			e.printStackTrace();
 		}
 		setLayout(null);
-		add(new LightSupervisorComponents(bc));
+		comps = new LightSupervisorComponents(bc);
+		add(comps);
 		
 		setVisible(true);
 	}
 
 	@Override
 	public void parseCommand(String command) {
-		//LightSupervisorComponents
+		comps.parseCommand(command);
+		setVisible(true);
 	}
 	
 	@Override
