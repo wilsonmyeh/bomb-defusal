@@ -128,7 +128,7 @@ class FindTheLocationSupervisor extends BaseMiniGameClient{
 	public void parseCommand(String command) {
 		if(command.startsWith("win")){
 			System.out.println("won");
-			Lobby.DisableLogicGame();
+			Lobby.DisableFindLocation();
 			bc.switchToLobby();
 		}
 		else if(command.startsWith("reset")){
