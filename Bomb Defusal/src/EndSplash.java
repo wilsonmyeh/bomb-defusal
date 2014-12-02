@@ -64,11 +64,12 @@ public class EndSplash extends JPanel{
 			}
 		});
 		
-		entryPanel.add(myScore);
+		
 		myScore.setVisible(false);
 		entryPanel.add(entryInfo);
 		entryPanel.add(teamName);
 		entryPanel.add(sendTeamInfo);
+		endMessagePanel.add(myScore);
 		endMessagePanel.add(endMessage);
 		add(entryPanel, BorderLayout.SOUTH);
 		add(records, BorderLayout.CENTER);
