@@ -27,7 +27,7 @@ public class OperatorGUI extends BaseClient{
 		this.teamNum  = teamNum;
 		myUserName = "Operator "+teamNum;
 		String teamNumStr = teamNum + "";
-		jpInstruction = new Instruction(myUserName,teamNumStr);
+		jpInstruction = new Instruction("Operator",teamNumStr);
 		
 		jpLightGame_Ope = new LightOperator(this);
 		jpCutWireGame_Ope = new CutTheWireOperator(this);
