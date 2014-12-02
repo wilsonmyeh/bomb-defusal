@@ -179,7 +179,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	{
 		super.paintComponent(g); 
 		Random rand = new Random();
-		int puzzleNum = rand.nextInt(5); 
+		int puzzleNum = rand.nextInt(5)+1; 
 		correctAnswer = puzzleNum; 
 		for(int i = 0; i < 5; i++)
 		{
