@@ -62,7 +62,7 @@ class Instruction extends JPanel {
 			jtaInstruction.setText(jtaInstruction.getText() + "LOGIC GAME" + "\n");
 			jtaInstruction.setText(jtaInstruction.getText() + "Remember that only bomber is lying "+ "\n"+ "and others are telling the truth." + "\n" + "Follow supervisor's instruction and click the right button to defuse"+ "\n");
 		}
-		
+		jtaInstruction.setEditable(false);
 		add(Box.createGlue());
 		this.add(jtaInstruction);
 		add(Box.createGlue());

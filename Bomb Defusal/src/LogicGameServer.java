@@ -16,7 +16,7 @@ class LogicGameServer extends BaseMiniGameServer{
 		if(command.startsWith("Win")){
 			sendCommand(GAME_ID + "Win");
 			solved = true;
-			active = false;
+			active = false;			
 		}
 		else if(command.startsWith("Reset")){
 			rand = new Random();

@@ -81,8 +81,22 @@ public class Lobby extends JPanel{
 
 			}
 		});
+	
 	}
 
+	
+	public void DisableCutTheWire(){
+		jbCutTheWire.setEnabled(false);
+	}
+	public void DisableFindLocation(){
+		jbFindLocation.setEnabled(false);
+	}
+	public void DisablLightGame(){
+		jbLightGame.setEnabled(false);
+	}
+	public void DisableLogicGame(){
+		jbLogicGame.setEnabled(false);
+	}
 
 
 	/*
