@@ -25,10 +25,8 @@ class LightServer extends BaseMiniGameServer {
 		buttons = new int[6];
 		for(int i = 0;i < buttons.length;i++)
 			buttons[i] = i;
-		System.out.println(Arrays.toString(buttons));
 		for(int i = 0;i < 100;i++)
 			swap(buttons,Math.abs(rand.nextInt()) % 6,Math.abs(rand.nextInt()) % 6);
-		System.out.println(Arrays.toString(buttons));
 		sendLights();
 		/*
 		pressure = 0;
@@ -76,7 +74,7 @@ class LightServer extends BaseMiniGameServer {
 		for(int i = 0;i < lights.length;i++)
 			if(!lights[i])
 				return;
-		sendCommand(GAME_ID + "LIGHT WIN");
+		sendCommand(GAME_ID + "WIN");
 		solved = true;
 		active = false;
 		timer.interrupt();
