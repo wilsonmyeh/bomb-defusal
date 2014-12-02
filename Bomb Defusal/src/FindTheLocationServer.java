@@ -51,8 +51,8 @@ class FindTheLocationServer extends BaseMiniGameServer{
 	private double maxDistance;
 	private Random rand;
 	
-	FindTheLocationServer(Server s){
-		super(s);
+	FindTheLocationServer(Server s, int teamNum){
+		super(s, teamNum);
 		solved = false;
 		rand = new Random();
 		setDesiredLocation();

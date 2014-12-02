@@ -56,15 +56,15 @@ class Server {
 			} catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-			team0[0] = new FindTheLocationServer(this);
-			team0[1] = new LightServer(this);
-			team0[2] = new CutTheWireServer(this);
-			team0[3] = new LogicGameServer(this);
+			team0[0] = new FindTheLocationServer(this, 0);
+			team0[1] = new LightServer(this, 0);
+			team0[2] = new CutTheWireServer(this, 0);
+			team0[3] = new LogicGameServer(this, 0);
 
-			team1[0] = new FindTheLocationServer(this);
-			team1[1] = new LightServer(this);
-			team1[2] = new CutTheWireServer(this);
-			team1[3] = new LogicGameServer(this);
+			team1[0] = new FindTheLocationServer(this, 1);
+			team1[1] = new LightServer(this, 1);
+			team1[2] = new CutTheWireServer(this, 1);
+			team1[3] = new LogicGameServer(this, 1);
 			//"Kicks" everyone to lobby to start the game
 			out0[0].println("5");
 			out0[0].flush();
@@ -166,7 +166,6 @@ class Server {
 			}
 		}
 		else if(ind == 6) {
-			System.out.println("GAME FINISHED!!");
 			int team = (int) line.charAt(0) - 48;
 			BaseMiniGameServer[] select = (team==0) ? team0 : team1;
 			if(checkWin(select)){
@@ -245,10 +244,11 @@ class Server {
 		out1[1].println("7"+team+time);
 	}
 
-	void sendCommand(BaseMiniGameServer mg, String command) {
+	void sendCommand(int teamNum, String command) {
+		System.out.println("Server->sendCommand(BMGS, STRING) sending " + command + " to team " + teamNum);
 		//Syntax for sending to client, <GameNumber><Message>
 		for (int i = 0; i < 2; i++) {
-			if (indexOf(team1, mg) != -1) {
+			if (teamNum == 0) {
 				out0[i].println(command);
 				out0[i].flush();
 			} else {

@@ -15,12 +15,11 @@ import javafx.scene.media.MediaPlayer;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-class LightOperator extends BaseMiniGameClient {
+class LightOperatorComponents extends BaseMiniGameClient {
 	private final int GAME_ID = 1;
 	
 	JButton[] buttons = new JButton[6];
 	ImageIcon button = new ImageIcon("Assets\\Light\\Button.png");
-	Image background;
 	
 	//MediaPlayer sfx = new MediaPlayer(new Media("Assets\\Light\\ButtonSFX.mp3"));
 	
@@ -37,24 +36,21 @@ class LightOperator extends BaseMiniGameClient {
 		}
 	};
 	
-	LightOperator(BaseClient bc) {
+	LightOperatorComponents(BaseClient bc) {
 		super(bc);
-		try {
-			background = ImageIO.read(new File("Assets\\Light\\OperatorBackground.png"));
-			background = background.getScaledInstance(500,500,Image.SCALE_SMOOTH);
-		} catch(IOException e) {
-			e.printStackTrace();
+		setLayout(new GridLayout(2,3));
+		for(int i = 0;i < buttons.length;i++) {
+			buttons[i] = new JButton(button);
+			buttons[i].setOpaque(false);
+			buttons[i].setContentAreaFilled(false);
+			buttons[i].setBorderPainted(false);
+			buttons[i].addActionListener(buttonPress);
+			add(buttons[i]);
 		}
-		setLayout(null);
-		add(new LightOperatorComponents(bc));
-		setVisible(true);
-	}
-	
-	@Override
-	public void paintComponent(Graphics g){
-		super.paintComponent(g);
-		g.drawImage(background, 0, 0, null);
 		
+		setSize(500,500);
+		setOpaque(false);
+		setVisible(true);
 	}
 	
 	@Override

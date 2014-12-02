@@ -2,7 +2,7 @@
 abstract class BaseMiniGameServer {
 	boolean active;
 	boolean solved;
-	int teamNumber;
+	public int teamNumber;
 	Server server;
 	boolean kickable;
 	BaseMiniGameServer me = this;
@@ -16,11 +16,12 @@ abstract class BaseMiniGameServer {
 			}
 			kickable = true;
 			//server.sendCommand("kickable")
-			server.sendCommand(me,"KICK ME HARD"); 
 		}
 	};
 	
-	public BaseMiniGameServer(Server s) {
+	public BaseMiniGameServer(Server s, int teamNum) {
+		System.out.println("set teamNum to " + teamNum);
+		this.teamNumber = teamNum;
 		this.server = s;
 		kickable = false;
 		active = false;
@@ -31,7 +32,9 @@ abstract class BaseMiniGameServer {
 		//if(start) { timer.start(); active = true; } or something liek that
 	
 	void sendCommand(String command){
-		server.sendCommand(this,command);		
+
+		server.sendCommand(teamNumber, command);
+		
 	}
 	
 }
