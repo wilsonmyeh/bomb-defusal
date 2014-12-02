@@ -101,23 +101,23 @@ public class CutTheWireSupervisor extends BaseMiniGameClient {
 			}
 			break;
 		case 1:
-			bottom.setText("Cut the red wire.");
+			bottom.setText("HINT: Stop signs. Firetrucks. Ladybugs.");
 			colorWires(colorSchemes.get(0)); 
 			break;
 		case 2:
-			bottom.setText("Cut the second wire.");
+			bottom.setText("HINT: The middle index number of a 5 element array.");
 			colorWires(colorSchemes.get(1)); 
 			break;
 		case 3:
-			bottom.setText("Cut the middle green wire.");
+			bottom.setText("HINT: Center. Middle. Median.");
 			colorWires(colorSchemes.get(2)); 
 			break;
 		case 4:
-			bottom.setText("Cut the odd wire out.");
+			bottom.setText("HINT: I live in a _____ world. ");
 			colorWires(colorSchemes.get(3)); 
 			break;
 		case 5:
-			bottom.setText("Cut the second blue wire.");
+			bottom.setText("HINT: length - 1");
 			colorWires(colorSchemes.get(4)); 
 			break;
 		default:
