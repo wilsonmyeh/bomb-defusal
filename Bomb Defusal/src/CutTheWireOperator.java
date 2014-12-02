@@ -26,12 +26,14 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 	Vector<Color[]> colorSchemes; 
 	Color[] selectedScheme;
 	boolean anyWireClicked; 
+	int correctAnswer; 
 
 	public CutTheWireOperator(BaseClient bc, int wireSet) {
 		super(bc);
 		setSize(new Dimension(500, 500));
 		setLayout(null);
 		anyWireClicked = false; 
+		correctAnswer = wireSet; 
 		JLabel title = new JLabel("Cut the right wire!");
 		title.setHorizontalAlignment(SwingConstants.CENTER);
 		title.setFont(new Font(getFont().getName(), Font.PLAIN, 24));
@@ -177,7 +179,14 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 			anyWireClicked = true; 
 	        ((JComponent) e.getComponent()).setOpaque(false); 
 	        int myChoice = Integer.parseInt(((JLabel) e.getComponent()).getText()); 
-	        bc.sendCommand(GAME_ID+"CHOICE"+myChoice); 
+	        if(myChoice != correctAnswer)
+	        {
+	        	((OperatorGUI) bc).restartCW(); 
+	        }
+	        else
+	        {
+	        	bc.sendCommand(GAME_ID+"Win");
+	        }
 	        repaint();
 	        revalidate(); 
 			}

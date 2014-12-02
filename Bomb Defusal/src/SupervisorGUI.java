@@ -59,11 +59,13 @@ public class SupervisorGUI extends BaseClient{
 		mainPanel.add(jpInstruction,"Intruction");
 		mainPanel.add(jpLobby,"Lobby");
 	
+		endSplash = new EndSplash(team, true);
 	
 		mainPanel.add(jpLightGame_Sup,"LightGame_Supervisor");
 		mainPanel.add(jpCutWireGame_Sup,"CutWireGame_Supervisor");
 		mainPanel.add(jpFindLocationGame_Sup,"FindLocationGame_Supervisor");
 		mainPanel.add(jpLogicGame_Sup,"LogicGame_Supervisor");
+		mainPanel.add(endSplash, "endSplash");
 		
 		//for logic game
 		try {
@@ -80,7 +82,6 @@ public class SupervisorGUI extends BaseClient{
 		add(chat,BorderLayout.EAST);
 		//show instruction page
 		mainCardLayout.show(mainPanel, "Instruction");
-		mainCardLayout.show(mainPanel, "endSplash");
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
 		setVisible(true);

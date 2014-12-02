@@ -30,6 +30,8 @@ public class OperatorGUI extends BaseClient{
 		String teamNumStr = teamNum + "";
 		jpInstruction = new Instruction("Operator",teamNumStr);
 		
+		endSplash = new EndSplash(team, false);
+		
 		jpLightGame_Ope = new LightOperator(this);
 		Random rand = new Random();
 		jpCutWireGame_Ope = new CutTheWireOperator(this, rand.nextInt(5));
@@ -55,6 +57,7 @@ public class OperatorGUI extends BaseClient{
 		mainPanel = new JPanel(mainCardLayout);
 		
 		mainPanel.add(jpInstruction,"Intruction");
+		mainPanel.add(endSplash, "endSplash");
 		
 		mainPanel.add(jpLightGame_Ope,"LightGame_Operator");
 		mainPanel.add(jpCutWireGame_Ope,"CutWireGame_Operator");
@@ -74,9 +77,16 @@ public class OperatorGUI extends BaseClient{
 		add(chat,BorderLayout.EAST);
 		//show instruction page
 		mainCardLayout.show(mainPanel,"Instruction");
-		mainCardLayout.show(mainPanel, "endSplash");
 		
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);		
 		setVisible(true);	
+	}
+
+
+	public void restartCW() {
+		Random rand = new Random();
+		jpCutWireGame_Ope = new CutTheWireOperator(this, rand.nextInt(5));
+		revalidate();
+		repaint(); 
 	}
 }

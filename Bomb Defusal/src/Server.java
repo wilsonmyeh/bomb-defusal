@@ -168,11 +168,11 @@ class Server {
 		else if(ind == 6) {
 			int team = (int) line.charAt(0) - 48;
 			BaseMiniGameServer[] select = (team==0) ? team0 : team1;
-			if(checkWin(select)){
+			boolean check = checkWin(select);
+			System.out.println("check is " + check);
+			if(check){
 				System.out.println("WE WON FAM!");
-				timerEnd = System.currentTimeMillis();
-				timerResult = timerEnd - timerStart;
-				notifyVictor(team, timerResult);
+				notifyVictor(team);
 			}
 			gamesAvailable(team);
 		}
@@ -236,16 +236,24 @@ class Server {
 			}
 			System.out.println("Game " + i + " is solved.");
 		}
-		System.out.println("gONAN AWWIIIINN");
+		notifyVictor(team[1].teamNumber);
 		return true;
 	}
 
 	// ends the game, displays winner
-	void notifyVictor(int team, long time) {
+	void notifyVictor(int team) {
+		System.out.println("notify victor wsa called");
+		timerEnd = System.currentTimeMillis();
+		long time = timerEnd - timerStart;
+		
 		out0[0].println("7"+team+time);
+		out0[0].flush();
 		out0[1].println("7"+team+time);
+		out0[1].flush();
 		out1[0].println("7"+team+time);
+		out1[0].flush();
 		out1[1].println("7"+team+time);
+		out1[1].flush();
 	}
 
 	void sendCommand(int teamNum, String command) {
@@ -298,6 +306,10 @@ class Server {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+			}
+			if(checkWin(team0)){
+			}
+			else if(checkWin(team1)){
 			}
 		}
 		// NEED TO DEFINE AND IMPLEMENT PARSE
