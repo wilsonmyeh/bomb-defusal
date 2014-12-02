@@ -113,7 +113,7 @@ public class CutTheWireOperator extends BaseMiniGameClient {
 		add(timer);
 		add(title);
 		add(instructions); 
-		setButtons(); 
+		//setButtons(); 
 		Color[] scheme1 = {Color.red, Color.blue, Color.yellow, Color.green, Color.cyan};//Cut the red one
 		Color[] scheme2 = {Color.red, Color.red, Color.red, Color.red, Color.red}; //Cut the second one
 		Color[] scheme3 = {Color.green, Color.yellow, Color.green, Color.yellow, Color.green}; //cut the green one
