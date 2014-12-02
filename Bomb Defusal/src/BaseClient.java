@@ -27,6 +27,7 @@ abstract class BaseClient extends JFrame
 	public BaseClient(Socket s, int team)
 	{
 		this.team = team;
+		System.out.println("My team is " + team);
 		pw = null;
 		br = null; 
 		mySocket = s; 

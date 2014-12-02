@@ -15,8 +15,8 @@ class LightServer extends BaseMiniGameServer {
 	private int threshold;
 	*/
 	
-	public LightServer(Server s) {
-		super(s);
+	public LightServer(Server s, int teamNum) {
+		super(s, teamNum);
 		lights = new boolean[6];
 		for(int i = 0;i < lights.length;i++)
 			lights[i] = (Math.abs(rand.nextInt()) % 2) == 1;
