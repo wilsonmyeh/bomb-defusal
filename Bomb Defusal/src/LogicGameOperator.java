@@ -230,6 +230,7 @@ class LogicGameOperator extends BaseMiniGameClient{
 		if(command.startsWith("Random")){
 			String [] temp = command.split(" ");
 			randomNum = Integer.parseInt(temp[1]);
+			this.repaint();
 			System.out.println("Operator receive random: " + randomNum);
 		}
 		else if(command.startsWith("Reset")){
