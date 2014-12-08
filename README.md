@@ -1,4 +1,4 @@
-Bomb Defusal - The Game
+Defuse the Bomb!
 ============
 ##Team Members
 - He who would blaze a trail to victory, *Great Leader Steven Truong*
