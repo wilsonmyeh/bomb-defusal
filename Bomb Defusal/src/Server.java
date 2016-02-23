@@ -25,7 +25,6 @@ class Server {
 	int team1Status, team2Status;// -1=lose, 0=in progress, 1=win
 
 	public Server(int port) {
-		
 
 		try {
 			ServerSocket ss = new ServerSocket(port);

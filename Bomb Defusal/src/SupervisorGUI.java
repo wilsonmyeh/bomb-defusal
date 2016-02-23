@@ -7,7 +7,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JPanel;
 
-
 public class SupervisorGUI extends BaseClient{
 	private JPanel jpInstruction;
 	private BaseMiniGameClient jpLightGame_Sup,jpLogicGame_Sup,jpFindLocationGame_Sup,jpCutWireGame_Sup;
